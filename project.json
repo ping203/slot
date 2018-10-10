@@ -1,0 +1,55 @@
+{
+  "project_type": "javascript",
+  "debugMode": 0,
+  "showFPS": false,
+  "frameRate": 60,
+  "noCache": false,
+  "id": "gameCanvas",
+  "renderMode": 0,
+  "engineDir": "frameworks/cocos2d-html5",
+  "modules": [
+    "cocos2d",
+    "extensions"
+  ],
+  "jsList": [
+    "src/resource.js",
+    "src/WebResource.js",
+
+    "src/CocosEdit/CCEditBox.js",
+    "src/CocosEdit/CCBoot.js",
+
+    "src/Engine/Unicorn/index.js",
+
+    "src/Game/gameInstance.js",
+    "src/Engine/GUI/BaseLayer.js",
+    "src/Engine/GUI/GuiUtil.js",
+    "src/Engine/GUI/BaseLobby.js",
+    "src/Engine/GUI/BaseScene.js",
+    "src/Engine/GUI/SceneMgr.js",
+    "src/Engine/Utility/Dialog.js",
+    "src/Engine/Purchase/InappPurchase.js",
+    "src/Engine/Utility/LocalizedString.js",
+    "src/Engine/Utility/StringUtility.js",
+    "src/Engine/Utility/Toast.js",
+    "src/Engine/Utility/Utils.js",
+    "src/Engine/Network/SocialManager.js",
+    "src/Engine/Network/InPacket.js",
+    "src/Engine/Network/OutPacket.js",
+    "src/Engine/Network/WsClient.js",
+    "src/Engine/Network/PacketHeaderAnalyze.js",
+    "src/Engine/Utility/EventHandlerManager.js",
+    "src/Components/TableLayer/BaseLayerTable.js",
+    "src/Components/TableLayer/LayoutControlTableView.js",
+    "src/Components/TableLayer/LayoutListView.js",
+    "src/Components/TableLayer/LayoutTabView.js",
+    "src/Game/GameMng/GameManager.js",
+    "src/Game/common/common.js",
+    "src/Game/common/ColorDefine.js",
+    "src/Game/common/md5.js",
+    "src/Engine/Utility/ConnectNative.js",
+
+    "src/Components/Smsotp/LayoutSmsotp.js",
+    "src/Game/Lobby/Lobby.js",
+    "src/Game/Lobby/Gui/LoginLayer.js"
+  ]
+}

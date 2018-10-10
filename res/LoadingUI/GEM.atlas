@@ -1,0 +1,41 @@
+
+GEM.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+G
+  rotate: false
+  xy: 2, 92
+  size: 297, 312
+  orig: 297, 312
+  offset: 0, 0
+  index: -1
+fr_bg
+  rotate: false
+  xy: 2, 406
+  size: 514, 514
+  orig: 514, 514
+  offset: 0, 0
+  index: -1
+led
+  rotate: false
+  xy: 2, 2
+  size: 88, 88
+  orig: 88, 88
+  offset: 0, 0
+  index: -1
+light
+  rotate: true
+  xy: 301, 139
+  size: 265, 193
+  orig: 265, 193
+  offset: 0, 0
+  index: -1
+txt
+  rotate: false
+  xy: 518, 833
+  size: 418, 87
+  orig: 418, 87
+  offset: 0, 0
+  index: -1
