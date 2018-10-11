@@ -609,6 +609,7 @@ function updateManifest(_am, callBackUpdate, key) {
 
 
 var fontArial = {fontName: "arial", src: [{src: "res/Font/arial.ttf", type: "truetype"}]};
+var fontSwissCondensed = {fontName: "UTM-Swiss-Condensed", src: [{src: "res/Font/UTM-Swiss-Condensed.ttf", type: "truetype"}]};
 var fontArialB = {fontName: "arialbd", src: [{src: "res/Font/arialbd.ttf", type: "truetype"}]};
 var fontRobotoMedium = {fontName: "Roboto-Medium", src: [{src: "res/Font/Roboto-Medium.ttf", type: "truetype"}]};
 var fontRobotoRegular = {fontName: "Roboto-Regular", src: [{src: "res/Font/Roboto-Regular.ttf", type: "truetype"}]};

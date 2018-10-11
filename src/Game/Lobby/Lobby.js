@@ -12,7 +12,7 @@ var LobbyLayer = BaseLobby.extend({
         this._super();
     },
     initLogin: function () {
-        this.loginLayer = new LoginLayer(this);
+        this.loginLayer = new LoginLayer();
         this.addChild(this.loginLayer);
     }
 });

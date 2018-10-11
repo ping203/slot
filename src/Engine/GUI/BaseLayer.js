@@ -726,7 +726,7 @@ var BaseLayer = cc.Layer.extend({
         this[name].setInputMode(cc.EDITBOX_INPUT_MODE_SINGLELINE);
         this[name].setFontName(fontName);
         this[name].setFontSize(fontSize);
-        this[name].setPlaceholderFontSize(fontSize);
+        this[name].setPlaceholderFont(fontName, fontSize);
         this[name].setPlaceholderFontColor(cc.color.GRAY);
         this[name].setFontColor(cc.color.WHITE);
         this[name].setDelegate(this);

@@ -66,12 +66,12 @@ var BaseLobby = BaseLayer.extend({
         this.main_content.setAnchorPoint(0.5, 1);
         GuiUtil.setBackGroundColor(this.main_content, cc.color.BLACK, 100);
 
-        this.bgGuiLayer = GuiUtil.createLayout(cc.p(0, 0), null, cc.size(1280, 720), false);
-        this.gameGuiLayer = GuiUtil.createLayout(cc.p(0, 0), null, cc.size(1280, 720), false);
-        this.infoGuiLayer = GuiUtil.createLayout(cc.p(0, 0), null, cc.size(1280, 720), false);
-        this.banCaGuiLayer = GuiUtil.createLayout(cc.p(0, 0), null, cc.size(1280, 720), false);
-        this.miniGameGuiLayer = GuiUtil.createLayout(cc.p(0, 0), null, cc.size(1280, 720), false);
-        this.popupGuiLayer = GuiUtil.createLayout(cc.p(0, 0), null, cc.size(1280, 720), false);
+        this.bgGuiLayer = GuiUtil.createLayout(cc.p(640, 360), null, cc.size(1280, 720), false);
+        this.gameGuiLayer = GuiUtil.createLayout(cc.p(640, 360), null, cc.size(1280, 720), false);
+        this.infoGuiLayer = GuiUtil.createLayout(cc.p(640, 360), null, cc.size(1280, 720), false);
+        this.banCaGuiLayer = GuiUtil.createLayout(cc.p(640, 360), null, cc.size(1280, 720), false);
+        this.miniGameGuiLayer = GuiUtil.createLayout(cc.p(640, 360), null, cc.size(1280, 720), false);
+        this.popupGuiLayer = GuiUtil.createLayout(cc.p(640, 360), null, cc.size(1280, 720), false);
 
         this.main_content.addChild(this.bgGuiLayer, BaseLobby.INDEX_BG_GUI);
         this.main_content.addChild(this.gameGuiLayer, BaseLobby.INDEX_GAME_GUI);
