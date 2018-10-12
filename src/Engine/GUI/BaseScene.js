@@ -116,7 +116,7 @@ makeScene = function (layer) {
         MainContent.addChild(BaseScene.INFO_GUI, BaseScene.INDEX_INFO_GUI);
         MainContent.addChild(BaseScene.POP_UP_GUI, BaseScene.INDEX_POP_UP_GUI);
 
-         gI.popUp = new uc.PopUp();
+        gI.popUp = new uc.PopUp();
         //popUp = gI.popUp = new uc.PopUp();
         BaseScene.POP_UP_GUI.addChild(gI.popUp);
 

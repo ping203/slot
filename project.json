@@ -50,6 +50,8 @@
 
     "src/Components/Smsotp/LayoutSmsotp.js",
     "src/Game/Lobby/Lobby.js",
-    "src/Game/Lobby/Gui/LoginLayer.js"
+    "src/Game/Lobby/Gui/LoginLayer.js",
+    "src/Game/Lobby/Gui/SupportLayer.js",
+    "src/Game/Lobby/Gui/MenuLayer.js"
   ]
 }
