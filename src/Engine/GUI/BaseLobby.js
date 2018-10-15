@@ -81,8 +81,7 @@ var BaseLobby = BaseLayer.extend({
         this.main_content.addChild(this.popupGuiLayer, BaseLobby.INDEX_POP_UP_GUI);
         this.scaleContent();
         createLobby();
-        // var table = new BaseLayerTable();
-        // this.addChild(table);
+
     },
     addGUI: function (layer, zOrder) {
         this.main_content.addChild(layer, zOrder);

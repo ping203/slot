@@ -11,6 +11,7 @@ var LobbyLayer = BaseLobby.extend({
         this.initLogin();
         this.initSupport();
         this.initMenu();
+        this.initTablePopup();
     },
     onEnter: function () {
         this._super();
@@ -26,8 +27,11 @@ var LobbyLayer = BaseLobby.extend({
     initMenu: function () {
         this.menuLayer = new MenuLayer();
         this.addChild(this.menuLayer);
+    },
+    initTablePopup: function () {
+        var table = new BaseLayerTable();
+        this.addChild(table);
     }
-
 });
 
 createLobby = function () {
