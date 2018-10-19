@@ -17,11 +17,11 @@ var BaseLayerTable = BaseLayer.extend({
         this._super();
         // this._moneyType = MONEY_XU;
         this._size = cc.size(1208, 643);
-        this._titleText = "XXX";
+        this._titleText = "";
         this.addLayout(this, "_bgLayer", cc.p(640, 360), null, cc.size(1280, 720), true);
-        GuiUtil.setBackGroundColor(this._bgLayer, cc.color.BLACK, 200);
+        // GuiUtil.setBackGroundColor(this._bgLayer, cc.color.BLACK, 200);
         this._bgLayer.setBackGroundColorType(ccui.Layout.BG_COLOR_SOLID);
-        this._bgLayer.setBackGroundColor(cc.color.YELLOW);
+        this._bgLayer.setBackGroundColor(cc.color.BLACK);
         this._bgLayer.setBackGroundColorOpacity(200);
         this._bgLayer.setTag(BaseLayerTable.BTN_EXIT);
         this._bgLayer.addTouchEventListener(this.onTouchEventHandler, this);

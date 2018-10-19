@@ -7,8 +7,8 @@ var MenuLayer = BaseLayer.extend({
     customizeGUI: function () {
         this.addLayout(this, "menuLayout", cc.p(640, 360), null, cc.size(1280, 720), false);
 
-        this.addButton(this.menuLayout, "effect", 0, cc.p(146, 402), true, res_Lobby + "/menu/effect.png", null, ccui.Widget.LOCAL_TEXTURE);
-        this.addButton(this.menuLayout, "tournament", 0, cc.p(152, 378), true, res_Lobby + "/menu/tournament.png", null, ccui.Widget.LOCAL_TEXTURE);
+        this.addButton(this.menuLayout, "effect", 0, cc.p(146, 402), false, res_Lobby + "/menu/effect.png", null, ccui.Widget.LOCAL_TEXTURE);
+        this.addButton(this.menuLayout, "tournament", 0, cc.p(152, 378), false, res_Lobby + "/menu/tournament.png", null, ccui.Widget.LOCAL_TEXTURE);
     },
     onEnter: function () {
         this._super();

@@ -11,7 +11,7 @@ var LobbyLayer = BaseLobby.extend({
         this.initLogin();
         this.initSupport();
         this.initMenu();
-        this.initTablePopup();
+        this.initHistoryTransaction();
     },
     onEnter: function () {
         this._super();
@@ -28,8 +28,12 @@ var LobbyLayer = BaseLobby.extend({
         this.menuLayer = new MenuLayer();
         this.addChild(this.menuLayer);
     },
-    initTablePopup: function () {
+    initHistoryTransaction: function () {
         var table = new BaseLayerTable();
+        table.setTitleText("Lịch sử giao dịch");
+        var layouttable = new LayoutTabView(table, cc.size(600, 65), ["chơi vàng", "nạp vàng", "tiêu vàng"], 0, 2);
+        // GuiUtil.setBackGroundColor(layouttable, cc.color.ORANGE, 200);
+        table.addChild(layouttable);
         this.addChild(table);
     }
 });
