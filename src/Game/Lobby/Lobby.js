@@ -32,8 +32,10 @@ var LobbyLayer = BaseLobby.extend({
         var table = new BaseLayerTable();
         table.setTitleText("Lịch sử giao dịch");
         var layouttable = new LayoutTabView(table, cc.size(600, 65), ["chơi vàng", "nạp vàng", "tiêu vàng"], 0, 2);
-        // GuiUtil.setBackGroundColor(layouttable, cc.color.ORANGE, 200);
         table.addChild(layouttable);
+        var lvLSGD = new LayoutListView(table, cc.size(1100, 346), [{name: "Mã GD"}, {name: "Thời gian"}, {name: "Dịch vụ"}, {name: "Phát sinh"}, {name: "Số dư"}, {name: "Mô tả"}]);
+        table.addChild(lvLSGD);
+        // GuiUtil.setBackGroundColor(lvLSGD, cc.color.ORANGE, 200);
         this.addChild(table);
     }
 });

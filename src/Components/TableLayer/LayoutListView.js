@@ -27,16 +27,15 @@ var LayoutListView = ccui.Layout.extend({
         this._arrInfoColom = arrInfoColom;
         this.scaleColumn();
         this.setContentSize(size);
-
-        this._bgImg = new ccui.ImageView("res/Minigame/ImageChung/bg_title.png",
-            cc.spriteFrameCache.getSpriteFrame("res/Minigame/ImageChung/bg_title.png") ? ccui.Widget.PLIST_TEXTURE : ccui.Widget.LOCAL_TEXTURE);
-        this._bgImg.setScale9Enabled(false);
-        this._bgImg.ignoreContentAdaptWithSize(false);
-        this._bgImg.setPosition(this._size.width / 2, this._size.height - 28);
-        this._bgImg.setAnchorPoint(0.5, 0.5);
-        this._bgImg.setContentSize(1029, 46);
-        this.addChild(this._bgImg);
-
+        this.setPosition(cc.p(89, 152));
+        // this._bgImg = new ccui.ImageView("res/Minigame/ImageChung/bg_title.png",
+        //     cc.spriteFrameCache.getSpriteFrame("res/Minigame/ImageChung/bg_title.png") ? ccui.Widget.PLIST_TEXTURE : ccui.Widget.LOCAL_TEXTURE);
+        // this._bgImg.setScale9Enabled(false);
+        // this._bgImg.ignoreContentAdaptWithSize(false);
+        // this._bgImg.setPosition(this._size.width / 2, this._size.height - 28);
+        // this._bgImg.setAnchorPoint(0.5, 0.5);
+        // this._bgImg.setContentSize(1029, 46);
+        // this.addChild(this._bgImg);
         this._listView = new ccui.ListView();
         this.addChild(this._listView);
         this._listView.setContentSize(cc.size(this._size.width, this._size.height - 50));
@@ -55,12 +54,10 @@ var LayoutListView = ccui.Layout.extend({
         this._pTitle.setCascadeOpacityEnabled(true);
         this._pTitle.setPosition(cc.p(this._size.width / 2, this._size.height - 25));
         this._pTitle.setBackGroundColorType(ccui.Layout.BG_COLOR_SOLID);
-
         this._pTitle.setBackGroundColor(colorBgCell1);
         this._pTitle.setBackGroundColorOpacity(0);
         this.addChild(this._pTitle);
         this.initPTitle();
-
     },
     scaleColumn: function () {
         var totalWidth = this._size.width;
@@ -75,39 +72,34 @@ var LayoutListView = ccui.Layout.extend({
     },
     initPTitle: function () {
         for (var i = 0; i < this._arrInfoColom.length; i++) {
-            var titleName = new ccui.Text(this._arrInfoColom[i].name, fontArial.fontName, 18);
-            //titleName.setPosition(position);
+            var titleName = new ccui.Text(this._arrInfoColom[i].name, fontSwissCondensed.fontName, 18);
             titleName.setAnchorPoint(0.5, 0.5);
             if (cc.sys.isNative) {
                 titleName.setFontName("res/Font/" + titleName.getFontName() + ".ttf");
             }
-            titleName.ignoreContentAdaptWithSize(false);
-            titleName.setContentSize(cc.size(this._arrInfoColom[i].width, 50));
-            titleName.setTextVerticalAlignment(cc.VERTICAL_TEXT_ALIGNMENT_CENTER);
+            // titleName.ignoreContentAdaptWithSize(false);
+            // titleName.setContentSize(cc.size(this._arrInfoColom[i].width, 50));
+            // titleName.setTextVerticalAlignment(cc.VERTICAL_TEXT_ALIGNMENT_CENTER);
             titleName.setTextHorizontalAlignment(cc.TEXT_ALIGNMENT_CENTER);
-            titleName.setColor(cc.color(255, 223, 88));
+            titleName.setColor(cc.color("#e8c14c"));
             titleName.setTag(i);
             var position = cc.p(0, 0);
             if (i == 0) {
                 position = cc.p(this._arrInfoColom[i].width / 2, 25);
-
             } else {
                 var positionW = this._pTitle.getChildByTag(i - 1).getPosition().x + this._pTitle.getChildByTag(i - 1).getContentSize().width / 2 + this._arrInfoColom[i].width / 2;
                 position = cc.p(positionW, 25);
             }
             titleName.setPosition(position);
             this._pTitle.addChild(titleName);
-
             if (i != this._arrInfoColom.length - 1) {
                 //var spNganCot = GuiUtil.createSprite("res/Minigame/ImageChung/vachdung.png");//new cc.Sprite("res/Minigame/ImageChung/vachdung.png");
                 //spNganCot.setScaleY(0.80);
-
                 //spNganCot.setPosition(cc.p(position.x + this._arrInfoColom[i].width / 2, 25));
                 //spNganCot.setScaleY(50 / 41);
                 //this._pTitle.addChild(spNganCot);
             }
         }
-
     },
 
     createItemListView: function (data, index) {

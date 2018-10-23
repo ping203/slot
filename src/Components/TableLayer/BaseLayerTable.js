@@ -31,7 +31,7 @@ var BaseLayerTable = BaseLayer.extend({
         var positionY = 360 + this._size.height / 2 - 60 ;
 
         this.addText(this, "_lbTitle", cc.p(640, positionY), this._titleText, UTMBebas.fontName, 40);
-        this._lbTitle.setColor(cc.color(230, 230, 0));
+        this._lbTitle.setColor(cc.color("#e8c14c"));
         positionY = 642;
         var positionX = 1180;
 

@@ -35,20 +35,16 @@ var LayoutTabView = ccui.Layout.extend({
             if (cc.spriteFrameCache.getSpriteFrame(res_Lobby + "/btntab.png")) {
                 texType = ccui.Widget.PLIST_TEXTURE;
             }
-            if (i == indexFocus1) {
+            if (i === indexFocus1) {
                 var texType = ccui.Widget.LOCAL_TEXTURE;
                 if (cc.spriteFrameCache.getSpriteFrame(res_Lobby + "/btntabactive.png")) {
                     texType = ccui.Widget.PLIST_TEXTURE;
                 }
-                btnTab.normalFileName = res_Lobby + "/btntabactive.png";
-                btnTab.clickedFileName = res_Lobby + "/btntabactive.png";
-                btnTab.getTitleRenderer().setColor(GuiUtil.color("#592500"));
                 btnTab.isSelected = true;
-                btnTab.loadTextureNormal(btnTab.clickedFileName, texType);
+                btnTab.getTitleRenderer().setColor(GuiUtil.color("#592500"));
+                btnTab.loadTextures(res_Lobby + "/btntabactive.png", res_Lobby + "/btntabactive.png", res_Lobby + "/btntabactive.png", texType);
             } else {
                 btnTab.loadTextures(res_Lobby + "/btntab.png", res_Lobby + "/btntab.png", res_Lobby + "/btntab.png", texType);
-                btnTab.normalFileName = res_Lobby + "/btntab.png";
-                btnTab.clickedFileName = res_Lobby + "/btntab.png";
                 btnTab.isSelected = false;
             }
             btnTab.addTouchEventListener(this.onTouchEventHandler, this);
@@ -66,7 +62,7 @@ var LayoutTabView = ccui.Layout.extend({
             texType = ccui.Widget.PLIST_TEXTURE;
         }
         for (var i = 0; i < this._arrTitleTab.length; i++) {
-            if (i == index) {
+            if (i === index) {
                 if (this.getChildByTag(i).isSelected) {
                     return;
                 }
@@ -82,23 +78,23 @@ var LayoutTabView = ccui.Layout.extend({
         switch (type) {
             case ccui.Widget.TOUCH_ENDED:
                 var texType = ccui.Widget.LOCAL_TEXTURE;
-                if (cc.spriteFrameCache.getSpriteFrame(res_Lobby + "/btntab.png")) {
-                    texType = ccui.Widget.PLIST_TEXTURE;
-                }
+                // if (cc.spriteFrameCache.getSpriteFrame(res_Lobby + "/btntab.png")) {
+                //     texType = ccui.Widget.PLIST_TEXTURE;
+                // }
                 for (var i = 0; i < this._arrTitleTab.length; i++) {
-                    if (this.getChildByTag(i) == sender) {
+                    if (this.getChildByTag(i) === sender) {
                         if (this.getChildByTag(i).isSelected) {
                             return;
                         }
                         this.getChildByTag(i).getTitleRenderer().setColor(GuiUtil.color("#592500"));
-                        this.getChildByTag(i).loadTextureNormal(this.getChildByTag(i).clickedFileName, texType);
+                        this.getChildByTag(i).loadTextures(res_Lobby + "/btntabactive.png", res_Lobby + "/btntabactive.png", res_Lobby + "/btntabactive.png", texType);
                         this.getChildByTag(i).isSelected = true;
                         this._layer.onClickTab(this._tabIndex, sender.getTag());
                     } else {
                         this.getChildByTag(i).getTitleRenderer().setColor(cc.color.WHITE);
                         if (this.getChildByTag(i).isSelected) {
                             this.getChildByTag(i).isSelected = false;
-                            this.getChildByTag(i).loadTextureNormal(this.getChildByTag(i).normalFileName, texType);
+                            this.getChildByTag(i).loadTextures(res_Lobby + "/btntab.png", res_Lobby + "/btntab.png", res_Lobby + "/btntab.png", texType);
                         }
                     }
                 }
