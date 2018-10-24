@@ -19,36 +19,37 @@ var LayoutControlTable = ccui.Layout.extend({
         this._layer = layer;
         this.setContentSize(cc.size(1000, 40));
         this.setAnchorPoint(0.5, 0.5);
+        this.setPosition(cc.p(640, 100));
         var texType = ccui.Widget.LOCAL_TEXTURE;
         if (cc.spriteFrameCache.getSpriteFrame("res/Minigame/ImageChung/number.png")) {
             texType = ccui.Widget.PLIST_TEXTURE;
         }
         this._btnBackAll = new ccui.Button();
-        this._btnBackAll.loadTextures("res/Minigame/ImageChung/number_backall.png", "res/Minigame/ImageChung/number_backall_s.png", "res/Minigame/ImageChung/number_backall_s.png", texType);
-        this._btnBackAll.setPosition(350, 30);
+        this._btnBackAll.loadTextures(res_Lobby+"/first.png", res_Lobby+"/first.png", res_Lobby+"/first.png", texType);
+        this._btnBackAll.setPosition(300, 30);
         this.addChild(this._btnBackAll);
         this._btnBackAll.addTouchEventListener(this.onTouchEventHandler, this);
         this._btnBackAll.setTag(0);
 
         this._btnBack = new ccui.Button();
-        this._btnBack.loadTextures("res/Minigame/ImageChung/number_back.png", "res/Minigame/ImageChung/number_back_s.png", "res/Minigame/ImageChung/number_back_s.png", texType);
-        this._btnBack.setPosition(415, 30);
+        this._btnBack.loadTextures(res_Lobby+"/previous.png", res_Lobby+"/previous.png", res_Lobby+"/previous.png", texType);
+        this._btnBack.setPosition(370, 30);
         this.addChild(this._btnBack);
         this._btnBack.addTouchEventListener(this.onTouchEventHandler, this);
         this._btnBack.setTag(1);
 
-        if (texType == ccui.Widget.PLIST_TEXTURE) {
+        if (texType === ccui.Widget.PLIST_TEXTURE) {
             this._bgPage = new cc.Sprite("#res/Minigame/ImageChung/number.png");
         } else {
-            this._bgPage = new cc.Sprite("res/Minigame/ImageChung/number.png");
+            this._bgPage = new cc.Sprite(res_Lobby+"/current.png");
         }
-        this._bgPage.setPosition(500, 30);
+        this._bgPage.setPosition(480, 30);
         this.addChild(this._bgPage);
 
         this._lbPage = new ccui.Text(this._currentPage + "/" + this._totalPage, RobotoRegular.fontName, 20);
         this._lbPage.setColor(cc.color(162, 105, 64));
 
-        this._lbPage.setPosition(500, 30);
+        this._lbPage.setPosition(480, 30);
         this._lbPage.setAnchorPoint(0.5, 0.5);
         if (cc.sys.isNative) {
             this._lbPage.setFontName("res/Font/" + this._lbPage.getFontName() + ".ttf");
@@ -56,7 +57,7 @@ var LayoutControlTable = ccui.Layout.extend({
         this.addChild(this._lbPage);
 
         this._btnNext = new ccui.Button();
-        this._btnNext.loadTextures("res/Minigame/ImageChung/number_back.png", "res/Minigame/ImageChung/number_back_s.png", "res/Minigame/ImageChung/number_back_s.png", texType);
+        this._btnNext.loadTextures(res_Lobby+"/previous.png", res_Lobby+"/previous.png", res_Lobby+"/previous.png", texType);
         this._btnNext.setPosition(585, 30);
         this.addChild(this._btnNext);
         this._btnNext.addTouchEventListener(this.onTouchEventHandler, this);
@@ -64,7 +65,7 @@ var LayoutControlTable = ccui.Layout.extend({
         this._btnNext.setTag(2);
 
         this._btnNextAll = new ccui.Button();
-        this._btnNextAll.loadTextures("res/Minigame/ImageChung/number_backall.png", "res/Minigame/ImageChung/number_backall_s.png", "res/Minigame/ImageChung/number_backall_s.png", texType);
+        this._btnNextAll.loadTextures(res_Lobby+"/first.png", res_Lobby+"/first.png", res_Lobby+"/first.png", texType);
         this._btnNextAll.setPosition(650, 30);
         this.addChild(this._btnNextAll);
         this._btnNextAll.addTouchEventListener(this.onTouchEventHandler, this);
