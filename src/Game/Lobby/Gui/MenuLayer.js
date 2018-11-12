@@ -77,8 +77,8 @@ var MenuLayer = BaseLayer.extend({
     },
     effectTour: function () {
         let rotateAction = new cc.RotateBy(1, 360);
-        // let moveLeft = new cc.MoveBy(1,-50,0);
-        let action = new cc.RepeatForever(new cc.Sequence(rotateAction));
+        let action = new cc.RepeatForever( new cc.Sequence(rotateAction));
         this.effect.runAction(action);
-    }
+    },
+
 });

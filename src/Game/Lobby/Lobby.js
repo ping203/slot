@@ -11,7 +11,6 @@ var LobbyLayer = BaseLobby.extend({
         this.initSupport();
         this.initMenu();
         this.initLogin();
-        // this.initHistoryTransaction();
     },
     onEnter: function () {
         this._super();

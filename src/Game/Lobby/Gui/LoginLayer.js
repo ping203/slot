@@ -106,7 +106,9 @@ var LoginLayer = BaseLayer.extend({
         this.loggedLayout.visible = true;
     },
     register: function () {
-
+        var reg = new RegisterLayer();
+        reg.setPosition(cc.p(640, 360));
+        this.addChild(reg);
     },
     historyTransaction: function () {
         var table = new BaseLayerTable();
@@ -138,9 +140,8 @@ var LoginLayer = BaseLayer.extend({
     changeAvatar: function () {
         this.loginLayout.visible = true;
         this.loggedLayout.visible = false;
-    }
+    },
 });
-
 LoginLayer.BTN_FACEBOOK_TAB = 1;
 LoginLayer.BTN_GOOGLE_TAB = 2;
 LoginLayer.BTN_DANG_NHAP_TAB = 3;
