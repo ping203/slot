@@ -107,7 +107,7 @@ var LoginLayer = BaseLayer.extend({
     },
     register: function () {
         var reg = new RegisterLayer();
-        reg.setPosition(cc.p(640, 360));
+        reg.setPosition(cc.p(0, 0));
         this.addChild(reg);
     },
     historyTransaction: function () {
