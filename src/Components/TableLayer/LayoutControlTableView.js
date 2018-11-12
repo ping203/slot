@@ -19,7 +19,7 @@ var LayoutControlTable = ccui.Layout.extend({
         this._layer = layer;
         this.setContentSize(cc.size(1000, 40));
         this.setAnchorPoint(0.5, 0.5);
-        this.setPosition(cc.p(640, 100));
+
         var texType = ccui.Widget.LOCAL_TEXTURE;
         if (cc.spriteFrameCache.getSpriteFrame("res/Minigame/ImageChung/number.png")) {
             texType = ccui.Widget.PLIST_TEXTURE;
@@ -47,7 +47,7 @@ var LayoutControlTable = ccui.Layout.extend({
         this.addChild(this._bgPage);
 
         this._lbPage = new ccui.Text(this._currentPage + "/" + this._totalPage, RobotoRegular.fontName, 20);
-        this._lbPage.setColor(cc.color(162, 105, 64));
+        this._lbPage.setColor(cc.color("#e8c14c"));
 
         this._lbPage.setPosition(480, 30);
         this._lbPage.setAnchorPoint(0.5, 0.5);

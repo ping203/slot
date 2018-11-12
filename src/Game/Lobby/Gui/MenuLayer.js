@@ -9,6 +9,7 @@ var MenuLayer = BaseLayer.extend({
 
         this.addButton(this.menuLayout, "effect", 0, cc.p(146, 402), false, res_Lobby + "/menu/effect.png", null, ccui.Widget.LOCAL_TEXTURE);
         this.addButton(this.menuLayout, "tournament", 0, cc.p(152, 378), false, res_Lobby + "/menu/tournament.png", null, ccui.Widget.LOCAL_TEXTURE);
+        // this.effectTour();
     },
     onEnter: function () {
         this._super();
@@ -74,4 +75,10 @@ var MenuLayer = BaseLayer.extend({
         }
         parent.addChild(this[name]);
     },
+    effectTour: function () {
+        let rotateAction = new cc.RotateBy(1, 360);
+        // let moveLeft = new cc.MoveBy(1,-50,0);
+        let action = new cc.RepeatForever(new cc.Sequence(rotateAction));
+        this.effect.runAction(action);
+    }
 });

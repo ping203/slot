@@ -12,7 +12,6 @@ var LayoutTabView = ccui.Layout.extend({
         this._size = size;
         this._arrTitleTab = arrTitleTab;
         this._tabIndex = tabIndex;
-        this.setPosition(cc.p(350, 520));
         this.setContentSize(this._size);
         //var w = this._size.width/this._arrTitleTab.length;
         var w = 183;
