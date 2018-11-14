@@ -37,7 +37,7 @@ var BaseLayerTable = BaseLayer.extend({
 
         this._btnExit = new ccui.Button();
         var texType = ccui.Widget.LOCAL_TEXTURE;
-        texType = (cc.spriteFrameCache.getSpriteFrame(res_Lobby + "/btnclose.png") || texType == ccui.Widget.PLIST_TEXTURE) ? ccui.Widget.PLIST_TEXTURE : ccui.Widget.LOCAL_TEXTURE;
+        texType = (cc.spriteFrameCache.getSpriteFrame(res_Lobby + "/btnclose.png") || texType === ccui.Widget.PLIST_TEXTURE) ? ccui.Widget.PLIST_TEXTURE : ccui.Widget.LOCAL_TEXTURE;
         this._btnExit.loadTextures(res_Lobby + "/btnclose.png", res_Lobby + "/btnclose.png", res_Lobby + "/btnclose.png", texType);
         this._btnExit.setPosition(cc.p(positionX, positionY));
         this.addChild(this._btnExit);

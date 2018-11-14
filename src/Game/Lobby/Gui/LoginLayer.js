@@ -52,17 +52,18 @@ var LoginLayer = BaseLayer.extend({
         this.addButton(this.loggedLayout, "btn_avatar", LoginLayer.BTN_AVATAR, cc.p(60, 62), false, res_Lobby + "/logged/avatar.png", null, ccui.Widget.LOCAL_TEXTURE);
         this.addButton(this.loggedLayout, "btn_gold", LoginLayer.BTN_GOLD, cc.p(252, 55), false, res_Lobby + "/logged/gold.png", null, ccui.Widget.LOCAL_TEXTURE);
         this.addButton(this.loggedLayout, "btn_slots", LoginLayer.BTN_SLOTS, cc.p(481, 53), true, res_Lobby + "/logged/slots.png", null, ccui.Widget.LOCAL_TEXTURE);
-        this.addButton(this.loggedLayout, "btn_all", LoginLayer.BTN_ALL, cc.p(640, 53), true, res_Lobby + "/logged/all.png", null, ccui.Widget.LOCAL_TEXTURE);
+        this.addButton(this.loggedLayout, "btn_all", LoginLayer.BTN_ALL, cc.p(639, 53), true, res_Lobby + "/logged/all.png", null, ccui.Widget.LOCAL_TEXTURE);
         this.addButton(this.loggedLayout, "btn_minigame", LoginLayer.BTN_MINIGAME, cc.p(796, 53), true, res_Lobby + "/logged/mini.png", null, ccui.Widget.LOCAL_TEXTURE);
         this.addButton(this.loggedLayout, "btn_hu", LoginLayer.BTN_HU, cc.p(960, 60), true, res_Lobby + "/logged/hu.png", null, ccui.Widget.LOCAL_TEXTURE);
         this.addButton(this.loggedLayout, "btn_lichsu", LoginLayer.BTN_LICHSU, cc.p(1129, 65), true, res_Lobby + "/logged/lichsu.png", null, ccui.Widget.LOCAL_TEXTURE);
         this.addButton(this.loggedLayout, "btn_caidat", LoginLayer.BTN_CAIDAT, cc.p(1224, 65), true, res_Lobby + "/logged/caidat.png", null, ccui.Widget.LOCAL_TEXTURE);
         this.addButton(this.loggedLayout, "btn_chat", LoginLayer.BTN_CHAT, cc.p(153, -459), true, res_Lobby + "/logged/chat.png", null, ccui.Widget.LOCAL_TEXTURE);
         this.addImage(this.loggedLayout, "message", cc.p(181, -435), res_Lobby + "/logged/message.png", cc.size(29, 29));
-        this.loggedLayout.visible = false;
     },
     onEnter: function () {
         this._super();
+        this.loggedLayout.visible = false;
+        // this.register();
     },
     onButtonRelease: function (button, id) {
         switch (id) {
@@ -107,7 +108,6 @@ var LoginLayer = BaseLayer.extend({
     },
     register: function () {
         var reg = new RegisterLayer();
-        reg.setPosition(cc.p(0, 0));
         this.addChild(reg);
     },
     historyTransaction: function () {

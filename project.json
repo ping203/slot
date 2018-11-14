@@ -53,6 +53,7 @@
     "src/Game/Lobby/Gui/LoginLayer.js",
     "src/Game/Lobby/Gui/SupportLayer.js",
     "src/Game/Lobby/Gui/MenuLayer.js",
-    "src/Game/Lobby/Gui/RegisterLayer.js"
+    "src/Game/Lobby/Gui/RegisterLayer.js",
+    "src/Game/MiniGame/MiniPoker/miniPoker.js"
   ]
 }

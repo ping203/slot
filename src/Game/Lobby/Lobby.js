@@ -1,16 +1,18 @@
-var loginLayer = null;
-var supportLayer = null;
-var menuLayer = null;
 var LobbyLayer = BaseLobby.extend({
     ctor: function () {
         this._super();
         this.loginLayer = null;
+        this.loginLayer = null;
+        this.supportLayer = null;
+        this.menuLayer = null;
+        this.miniPoker = null;
         return true;
     },
     customizeGUI: function () {
         this.initSupport();
         this.initMenu();
         this.initLogin();
+        this.initMiniPoker();
     },
     onEnter: function () {
         this._super();
@@ -27,6 +29,10 @@ var LobbyLayer = BaseLobby.extend({
         this.menuLayer = new MenuLayer();
         this.addChild(this.menuLayer);
     },
+    initMiniPoker: function () {
+        this.miniPoker = new MiniPoker();
+        this.addChild(this.miniPoker);
+    }
 
 });
 

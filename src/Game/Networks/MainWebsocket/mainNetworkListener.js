@@ -17,7 +17,7 @@ uc.MainNetworkListener = uc.BaseListener.extend({
             if (gI.vqmm != null) {
 
             }
-            if (miniPoker != null) {
+            if (_miniPoker != null) {
                 closeMiniPoker();
             }
             if (caothap != null) {
@@ -61,25 +61,25 @@ uc.MainNetworkListener = uc.BaseListener.extend({
                     break;
                 /// minipoker
                 case PLAY_MINI_POKER:
-                    if (!miniPoker) break;
+                    if (!_miniPoker) break;
                     cmd = new CmdReceivedPlayMiniPoker(pkg);
-                    miniPoker.responsePlayMiniPoker(cmd.result, cmd.prize, cmd.card1, cmd.card2, cmd.card3, cmd.card4, cmd.card5, cmd.currentMoney);
+                    _miniPoker.responsePlayMiniPoker(cmd.result, cmd.prize, cmd.card1, cmd.card2, cmd.card3, cmd.card4, cmd.card5, cmd.currentMoney);
                     break;
                 case UPDATE_POT_MINIPOKER:
-                    if (!miniPoker) break;
+                    if (!_miniPoker) break;
                     cmd = new CmdUpdateMiniPoker(pkg);
-                    miniPoker.responseUpdateMiniPoker(cmd.value, cmd.x2);
+                    _miniPoker.responseUpdateMiniPoker(cmd.value, cmd.x2);
                     break;
                 case X2_DATE:
-                    if (!miniPoker) break;
+                    if (!_miniPoker) break;
                     cmd = new CmdReceivedX2Date(pkg);
-                    miniPoker.responseX2Date(cmd.datex2);
+                    _miniPoker.responseX2Date(cmd.datex2);
                     break;
                 /// caothap
                 case FORCE_STOP_AUTO_PLAY:
-                    if (!miniPoker) break;
+                    if (!_miniPoker) break;
                     cmd = new CmdReceivedStopAutoPlay(pkg);
-                    miniPoker.responseStopAutoMiniPoker();
+                    _miniPoker.responseStopAutoMiniPoker();
                     break;
                 case USER_INFO_CAO_THAP:
                     if (!caothap) break;

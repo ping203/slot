@@ -108,7 +108,7 @@ var LayoutListView = ccui.Layout.extend({
 
         for (var i = 0; i < this._arrInfoColom.length; i++) {
             var text = this._arrInfoColom[index].apiName[i];
-            if (text === undefined) text = "ahihi";
+            if (text === undefined) text = "";
             var titleName = new ccui.Text(text, fontSwissCondensed.fontName, 21);
             titleName.setAnchorPoint(0.5, 0.5);
             if (cc.sys.isNative) {
