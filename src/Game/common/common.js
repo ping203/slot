@@ -40,6 +40,7 @@ var res_CardGame_LaBai = "res/CardGame/LaBai";
 var res_CardGame_BaCay = "res/CardGame/BaCay";
 var res_Lobby = "res/Lobby";
 var res_Minigame = "res/Minigame";
+var res_MinigamePoker = "res/MiniGame/minipoker";
 var res_Minigame_BauCua = "res/Minigame/BauCua";
 var res_CardGame_MauBinh = "res/CardGame/MauBinh"
 var res_CardGame_Poker = "res/CardGame/Poker";
