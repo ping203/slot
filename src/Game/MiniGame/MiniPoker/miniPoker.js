@@ -18,9 +18,8 @@ var MiniPoker = BaseLayer.extend({
         this.addImage(this.pokerlayout, "bgcoin", cc.p(579, 464), res_MinigamePoker + "/pot.png", cc.size(278, 62));
 
         this.addLayout(this.pokerlayout, "tran_pokerlayout", cc.p(599, 310), res_MinigamePoker + "/in_bg.png", cc.size(427, 228), true);
-        // this.tran_pokerlayout.setClippingEnabled(true);
-        GuiUtil.setBackGroundColor(this.tran_pokerlayout, cc.color.GREEN, 200);
-        // this.addImage(this.pokerlayout, "bgmain", cc.p(599, 310), res_MinigamePoker + "/in_bg.png", cc.size(427, 228));
+        this.tran_pokerlayout.setClippingEnabled(true);
+        // GuiUtil.setBackGroundColor(this.tran_pokerlayout, cc.color.GREEN, 200);
         this.addButton(this.pokerlayout, "btnmoney1", MiniPoker.MONEY100, cc.p(327, 406), true, res_MinigamePoker + "/active.png", null, ccui.Widget.LOCAL_TEXTURE);
         this.addButton(this.pokerlayout, "btnmoney2", MiniPoker.MONEY1K, cc.p(327, 325), true, res_MinigamePoker + "/money.png", null, ccui.Widget.LOCAL_TEXTURE);
         this.addButton(this.pokerlayout, "btnmoney3", MiniPoker.MONEY10K, cc.p(327, 241), true, res_MinigamePoker + "/money.png", null, ccui.Widget.LOCAL_TEXTURE);
@@ -32,7 +31,7 @@ var MiniPoker = BaseLayer.extend({
 
         // this.addLayout(this, "xx", cc.p(0, 0), null, cc.size(78, 105), false);
         // this.addImage(this, "bglabai", cc.p(0, 0), res_MinigamePoker + "/co.png", cc.size(78, 105));
-        this.tran_pokerlayout.setContentSize(427,228);
+        this.tran_pokerlayout.setContentSize(427, 228);
 
         var arrP = [
             {num: "A", type: "heart"},
@@ -49,21 +48,43 @@ var MiniPoker = BaseLayer.extend({
             {num: "Q", type: "spade"},
             {num: "K", type: "heart"}
         ];
-        for (let i = 0; i < 10; i++){
-            this.initCard(this.tran_pokerlayout,cc.p((this.tran_pokerlayout.getContentSize().width/5)/2, (i*106)), arrP[i].num, arrP[i].type);
-
-            // console.log(name.getContentSize());
+        var dsCotBai = [
+            {name: "cot1"},
+            {name: "cot2"},
+            {name: "cot3"},
+            {name: "cot4"},
+            {name: "cot5"},
+        ];
+        for (let i = 0; i < dsCotBai.length; i++){
+            let cot = new ccui.Layout();
+            
         }
-        this.initCard(this.pokerlayout, "random", cc.p(100, 0), "2", "diamond");
-        var actionMove = cc.MoveBy.create(1, cc.p(200, this.random.getPositionY()));
-        var delay = cc.DelayTime.create(1);
-        var seq = cc.Sequence.create(delay, actionMove);
-        this.random.runAction(seq);
+        for (let i = 0; i < arrP.length; i++) {
 
-        this.initCard(this.pokerlayout, "3", cc.p(200, 0), "3", "club");
+            let item = new ccui.Layout();
+            item.setAnchorPoint(0.5, 0.5);
+            item.setContentSize(78, 105);
+            item.setTouchEnabled(true);
+            item.setCascadeOpacityEnabled(true);
+            item.setPosition(45, (i * 106));
+            if (arrP[i].type === "heart")
+                item.setBackGroundImage(res_MinigamePoker + "/co.png", ccui.Widget.LOCAL_TEXTURE);
+            if (arrP[i].type === "diamond")
+                item.setBackGroundImage(res_MinigamePoker + "/ro.png", ccui.Widget.LOCAL_TEXTURE);
+            if (arrP[i].type === "club")
+                item.setBackGroundImage(res_MinigamePoker + "/tep.png", ccui.Widget.LOCAL_TEXTURE);
+            if (arrP[i].type === "spade")
+                item.setBackGroundImage(res_MinigamePoker + "/bich.png", ccui.Widget.LOCAL_TEXTURE);
+            let text = new ccui.Text(arrP[i].num, RobotoRegular.fontName, 20);
+            text.setPosition(10, 90);
+            text.setAnchorPoint(0.5, 0.5);
+            text.setTextColor("#000");
+            item.addChild(text);
+            this.tran_pokerlayout.addChild(item);
+        }
     },
     //type: heart, diamond, club, spade = co, ro, tep, bich
-    initCard: function (parent, name, num, type, arr) {
+    initCard: function (parent, name, position, num, type, arr) {
         let namepoker = num + type;
         this[name] = new ccui.Layout();
         this[namepoker] = new ccui.Text(num, RobotoRegular.fontName, 20);
@@ -71,8 +92,8 @@ var MiniPoker = BaseLayer.extend({
         this[name].setContentSize(78, 105);
         this[name].setTouchEnabled(true);
         this[name].setCascadeOpacityEnabled(true);
-        let sizePoker = cc.size(78,105);
-        // this[name].setPosition(cc.p(sizePoker.width/2, sizePoker.height/2));
+        let sizePoker = cc.size(78, 105);
+        this[name].setPosition(position);
         if (type === "heart") {
             this[name].setBackGroundImage(res_MinigamePoker + "/co.png", ccui.Widget.LOCAL_TEXTURE);
         }
@@ -90,6 +111,20 @@ var MiniPoker = BaseLayer.extend({
 
         this[name].addChild(this[namepoker]);
         parent.addChild(this[name]);
+    },
+    onButtonRelease: function (button, id) {
+        switch (id) {
+            case MiniPoker.BTN_CANGAT:
+                this.play();
+                break;
+        }
+    },
+    play: function () {
+        let dsLaBai = this.tran_pokerlayout.getChildren();
+        for (let i = 0; i < dsLaBai.length; i++) {
+            let actionMove = cc.MoveBy.create(1, cc.p(0, -(106* (dsLaBai.length - 3))));
+            dsLaBai[i].runAction(actionMove);
+        }
     }
 
 });
