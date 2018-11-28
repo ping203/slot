@@ -18,8 +18,8 @@ var MiniPoker = BaseLayer.extend({
         this.addImage(this.pokerlayout, "bgcoin", cc.p(579, 464), res_MinigamePoker + "/pot.png", cc.size(278, 62));
 
         this.addLayout(this.pokerlayout, "tran_pokerlayout", cc.p(599, 310), res_MinigamePoker + "/in_bg.png", cc.size(427, 228), true);
+
         this.tran_pokerlayout.setClippingEnabled(true);
-        // GuiUtil.setBackGroundColor(this.tran_pokerlayout, cc.color.GREEN, 200);
         this.addButton(this.pokerlayout, "btnmoney1", MiniPoker.MONEY100, cc.p(327, 406), true, res_MinigamePoker + "/active.png", null, ccui.Widget.LOCAL_TEXTURE);
         this.addButton(this.pokerlayout, "btnmoney2", MiniPoker.MONEY1K, cc.p(327, 325), true, res_MinigamePoker + "/money.png", null, ccui.Widget.LOCAL_TEXTURE);
         this.addButton(this.pokerlayout, "btnmoney3", MiniPoker.MONEY10K, cc.p(327, 241), true, res_MinigamePoker + "/money.png", null, ccui.Widget.LOCAL_TEXTURE);
@@ -29,8 +29,6 @@ var MiniPoker = BaseLayer.extend({
         this.addButton(this.pokerlayout, "btncup", MiniPoker.CUP, cc.p(582, 134), true, res_MinigamePoker + "/cup.png", null, ccui.Widget.LOCAL_TEXTURE);
         this.addButton(this.pokerlayout, "btnhelp", MiniPoker.HELP, cc.p(660, 134), true, res_MinigamePoker + "/help.png", null, ccui.Widget.LOCAL_TEXTURE);
 
-        // this.addLayout(this, "xx", cc.p(0, 0), null, cc.size(78, 105), false);
-        // this.addImage(this, "bglabai", cc.p(0, 0), res_MinigamePoker + "/co.png", cc.size(78, 105));
         this.tran_pokerlayout.setContentSize(427, 228);
 
         var arrP = [
@@ -55,63 +53,39 @@ var MiniPoker = BaseLayer.extend({
             {name: "cot4"},
             {name: "cot5"},
         ];
+        var extend = 10;
         for (let i = 0; i < dsCotBai.length; i++){
-            let cot = new ccui.Layout();
-            
-        }
-        for (let i = 0; i < arrP.length; i++) {
+            for (let j = 0; j < arrP.length; j++) {
 
-            let item = new ccui.Layout();
-            item.setAnchorPoint(0.5, 0.5);
-            item.setContentSize(78, 105);
-            item.setTouchEnabled(true);
-            item.setCascadeOpacityEnabled(true);
-            item.setPosition(45, (i * 106));
-            if (arrP[i].type === "heart")
-                item.setBackGroundImage(res_MinigamePoker + "/co.png", ccui.Widget.LOCAL_TEXTURE);
-            if (arrP[i].type === "diamond")
-                item.setBackGroundImage(res_MinigamePoker + "/ro.png", ccui.Widget.LOCAL_TEXTURE);
-            if (arrP[i].type === "club")
-                item.setBackGroundImage(res_MinigamePoker + "/tep.png", ccui.Widget.LOCAL_TEXTURE);
-            if (arrP[i].type === "spade")
-                item.setBackGroundImage(res_MinigamePoker + "/bich.png", ccui.Widget.LOCAL_TEXTURE);
-            let text = new ccui.Text(arrP[i].num, RobotoRegular.fontName, 20);
-            text.setPosition(10, 90);
-            text.setAnchorPoint(0.5, 0.5);
-            text.setTextColor("#000");
-            item.addChild(text);
-            this.tran_pokerlayout.addChild(item);
+                let item = new ccui.Layout();
+                item.setAnchorPoint(0.5, 0.5);
+                item.setContentSize(78, 105);
+                item.setTouchEnabled(true);
+                item.setCascadeOpacityEnabled(true);
+                item.setPosition( i > 0 ? extend + 39 + i * 82 : extend + 41 , (j * 106));
+                if (arrP[j].type === "heart")
+                    item.setBackGroundImage(res_MinigamePoker + "/co.png", ccui.Widget.LOCAL_TEXTURE);
+                if (arrP[j].type === "diamond")
+                    item.setBackGroundImage(res_MinigamePoker + "/ro.png", ccui.Widget.LOCAL_TEXTURE);
+                if (arrP[j].type === "club")
+                    item.setBackGroundImage(res_MinigamePoker + "/tep.png", ccui.Widget.LOCAL_TEXTURE);
+                if (arrP[j].type === "spade")
+                    item.setBackGroundImage(res_MinigamePoker + "/bich.png", ccui.Widget.LOCAL_TEXTURE);
+                let text = new ccui.Text(arrP[j].num, RobotoRegular.fontName, 20);
+                text.setPosition(10, 90);
+                text.setAnchorPoint(0.5, 0.5);
+                text.setTextColor("#000");
+                item.addChild(text);
+                this.tran_pokerlayout.addChild(item);
+            }
         }
+
+    },
+
+    initLaBai: function(){
+
     },
     //type: heart, diamond, club, spade = co, ro, tep, bich
-    initCard: function (parent, name, position, num, type, arr) {
-        let namepoker = num + type;
-        this[name] = new ccui.Layout();
-        this[namepoker] = new ccui.Text(num, RobotoRegular.fontName, 20);
-        this[name].setAnchorPoint(0.5, 0.5);
-        this[name].setContentSize(78, 105);
-        this[name].setTouchEnabled(true);
-        this[name].setCascadeOpacityEnabled(true);
-        let sizePoker = cc.size(78, 105);
-        this[name].setPosition(position);
-        if (type === "heart") {
-            this[name].setBackGroundImage(res_MinigamePoker + "/co.png", ccui.Widget.LOCAL_TEXTURE);
-        }
-        if (type === "diamond") {
-            this[name].setBackGroundImage(res_MinigamePoker + "/ro.png", ccui.Widget.LOCAL_TEXTURE);
-        }
-        if (type === "club") {
-            this[name].setBackGroundImage(res_MinigamePoker + "/tep.png", ccui.Widget.LOCAL_TEXTURE);
-        }
-        if (type === "spade") {
-            this[name].setBackGroundImage(res_MinigamePoker + "/bich.png", ccui.Widget.LOCAL_TEXTURE);
-        }
-        this[namepoker].setPosition(10, 90);
-        this[namepoker].setAnchorPoint(0.5, 0.5);
-
-        this[name].addChild(this[namepoker]);
-        parent.addChild(this[name]);
-    },
     onButtonRelease: function (button, id) {
         switch (id) {
             case MiniPoker.BTN_CANGAT:
@@ -122,8 +96,9 @@ var MiniPoker = BaseLayer.extend({
     play: function () {
         let dsLaBai = this.tran_pokerlayout.getChildren();
         for (let i = 0; i < dsLaBai.length; i++) {
-            let actionMove = cc.MoveBy.create(1, cc.p(0, -(106* (dsLaBai.length - 3))));
-            dsLaBai[i].runAction(actionMove);
+            let actionMove = new cc.MoveBy(6, cc.p(0, -(106* (dsLaBai.length - 3))));
+            let seq = new cc.Sequence(actionMove);
+            dsLaBai[i].runAction(seq);
         }
     }
 
