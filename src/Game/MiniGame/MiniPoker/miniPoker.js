@@ -4,8 +4,6 @@ var MiniPoker = BaseLayer.extend({
         this.pokerlayout = null;
         this.btncheckauto = null;
         this.tran_pokerlayout = null;
-        this.dsCotBai = ["cot1", "cot2", "cot3", "cot4", "cot5"];
-        this.cot1 = null;
         this.dsLaBai = null;
     },
     customizeGUI: function () {
@@ -20,9 +18,9 @@ var MiniPoker = BaseLayer.extend({
         this.addImage(this.pokerlayout, "title", cc.p(571, 558), res_MinigamePoker + "/title.png", cc.size(316, 105));
         this.addImage(this.pokerlayout, "bgcoin", cc.p(579, 464), res_MinigamePoker + "/pot.png", cc.size(278, 62));
 
-        this.addLayout(this.pokerlayout, "tran_pokerlayout", cc.p(599, 310), res_MinigamePoker + "/in_bg.png", cc.size(427, 228), true);
-
-        // this.tran_pokerlayout.setClippingEnabled(true);
+        this.addImage(this.pokerlayout, "in_bg", cc.p(599, 310), res_MinigamePoker + "/in_bg.png", cc.size(427, 228));
+        this.addLayout(this.pokerlayout, "tran_pokerlayout", cc.p(600, 309), null, cc.size(400, 205), true);
+        this.tran_pokerlayout.setClippingEnabled(true);
         this.addButton(this.pokerlayout, "btnmoney1", MiniPoker.MONEY100, cc.p(327, 406), true, res_MinigamePoker + "/active.png", null, ccui.Widget.LOCAL_TEXTURE);
         this.addButton(this.pokerlayout, "btnmoney2", MiniPoker.MONEY1K, cc.p(327, 325), true, res_MinigamePoker + "/money.png", null, ccui.Widget.LOCAL_TEXTURE);
         this.addButton(this.pokerlayout, "btnmoney3", MiniPoker.MONEY10K, cc.p(327, 241), true, res_MinigamePoker + "/money.png", null, ccui.Widget.LOCAL_TEXTURE);
@@ -32,8 +30,10 @@ var MiniPoker = BaseLayer.extend({
         this.addButton(this.pokerlayout, "btncup", MiniPoker.CUP, cc.p(582, 134), true, res_MinigamePoker + "/cup.png", null, ccui.Widget.LOCAL_TEXTURE);
         this.addButton(this.pokerlayout, "btnhelp", MiniPoker.HELP, cc.p(660, 134), true, res_MinigamePoker + "/help.png", null, ccui.Widget.LOCAL_TEXTURE);
 
-        this.tran_pokerlayout.setContentSize(427, 228);
-        GuiUtil.setBackGroundColor(this.tran_pokerlayout, cc.color.GREEN, 200);
+        // this.tran_pokerlayout.setContentSize(427, 228);
+        // GuiUtil.setBackGroundColor(this.tran_pokerlayout, cc.color.GREEN, 200);
+        var sizeP = cc.size(78, 106);
+
         this.dsLaBai = [
             {num: "A", type: "heart"},
             {num: "2", type: "diamond"},
@@ -52,42 +52,64 @@ var MiniPoker = BaseLayer.extend({
         for (let i = 0; i < 5; i++) {
             let layout = new ccui.Layout();
             layout.setAnchorPoint(0.5, 0.5);
-            layout.setPosition(0, 0);
             layout.setTouchEnabled(true);
             layout.setCascadeOpacityEnabled(true);
             layout.setTag(i + 10);
+            switch (i) {
+                case 0:
+                    layout.setPosition(5, 0);
+                    break;
+                case 1:
+                    layout.setPosition(90, 0);
+                    break;
+                case 2:
+                    layout.setPosition(174, 0);
+                    break;
+                case 3:
+                    layout.setPosition(257, 0);
+                    break;
+                case 4:
+                    layout.setPosition(340, 0);
+                    break;
+            }
             this.tran_pokerlayout.addChild(layout);
-        }
-
-        for (let i = 0; i < this.dsLaBai.length; i++) {
-            let item = new ccui.Layout();
-            item.setAnchorPoint(0.5, 0.5);
-            item.setContentSize(78, 106);
-            item.setTouchEnabled(true);
-            item.setCascadeOpacityEnabled(true);
-            item.setPosition(40, (i * 106));
-            if (this.dsLaBai[i].type === "heart")
-                item.setBackGroundImage(res_MinigamePoker + "/co.png", ccui.Widget.LOCAL_TEXTURE);
-            if (this.dsLaBai[i].type === "diamond")
-                item.setBackGroundImage(res_MinigamePoker + "/ro.png", ccui.Widget.LOCAL_TEXTURE);
-            if (this.dsLaBai[i].type === "club")
-                item.setBackGroundImage(res_MinigamePoker + "/tep.png", ccui.Widget.LOCAL_TEXTURE);
-            if (this.dsLaBai[i].type === "spade")
-                item.setBackGroundImage(res_MinigamePoker + "/bich.png", ccui.Widget.LOCAL_TEXTURE);
-            let text = new ccui.Text(this.dsLaBai[i].num, RobotoRegular.fontName, 20);
-            text.setPosition(10, 90);
-            text.setAnchorPoint(0.5, 0.5);
-            text.setTextColor("#000");
-            item.addChild(text);
-            this.cot1.addChild(item);
+            for (let j = 0; j < this.dsLaBai.length; j++) {
+                let item = new ccui.Layout();
+                item.setAnchorPoint(0.5, 0.5);
+                item.setContentSize(sizeP);
+                item.setTouchEnabled(true);
+                item.setCascadeOpacityEnabled(true);
+                item.setPosition(40, (j * 106));
+                if (this.dsLaBai[j].type === "heart")
+                    item.setBackGroundImage(res_MinigamePoker + "/co.png", ccui.Widget.LOCAL_TEXTURE);
+                if (this.dsLaBai[j].type === "diamond")
+                    item.setBackGroundImage(res_MinigamePoker + "/ro.png", ccui.Widget.LOCAL_TEXTURE);
+                if (this.dsLaBai[j].type === "club")
+                    item.setBackGroundImage(res_MinigamePoker + "/tep.png", ccui.Widget.LOCAL_TEXTURE);
+                if (this.dsLaBai[j].type === "spade")
+                    item.setBackGroundImage(res_MinigamePoker + "/bich.png", ccui.Widget.LOCAL_TEXTURE);
+                let text = new ccui.Text(this.dsLaBai[j].num, RobotoRegular.fontName, 20);
+                text.setPosition(10, 90);
+                text.setAnchorPoint(0.5, 0.5);
+                text.setTextColor("#000");
+                item.addChild(text);
+                layout.addChild(item);
+            }
         }
 
     },
     //type: heart, diamond, club, spade = co, ro, tep, bich
     onButtonRelease: function (button, id) {
+        var that = this;
         switch (id) {
             case MiniPoker.BTN_CANGAT:
-                this.play(this.cot1);
+                var timeSpin = 0;
+                for (let i = 0; i < 5; i++){
+                    setTimeout(function (){
+                        that.play(that.tran_pokerlayout.getChildByTag(i+10));
+                    }, timeSpin);
+                    timeSpin += 200;
+                }
                 break;
         }
     },
@@ -95,7 +117,7 @@ var MiniPoker = BaseLayer.extend({
         let arr = parent.getChildren();
         console.log(arr.length);
         for (let i = 0; i < arr.length; i++) {
-            arr[i].runAction(new cc.MoveBy(2, cc.p(0, -105 * (arr.length - 3))));
+            arr[i].runAction(new cc.MoveBy(2, cc.p(0, -105 * (arr.length - 3))).easing(cc.easeBackIn()));
         }
     }
 
