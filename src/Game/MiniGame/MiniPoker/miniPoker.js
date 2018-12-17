@@ -19,8 +19,9 @@ var MiniPoker = BaseLayer.extend({
         this.addImage(this.pokerlayout, "bgcoin", cc.p(579, 464), res_MinigamePoker + "/pot.png", cc.size(278, 62));
 
         this.addImage(this.pokerlayout, "in_bg", cc.p(599, 310), res_MinigamePoker + "/in_bg.png", cc.size(427, 228));
-        this.addLayout(this.pokerlayout, "tran_pokerlayout", cc.p(600, 309), null, cc.size(400, 205), true);
+        this.addLayout(this.pokerlayout, "tran_pokerlayout", cc.p(599, 312), res_MinigamePoker + "/in_bg.png", cc.size(427, 200), true);
         this.tran_pokerlayout.setClippingEnabled(true);
+
         this.addButton(this.pokerlayout, "btnmoney1", MiniPoker.MONEY100, cc.p(327, 406), true, res_MinigamePoker + "/active.png", null, ccui.Widget.LOCAL_TEXTURE);
         this.addButton(this.pokerlayout, "btnmoney2", MiniPoker.MONEY1K, cc.p(327, 325), true, res_MinigamePoker + "/money.png", null, ccui.Widget.LOCAL_TEXTURE);
         this.addButton(this.pokerlayout, "btnmoney3", MiniPoker.MONEY10K, cc.p(327, 241), true, res_MinigamePoker + "/money.png", null, ccui.Widget.LOCAL_TEXTURE);
@@ -31,72 +32,91 @@ var MiniPoker = BaseLayer.extend({
         this.addButton(this.pokerlayout, "btnhelp", MiniPoker.HELP, cc.p(660, 134), true, res_MinigamePoker + "/help.png", null, ccui.Widget.LOCAL_TEXTURE);
 
         // this.tran_pokerlayout.setContentSize(427, 228);
-        // GuiUtil.setBackGroundColor(this.tran_pokerlayout, cc.color.GREEN, 200);
-        var sizeP = cc.size(78, 106);
+        GuiUtil.setBackGroundColor(this.tran_pokerlayout, cc.color.GREEN, 200);
+        var sizeP = cc.size(78, 105);
 
         this.dsLaBai = [
-            {num: "A", type: "heart"},
-            {num: "2", type: "diamond"},
-            {num: "3", type: "club"},
-            {num: "4", type: "spade"},
-            {num: "5", type: "heart"},
-            {num: "6", type: "diamond"},
-            {num: "7", type: "club"},
-            {num: "8", type: "spade"},
-            {num: "9", type: "heart"},
-            {num: "10", type: "diamond"},
-            {num: "J", type: "club"},
-            {num: "Q", type: "spade"},
-            {num: "K", type: "heart"}
+            {num: "A", type: "co"},
+            {num: "2", type: "ro"},
+            {num: "3", type: "tep"},
+            {num: "4", type: "bich"},
+            {num: "5", type: "co"},
+            {num: "6", type: "ro"},
+            {num: "7", type: "tep"},
+            {num: "8", type: "bich"},
+            {num: "9", type: "co"},
+            {num: "10", type: "ro"},
+            {num: "j", type: "tep"},
+            {num: "q", type: "bich"},
+            {num: "k", type: "co"}
         ];
         for (let i = 0; i < 5; i++) {
             let layout = new ccui.Layout();
             layout.setAnchorPoint(0.5, 0.5);
             layout.setTouchEnabled(true);
             layout.setCascadeOpacityEnabled(true);
-            layout.setTag(i + 10);
+            layout.setTag(i);
             switch (i) {
                 case 0:
-                    layout.setPosition(5, 0);
+                    layout.setPosition(45, 0);
                     break;
                 case 1:
-                    layout.setPosition(90, 0);
+                    layout.setPosition(128, 0);
                     break;
                 case 2:
-                    layout.setPosition(174, 0);
+                    layout.setPosition(213, 0);
                     break;
                 case 3:
-                    layout.setPosition(257, 0);
+                    layout.setPosition(295, 0);
                     break;
                 case 4:
-                    layout.setPosition(340, 0);
+                    layout.setPosition(380, 0);
                     break;
             }
             this.tran_pokerlayout.addChild(layout);
             for (let j = 0; j < this.dsLaBai.length; j++) {
+
                 let item = new ccui.Layout();
+                let text = new ccui.Text(this.dsLaBai[j].num, fontRobotoBlack.fontName, 24);
+
                 item.setAnchorPoint(0.5, 0.5);
                 item.setContentSize(sizeP);
                 item.setTouchEnabled(true);
                 item.setCascadeOpacityEnabled(true);
-                item.setPosition(40, (j * 106));
-                if (this.dsLaBai[j].type === "heart")
-                    item.setBackGroundImage(res_MinigamePoker + "/co.png", ccui.Widget.LOCAL_TEXTURE);
-                if (this.dsLaBai[j].type === "diamond")
-                    item.setBackGroundImage(res_MinigamePoker + "/ro.png", ccui.Widget.LOCAL_TEXTURE);
-                if (this.dsLaBai[j].type === "club")
-                    item.setBackGroundImage(res_MinigamePoker + "/tep.png", ccui.Widget.LOCAL_TEXTURE);
-                if (this.dsLaBai[j].type === "spade")
-                    item.setBackGroundImage(res_MinigamePoker + "/bich.png", ccui.Widget.LOCAL_TEXTURE);
-                let text = new ccui.Text(this.dsLaBai[j].num, RobotoRegular.fontName, 20);
-                text.setPosition(10, 90);
-                text.setAnchorPoint(0.5, 0.5);
-                text.setTextColor("#000");
-                item.addChild(text);
+                item.setPosition(0, (j * 105));
+
+                if (this.dsLaBai[j].num === "j" || this.dsLaBai[j].num === "q" || this.dsLaBai[j].num === "k") {
+                    if (this.dsLaBai[j].type === "co")
+                        item.setBackGroundImage(res_MinigamePoker + "/"+ this.dsLaBai[j].num +"co.png", ccui.Widget.LOCAL_TEXTURE);
+                    else if (this.dsLaBai[j].type === "ro")
+                        item.setBackGroundImage(res_MinigamePoker + "/"+ this.dsLaBai[j].num +"ro.png", ccui.Widget.LOCAL_TEXTURE);
+                    else if (this.dsLaBai[j].type === "tep")
+                        item.setBackGroundImage(res_MinigamePoker + "/"+ this.dsLaBai[j].num +"tep.png", ccui.Widget.LOCAL_TEXTURE);
+                    else if (this.dsLaBai[j].type === "bich")
+                        item.setBackGroundImage(res_MinigamePoker + "/"+ this.dsLaBai[j].num +"bich.png", ccui.Widget.LOCAL_TEXTURE);
+                }else {
+                    if (this.dsLaBai[j].type === "co")
+                        item.setBackGroundImage(res_MinigamePoker + "/co.png", ccui.Widget.LOCAL_TEXTURE);
+                    if (this.dsLaBai[j].type === "ro")
+                        item.setBackGroundImage(res_MinigamePoker + "/ro.png", ccui.Widget.LOCAL_TEXTURE);
+                    if (this.dsLaBai[j].type === "tep")
+                        item.setBackGroundImage(res_MinigamePoker + "/tep.png", ccui.Widget.LOCAL_TEXTURE);
+                    if (this.dsLaBai[j].type === "bich")
+                        item.setBackGroundImage(res_MinigamePoker + "/bich.png", ccui.Widget.LOCAL_TEXTURE);
+                    if (this.dsLaBai[j].type === "co" || this.dsLaBai[j].type === "ro")
+                        text.setTextColor(cc.color("#830000"));
+                    else
+                        text.setTextColor(cc.color.BLACK);
+                    text.setPosition(17, 86);
+                    text.setAnchorPoint(0.5, 0.5);
+                    item.addChild(text);
+                }
                 layout.addChild(item);
             }
         }
 
+        this.addImage(this.tran_pokerlayout, null, cc.p(213, 198), res_MinigamePoker + "/fade1.png", cc.size(421, 56));
+        this.addImage(this.tran_pokerlayout, null, cc.p(213, 30), res_MinigamePoker + "/fade2.png", cc.size(421, 56));
     },
     //type: heart, diamond, club, spade = co, ro, tep, bich
     onButtonRelease: function (button, id) {
@@ -104,9 +124,9 @@ var MiniPoker = BaseLayer.extend({
         switch (id) {
             case MiniPoker.BTN_CANGAT:
                 var timeSpin = 0;
-                for (let i = 0; i < 5; i++){
-                    setTimeout(function (){
-                        that.play(that.tran_pokerlayout.getChildByTag(i+10));
+                for (let i = 0; i < 5; i++) {
+                    setTimeout(function () {
+                        that.play(that.tran_pokerlayout.getChildByTag(i));
                     }, timeSpin);
                     timeSpin += 200;
                 }
