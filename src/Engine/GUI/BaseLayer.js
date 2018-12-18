@@ -905,7 +905,6 @@ var BaseLayer = cc.Layer.extend({
     playSoundButton: function (id) {
         //gameSound.playClick();
     },
-
     //////////////////////////////////////////////////////
 });
 BaseLayer.TIME_APPEAR_GUI = 0.35;

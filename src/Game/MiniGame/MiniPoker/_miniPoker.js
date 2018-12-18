@@ -109,7 +109,7 @@ var _miniPoker = null;
                     for (var i = 0; i < 10; i++) {
                         createQuanbai.call(this, i, name);
                     }
-                };
+                }
 
                 function createQuanbai(index, name) {
                     var indexName = index + 1;
@@ -138,7 +138,7 @@ var _miniPoker = null;
                         scaleX: 0.72,
                         __size: cc.size(59.00, 47)
                     });
-                };
+                }
 
                 postions.forEach(createPanelColum.bind(this));
             },
@@ -154,6 +154,7 @@ var _miniPoker = null;
                 createBtnSelect("btnCoin100", codeMiniPoker.BTN_SELECTROOM1, cc.p(146.79, buttonPositionY));
                 createBtnSelect("btnCoin1000", codeMiniPoker.BTN_SELECTROOM2, cc.p(240.42, buttonPositionY));
                 createBtnSelect("btnCoin10000", codeMiniPoker.BTN_SELECTROOM3, cc.p(336.23, buttonPositionY));
+
                 function createBtnSelect(name, tag, position) {
                     var button = new ccui.Button();
                     _self.addChildAsProp(background, button, name, true);
@@ -187,7 +188,7 @@ var _miniPoker = null;
 
                 this.addLayout(this.pn_minipoker, "pnx2", cc.p(555.60 - 187, 263.33 + 23), null, cc.size(0, 0), false);
                 this.addSpriteStructure(this.pnx2, "bg_x2", cc.p(0, 0), "Bg_x2.png");
-                this.addTextStructure(this.pnx2, "lbX2", cc.p(0, 0), "X2", fontRobotoBold.fontName, 30, GuiUtil.color("#FFFF00"),{__size : cc.size(50, 30)});
+                this.addTextStructure(this.pnx2, "lbX2", cc.p(0, 0), "X2", fontRobotoBold.fontName, 30, GuiUtil.color("#FFFF00"), {__size: cc.size(50, 30)});
                 this.lbX2.enableOutline(cc.color.BLACK, 1);
             },
 
@@ -255,8 +256,8 @@ var _miniPoker = null;
                 this.sp_thongbao = this.pn_minipoker.getChildByName("sp_thongbao");
                 this.MiniPokerNotice1 = this.txtThongBao1;
                 this.MiniPokerNotice2 = this.txtThongBao2;
-                this.MiniPokerNotice1.setString("")
-                this.MiniPokerNotice2.setString("")
+                this.MiniPokerNotice1.setString("");
+                this.MiniPokerNotice2.setString("");
                 this.position_notice = this.MiniPokerNotice2.y;
                 this.bg_nhangiai.setVisible(false);
                 this.sp_giaithuong.setScaleX(0);
@@ -298,13 +299,13 @@ var _miniPoker = null;
                             var s = target.getContentSize();
                             var rect = cc.rect(0, 0, s.width, s.height);
                             if (cc.rectContainsPoint(rect, locationInNode)) {
-                                if (_miniPoker.moveOn1 == false) {
+                                if (_miniPoker.moveOn1 === false) {
                                     GuiUtil.changeSprite(_miniPoker.sp_room1, "res/Minigame/ImageChung/room_select.png");
                                     _miniPoker.moveOn1 = true;
                                 }
                             } else {
-                                if (_miniPoker.moveOn1 == true) {
-                                    if (_miniPoker.roomjoint == 0 || _miniPoker.roomjoint == 3) {
+                                if (_miniPoker.moveOn1 === true) {
+                                    if (_miniPoker.roomjoint === 0 || _miniPoker.roomjoint === 3) {
                                     } else
                                         GuiUtil.changeSprite(_miniPoker.sp_room1, "res/Minigame/ImageChung/bg_room.png");
                                     _miniPoker.moveOn1 = false;
@@ -323,13 +324,13 @@ var _miniPoker = null;
                             var s = target.getContentSize();
                             var rect = cc.rect(0, 0, s.width, s.height);
                             if (cc.rectContainsPoint(rect, locationInNode)) {
-                                if (_miniPoker.moveOn2 == false) {
+                                if (_miniPoker.moveOn2 === false) {
                                     GuiUtil.changeSprite(_miniPoker.sp_room2, "res/Minigame/ImageChung/room_select.png");
                                     _miniPoker.moveOn2 = true;
                                 }
                             } else {
-                                if (_miniPoker.moveOn2 == true) {
-                                    if (_miniPoker.roomjoint == 1 || _miniPoker.roomjoint == 4) {
+                                if (_miniPoker.moveOn2 === true) {
+                                    if (_miniPoker.roomjoint === 1 || _miniPoker.roomjoint === 4) {
                                     } else
                                         GuiUtil.changeSprite(_miniPoker.sp_room2, "res/Minigame/ImageChung/bg_room.png");
                                     _miniPoker.moveOn2 = false;
@@ -348,13 +349,13 @@ var _miniPoker = null;
                             var s = target.getContentSize();
                             var rect = cc.rect(0, 0, s.width, s.height);
                             if (cc.rectContainsPoint(rect, locationInNode)) {
-                                if (_miniPoker.moveOn3 == false) {
+                                if (_miniPoker.moveOn3 === false) {
                                     GuiUtil.changeSprite(_miniPoker.sp_room3, "res/Minigame/ImageChung/room_select.png");
                                     _miniPoker.moveOn3 = true;
                                 }
                             } else {
-                                if (_miniPoker.moveOn3 == true) {
-                                    if (_miniPoker.roomjoint == 2 || _miniPoker.roomjoint == 5) {
+                                if (_miniPoker.moveOn3 === true) {
+                                    if (_miniPoker.roomjoint === 2 || _miniPoker.roomjoint === 5) {
                                     } else
                                         GuiUtil.changeSprite(_miniPoker.sp_room3, "res/Minigame/ImageChung/bg_room.png");
                                     _miniPoker.moveOn3 = false;
@@ -377,14 +378,14 @@ var _miniPoker = null;
             onButtonRelease: function (button, id) {
                 switch (id) {
                     case codeMiniPoker.BTN_EVENT:
-                        if (cc.sys.os == cc.sys.OS_IOS) {
-                            if (lobby.open_payment_ios == false)
+                        if (cc.sys.os === cc.sys.OS_IOS) {
+                            if (lobby.open_payment_ios === false)
                                 return;
                         }
                         ConnectNative.openWebView(GameManager.webViewLink.eventMiniPoker);
                         break;
                     case codeMiniPoker.BTN_SELECTROOM1:
-                        if (this.isStartRotateMini == false) {
+                        if (this.isStartRotateMini === false) {
                             //this.resetButtonSelectRoom();
                             var roomjoin = 0;
                             var valueMoney = 100;
@@ -399,7 +400,7 @@ var _miniPoker = null;
                         }
                         break;
                     case codeMiniPoker.BTN_SELECTROOM2:
-                        if (this.isStartRotateMini == false) {
+                        if (this.isStartRotateMini === false) {
                             //this.resetButtonSelectRoom();
                             var roomjoin = 0;
                             var valueMoney = 100;
@@ -414,7 +415,7 @@ var _miniPoker = null;
                         }
                         break;
                     case codeMiniPoker.BTN_SELECTROOM3:
-                        if (this.isStartRotateMini == false) {
+                        if (this.isStartRotateMini === false) {
                             //this.resetButtonSelectRoom();
                             var roomjoin = 0;
                             var valueMoney = 100;
@@ -429,7 +430,7 @@ var _miniPoker = null;
                         }
                         break;
                     case codeMiniPoker.BTN_CHANGEMONEYTYPE:
-                        if (this.isStartRotateMini == false) {
+                        if (this.isStartRotateMini === false) {
                             var roomjoin = 0;
                             var valueMoney = 100;
                             if (_miniPoker.moneyType === 1) {
@@ -456,11 +457,11 @@ var _miniPoker = null;
                         }, 1000);
                         this._enableChangeRoom = false;
 
-                        if (this.isshowNoHu == true) {
+                        if (this.isshowNoHu === true) {
                             this.close_effect_hu();
                         }
                         if (_miniPoker.autoRotate === false) {
-                            if (_miniPoker.isStartRotateMini == false) {
+                            if (_miniPoker.isStartRotateMini === false) {
 
                                 this.funAutoRotate();
                             }
@@ -480,7 +481,7 @@ var _miniPoker = null;
                         }
                         break;
                     case codeMiniPoker.BTN_CANGAT:
-                        if (this.isshowNoHu == true) {
+                        if (this.isshowNoHu === true) {
                             this.close_effect_hu();
                         }
                         this.funPlayMinigame();
@@ -489,8 +490,8 @@ var _miniPoker = null;
                         this.close();
                         break;
                     case codeMiniPoker.BTN_GUILD:
-                        if (cc.sys.os == cc.sys.OS_IOS) {
-                            if (lobby.open_payment_ios == false)
+                        if (cc.sys.os === cc.sys.OS_IOS) {
+                            if (lobby.open_payment_ios === false)
                                 return;
                         }
                         ConnectNative.openWebView(GameManager.webViewLink.guildMiniePoker);
@@ -530,9 +531,9 @@ var _miniPoker = null;
             },
 
             funPlayMinigame: function () {
-                if (_miniPoker.moneyType == 1) {
+                if (_miniPoker.moneyType === 1) {
                     if (userInfo.userData.vinTotal >= _miniPoker.valueMoney) {
-                        if (this.isStartRotateMini == false) {
+                        if (this.isStartRotateMini === false) {
                             this.commandPlayMinigame();
                         }
                     } else {
@@ -543,7 +544,7 @@ var _miniPoker = null;
                     }
                 } else {
                     if (userInfo.userData.xuTotal >= _miniPoker.valueMoney) {
-                        if (this.isStartRotateMini == false) {
+                        if (this.isStartRotateMini === false) {
                             this.commandPlayMinigame();
                         }
                     } else {
@@ -556,9 +557,9 @@ var _miniPoker = null;
             },
 
             funAutoRotate: function () {
-                if (_miniPoker.moneyType == 1) {
+                if (_miniPoker.moneyType === 1) {
                     if (userInfo.userData.vinTotal >= _miniPoker.valueMoney) {
-                        if (this.isStartRotateMini == false) {
+                        if (this.isStartRotateMini === false) {
                             var playMiniPoker = new CmdSendAutoMiniPoker();
                             playMiniPoker.putAutoMiniPoker(1);
                             if (Minigame.miniGameClient.send(playMiniPoker)) {
@@ -581,7 +582,7 @@ var _miniPoker = null;
                     }
                 } else {
                     if (userInfo.userData.xuTotal >= _miniPoker.valueMoney) {
-                        if (this.isStartRotateMini == false) {
+                        if (this.isStartRotateMini === false) {
                             var playMiniPoker = new CmdSendAutoMiniPoker();
                             playMiniPoker.putAutoMiniPoker(1);
                             if (Minigame.miniGameClient.send(playMiniPoker)) {
@@ -628,14 +629,14 @@ var _miniPoker = null;
                 if (Minigame.miniGameClient.send(miniPokerSend)) {
                     _miniPoker.roomjoint = roomjoint;
                     _miniPoker.valueMoney = valueMoney;
-                    if (roomjoint == 0) {
+                    if (roomjoint === 0) {
                         this.txtHu.setColor(cc.color("#FFFF00"));
                         GuiUtil.changeSprite(_miniPoker.spChangeMoney, "res/Minigame/ImageChung/choivin.png");
                         this.lb_room1.setString("100");
                         this.lb_room2.setString("1K");
                         this.lb_room3.setString("10K");
                         _miniPoker.moneyType = 1;
-                    } else if (roomjoint == 3) {
+                    } else if (roomjoint === 3) {
                         _miniPoker.moneyType = 0;
                         this.txtHu.setColor(cc.color("#E3E3E3"));
                         GuiUtil.changeSprite(_miniPoker.spChangeMoney, "res/Minigame/ImageChung/choixu.png");
@@ -652,7 +653,7 @@ var _miniPoker = null;
                     this.btnCoin1000.setEnabled(false);
                     this.btnCoin10000.setEnabled(false);
 
-                    if (this.autoRotate == true) {
+                    if (this.autoRotate === true) {
                         this.autoRotate = false;
                         GuiUtil.changeSprite(this.sp_tuquay, "res/Minigame/ResMiniPoker/tuquay.png");
                         this.pn_effect_muiten.setVisible(true);
@@ -686,7 +687,7 @@ var _miniPoker = null;
             },
 
             resetItemInColumMini: function () {
-                if (this.valueColum == false) { ///// rs1 o duoi
+                if (this.valueColum === false) { ///// rs1 o duoi
                     this.quanbai1_1.y = this.saveVitri;
                     this.quanbai2_1.y = this.saveVitri;
                     this.quanbai3_1.y = this.saveVitri;
@@ -704,340 +705,340 @@ var _miniPoker = null;
                     this.vitriYmini = this.quanbai1_6.y;
                 }
                 for (var i = 2; i < 10; i++) {
-                    if (i == 2) {
+                    if (i === 2) {
                         this.getRandomIntMini(1, 52);
                         GuiUtil.changeSprite(this.spColum1_2, "res/Minigame/ImageChung/DauNguoi/" + this.linkImage);
                         GuiUtil.changeSprite(this.sp_chat1_2, "res/Minigame/ImageChung/DauNguoi/" + this.link_image_chat);
                         this.txt1_2.setString("" + this.text_quanbai);
                         this.quanbai1_2.setPositionY(this.vitriYmini + cardMiniPokerDistance);
-                        if (this.color_quanbai == "red") this.txt1_2.setColor(GuiUtil.color(255, 0, 0));
+                        if (this.color_quanbai === "red") this.txt1_2.setColor(GuiUtil.color(255, 0, 0));
                         else this.txt1_2.setColor(GuiUtil.color(0, 0, 0));
                         this.getRandomIntMini(1, 52);
                         GuiUtil.changeSprite(this.spColum2_2, "res/Minigame/ImageChung/DauNguoi/" + this.linkImage);
                         GuiUtil.changeSprite(this.sp_chat2_2, "res/Minigame/ImageChung/DauNguoi/" + this.link_image_chat);
                         this.txt2_2.setString("" + this.text_quanbai);
                         this.quanbai2_2.setPositionY(this.vitriYmini + cardMiniPokerDistance);
-                        if (this.color_quanbai == "red") this.txt2_2.setColor(GuiUtil.color(255, 0, 0));
+                        if (this.color_quanbai === "red") this.txt2_2.setColor(GuiUtil.color(255, 0, 0));
                         else this.txt2_2.setColor(GuiUtil.color(0, 0, 0));
                         this.getRandomIntMini(1, 52);
                         GuiUtil.changeSprite(this.spColum3_2, "res/Minigame/ImageChung/DauNguoi/" + this.linkImage);
                         GuiUtil.changeSprite(this.sp_chat3_2, "res/Minigame/ImageChung/DauNguoi/" + this.link_image_chat);
                         this.txt3_2.setString("" + this.text_quanbai);
                         this.quanbai3_2.setPositionY(this.vitriYmini + cardMiniPokerDistance);
-                        if (this.color_quanbai == "red") this.txt3_2.setColor(GuiUtil.color(255, 0, 0));
+                        if (this.color_quanbai === "red") this.txt3_2.setColor(GuiUtil.color(255, 0, 0));
                         else this.txt3_2.setColor(GuiUtil.color(0, 0, 0));
                         this.getRandomIntMini(1, 52);
                         GuiUtil.changeSprite(this.spColum4_2, "res/Minigame/ImageChung/DauNguoi/" + this.linkImage);
                         GuiUtil.changeSprite(this.sp_chat4_2, "res/Minigame/ImageChung/DauNguoi/" + this.link_image_chat);
                         this.txt4_2.setString("" + this.text_quanbai);
                         this.quanbai4_2.setPositionY(this.vitriYmini + cardMiniPokerDistance);
-                        if (this.color_quanbai == "red") this.txt4_2.setColor(GuiUtil.color(255, 0, 0));
+                        if (this.color_quanbai === "red") this.txt4_2.setColor(GuiUtil.color(255, 0, 0));
                         else this.txt4_2.setColor(GuiUtil.color(0, 0, 0));
                         this.getRandomIntMini(1, 52);
                         GuiUtil.changeSprite(this.spColum5_2, "res/Minigame/ImageChung/DauNguoi/" + this.linkImage);
                         GuiUtil.changeSprite(this.sp_chat5_2, "res/Minigame/ImageChung/DauNguoi/" + this.link_image_chat);
                         this.txt5_2.setString("" + this.text_quanbai);
                         this.quanbai5_2.setPositionY(this.vitriYmini + cardMiniPokerDistance);
-                        if (this.color_quanbai == "red") this.txt5_2.setColor(GuiUtil.color(255, 0, 0));
+                        if (this.color_quanbai === "red") this.txt5_2.setColor(GuiUtil.color(255, 0, 0));
                         else this.txt5_2.setColor(GuiUtil.color(0, 0, 0));
                     }
-                    if (i == 3) {
+                    if (i === 3) {
                         this.getRandomIntMini(1, 52);
                         GuiUtil.changeSprite(this.spColum1_3, "res/Minigame/ImageChung/DauNguoi/" + this.linkImage);
                         GuiUtil.changeSprite(this.sp_chat1_3, "res/Minigame/ImageChung/DauNguoi/" + this.link_image_chat);
                         this.txt1_3.setString("" + this.text_quanbai);
                         this.quanbai1_3.setPositionY(this.vitriYmini + cardMiniPokerDistance * 2);
-                        if (this.color_quanbai == "red") this.txt1_3.setColor(GuiUtil.color(255, 0, 0));
+                        if (this.color_quanbai === "red") this.txt1_3.setColor(GuiUtil.color(255, 0, 0));
                         else this.txt1_3.setColor(GuiUtil.color(0, 0, 0));
                         this.getRandomIntMini(1, 52);
                         GuiUtil.changeSprite(this.spColum2_3, "res/Minigame/ImageChung/DauNguoi/" + this.linkImage);
                         GuiUtil.changeSprite(this.sp_chat2_3, "res/Minigame/ImageChung/DauNguoi/" + this.link_image_chat);
                         this.txt2_3.setString("" + this.text_quanbai);
                         this.quanbai2_3.setPositionY(this.vitriYmini + cardMiniPokerDistance * 2);
-                        if (this.color_quanbai == "red") this.txt2_3.setColor(GuiUtil.color(255, 0, 0));
+                        if (this.color_quanbai === "red") this.txt2_3.setColor(GuiUtil.color(255, 0, 0));
                         else this.txt2_3.setColor(GuiUtil.color(0, 0, 0));
                         this.getRandomIntMini(1, 52);
                         GuiUtil.changeSprite(this.spColum3_3, "res/Minigame/ImageChung/DauNguoi/" + this.linkImage);
                         GuiUtil.changeSprite(this.sp_chat3_3, "res/Minigame/ImageChung/DauNguoi/" + this.link_image_chat);
                         this.txt3_3.setString("" + this.text_quanbai);
                         this.quanbai3_3.setPositionY(this.vitriYmini + cardMiniPokerDistance * 2);
-                        if (this.color_quanbai == "red") this.txt3_3.setColor(GuiUtil.color(255, 0, 0));
+                        if (this.color_quanbai === "red") this.txt3_3.setColor(GuiUtil.color(255, 0, 0));
                         else this.txt3_3.setColor(GuiUtil.color(0, 0, 0));
                         this.getRandomIntMini(1, 52);
                         GuiUtil.changeSprite(this.spColum4_3, "res/Minigame/ImageChung/DauNguoi/" + this.linkImage);
                         GuiUtil.changeSprite(this.sp_chat4_3, "res/Minigame/ImageChung/DauNguoi/" + this.link_image_chat);
                         this.txt4_3.setString("" + this.text_quanbai);
                         this.quanbai4_3.setPositionY(this.vitriYmini + cardMiniPokerDistance * 2);
-                        if (this.color_quanbai == "red") this.txt4_3.setColor(GuiUtil.color(255, 0, 0));
+                        if (this.color_quanbai === "red") this.txt4_3.setColor(GuiUtil.color(255, 0, 0));
                         else this.txt4_3.setColor(GuiUtil.color(0, 0, 0));
                         this.getRandomIntMini(1, 52);
                         GuiUtil.changeSprite(this.spColum5_3, "res/Minigame/ImageChung/DauNguoi/" + this.linkImage);
                         GuiUtil.changeSprite(this.sp_chat5_3, "res/Minigame/ImageChung/DauNguoi/" + this.link_image_chat);
                         this.txt5_3.setString("" + this.text_quanbai);
                         this.quanbai5_3.setPositionY(this.vitriYmini + cardMiniPokerDistance * 2);
-                        if (this.color_quanbai == "red") this.txt5_3.setColor(GuiUtil.color(255, 0, 0));
+                        if (this.color_quanbai === "red") this.txt5_3.setColor(GuiUtil.color(255, 0, 0));
                         else this.txt5_3.setColor(GuiUtil.color(0, 0, 0));
                     }
-                    if (i == 4) {
+                    if (i === 4) {
                         this.getRandomIntMini(1, 52);
                         GuiUtil.changeSprite(this.spColum1_4, "res/Minigame/ImageChung/DauNguoi/" + this.linkImage);
                         GuiUtil.changeSprite(this.sp_chat1_4, "res/Minigame/ImageChung/DauNguoi/" + this.link_image_chat);
                         this.txt1_4.setString("" + this.text_quanbai);
                         this.quanbai1_4.setPositionY(this.vitriYmini + cardMiniPokerDistance * (i - 1));
-                        if (this.color_quanbai == "red") this.txt1_4.setColor(GuiUtil.color(255, 0, 0));
+                        if (this.color_quanbai === "red") this.txt1_4.setColor(GuiUtil.color(255, 0, 0));
                         else this.txt1_4.setColor(GuiUtil.color(0, 0, 0));
                         this.getRandomIntMini(1, 52);
                         GuiUtil.changeSprite(this.spColum2_4, "res/Minigame/ImageChung/DauNguoi/" + this.linkImage);
                         GuiUtil.changeSprite(this.sp_chat2_4, "res/Minigame/ImageChung/DauNguoi/" + this.link_image_chat);
                         this.txt2_4.setString("" + this.text_quanbai);
                         this.quanbai2_4.setPositionY(this.vitriYmini + cardMiniPokerDistance * (i - 1));
-                        if (this.color_quanbai == "red") this.txt2_4.setColor(GuiUtil.color(255, 0, 0));
+                        if (this.color_quanbai === "red") this.txt2_4.setColor(GuiUtil.color(255, 0, 0));
                         else this.txt2_4.setColor(GuiUtil.color(0, 0, 0));
                         this.getRandomIntMini(1, 52);
                         GuiUtil.changeSprite(this.spColum3_4, "res/Minigame/ImageChung/DauNguoi/" + this.linkImage);
                         GuiUtil.changeSprite(this.sp_chat3_4, "res/Minigame/ImageChung/DauNguoi/" + this.link_image_chat);
                         this.txt3_4.setString("" + this.text_quanbai);
                         this.quanbai3_4.setPositionY(this.vitriYmini + cardMiniPokerDistance * (i - 1));
-                        if (this.color_quanbai == "red") this.txt3_4.setColor(GuiUtil.color(255, 0, 0));
+                        if (this.color_quanbai === "red") this.txt3_4.setColor(GuiUtil.color(255, 0, 0));
                         else this.txt3_4.setColor(GuiUtil.color(0, 0, 0));
                         this.getRandomIntMini(1, 52);
                         GuiUtil.changeSprite(this.spColum4_4, "res/Minigame/ImageChung/DauNguoi/" + this.linkImage);
                         GuiUtil.changeSprite(this.sp_chat4_4, "res/Minigame/ImageChung/DauNguoi/" + this.link_image_chat);
                         this.txt4_4.setString("" + this.text_quanbai);
                         this.quanbai4_4.setPositionY(this.vitriYmini + cardMiniPokerDistance * (i - 1));
-                        if (this.color_quanbai == "red") this.txt4_4.setColor(GuiUtil.color(255, 0, 0));
+                        if (this.color_quanbai === "red") this.txt4_4.setColor(GuiUtil.color(255, 0, 0));
                         else this.txt4_4.setColor(GuiUtil.color(0, 0, 0));
                         this.getRandomIntMini(1, 52);
                         GuiUtil.changeSprite(this.spColum5_4, "res/Minigame/ImageChung/DauNguoi/" + this.linkImage);
                         GuiUtil.changeSprite(this.sp_chat5_4, "res/Minigame/ImageChung/DauNguoi/" + this.link_image_chat);
                         this.txt5_4.setString("" + this.text_quanbai);
                         this.quanbai5_4.setPositionY(this.vitriYmini + cardMiniPokerDistance * (i - 1));
-                        if (this.color_quanbai == "red") this.txt5_4.setColor(GuiUtil.color(255, 0, 0));
+                        if (this.color_quanbai === "red") this.txt5_4.setColor(GuiUtil.color(255, 0, 0));
                         else this.txt5_4.setColor(GuiUtil.color(0, 0, 0));
                     }
-                    if (i == 5) {
+                    if (i === 5) {
                         this.getRandomIntMini(1, 52);
                         GuiUtil.changeSprite(this.spColum1_5, "res/Minigame/ImageChung/DauNguoi/" + this.linkImage);
                         GuiUtil.changeSprite(this.sp_chat1_5, "res/Minigame/ImageChung/DauNguoi/" + this.link_image_chat);
                         this.txt1_5.setString("" + this.text_quanbai);
                         this.quanbai1_5.setPositionY(this.vitriYmini + cardMiniPokerDistance * (i - 1));
-                        if (this.color_quanbai == "red") this.txt1_5.setColor(GuiUtil.color(255, 0, 0));
+                        if (this.color_quanbai === "red") this.txt1_5.setColor(GuiUtil.color(255, 0, 0));
                         else this.txt1_5.setColor(GuiUtil.color(0, 0, 0));
                         this.getRandomIntMini(1, 52);
                         GuiUtil.changeSprite(this.spColum2_5, "res/Minigame/ImageChung/DauNguoi/" + this.linkImage);
                         GuiUtil.changeSprite(this.sp_chat2_5, "res/Minigame/ImageChung/DauNguoi/" + this.link_image_chat);
                         this.txt2_5.setString("" + this.text_quanbai);
                         this.quanbai2_5.setPositionY(this.vitriYmini + cardMiniPokerDistance * (i - 1));
-                        if (this.color_quanbai == "red") this.txt2_5.setColor(GuiUtil.color(255, 0, 0));
+                        if (this.color_quanbai === "red") this.txt2_5.setColor(GuiUtil.color(255, 0, 0));
                         else this.txt2_5.setColor(GuiUtil.color(0, 0, 0));
                         this.getRandomIntMini(1, 52);
                         GuiUtil.changeSprite(this.spColum3_5, "res/Minigame/ImageChung/DauNguoi/" + this.linkImage);
                         GuiUtil.changeSprite(this.sp_chat3_5, "res/Minigame/ImageChung/DauNguoi/" + this.link_image_chat);
                         this.txt3_5.setString("" + this.text_quanbai);
                         this.quanbai3_5.setPositionY(this.vitriYmini + cardMiniPokerDistance * (i - 1));
-                        if (this.color_quanbai == "red") this.txt3_5.setColor(GuiUtil.color(255, 0, 0));
+                        if (this.color_quanbai === "red") this.txt3_5.setColor(GuiUtil.color(255, 0, 0));
                         else this.txt3_5.setColor(GuiUtil.color(0, 0, 0));
                         this.getRandomIntMini(1, 52);
                         GuiUtil.changeSprite(this.spColum4_5, "res/Minigame/ImageChung/DauNguoi/" + this.linkImage);
                         GuiUtil.changeSprite(this.sp_chat4_5, "res/Minigame/ImageChung/DauNguoi/" + this.link_image_chat);
                         this.txt4_5.setString("" + this.text_quanbai);
                         this.quanbai4_5.setPositionY(this.vitriYmini + cardMiniPokerDistance * (i - 1));
-                        if (this.color_quanbai == "red") this.txt4_5.setColor(GuiUtil.color(255, 0, 0));
+                        if (this.color_quanbai === "red") this.txt4_5.setColor(GuiUtil.color(255, 0, 0));
                         else this.txt4_5.setColor(GuiUtil.color(0, 0, 0));
                         this.getRandomIntMini(1, 52);
                         GuiUtil.changeSprite(this.spColum5_5, "res/Minigame/ImageChung/DauNguoi/" + this.linkImage);
                         GuiUtil.changeSprite(this.sp_chat5_5, "res/Minigame/ImageChung/DauNguoi/" + this.link_image_chat);
                         this.txt5_5.setString("" + this.text_quanbai);
                         this.quanbai5_5.setPositionY(this.vitriYmini + cardMiniPokerDistance * (i - 1));
-                        if (this.color_quanbai == "red") this.txt5_5.setColor(GuiUtil.color(255, 0, 0));
+                        if (this.color_quanbai === "red") this.txt5_5.setColor(GuiUtil.color(255, 0, 0));
                         else this.txt5_5.setColor(GuiUtil.color(0, 0, 0));
                     }
-                    if (i == 6) {
+                    if (i === 6) {
                         this.getRandomIntMini(1, 52);
                         GuiUtil.changeSprite(this.spColum1_7, "res/Minigame/ImageChung/DauNguoi/" + this.linkImage);
                         GuiUtil.changeSprite(this.sp_chat1_7, "res/Minigame/ImageChung/DauNguoi/" + this.link_image_chat);
                         this.txt1_7.setString("" + this.text_quanbai);
                         this.quanbai1_7.setPositionY(this.vitriYmini + cardMiniPokerDistance * (i - 1));
-                        if (this.color_quanbai == "red") this.txt1_7.setColor(GuiUtil.color(255, 0, 0));
+                        if (this.color_quanbai === "red") this.txt1_7.setColor(GuiUtil.color(255, 0, 0));
                         else this.txt1_7.setColor(GuiUtil.color(0, 0, 0));
                         this.getRandomIntMini(1, 52);
                         GuiUtil.changeSprite(this.spColum2_7, "res/Minigame/ImageChung/DauNguoi/" + this.linkImage);
                         GuiUtil.changeSprite(this.sp_chat2_7, "res/Minigame/ImageChung/DauNguoi/" + this.link_image_chat);
                         this.txt2_7.setString("" + this.text_quanbai);
                         this.quanbai2_7.setPositionY(this.vitriYmini + cardMiniPokerDistance * (i - 1));
-                        if (this.color_quanbai == "red") this.txt2_7.setColor(GuiUtil.color(255, 0, 0));
+                        if (this.color_quanbai === "red") this.txt2_7.setColor(GuiUtil.color(255, 0, 0));
                         else this.txt2_7.setColor(GuiUtil.color(0, 0, 0));
                         this.getRandomIntMini(1, 52);
                         GuiUtil.changeSprite(this.spColum3_7, "res/Minigame/ImageChung/DauNguoi/" + this.linkImage);
                         GuiUtil.changeSprite(this.sp_chat3_7, "res/Minigame/ImageChung/DauNguoi/" + this.link_image_chat);
                         this.txt3_7.setString("" + this.text_quanbai);
                         this.quanbai3_7.setPositionY(this.vitriYmini + cardMiniPokerDistance * (i - 1));
-                        if (this.color_quanbai == "red") this.txt3_7.setColor(GuiUtil.color(255, 0, 0));
+                        if (this.color_quanbai === "red") this.txt3_7.setColor(GuiUtil.color(255, 0, 0));
                         else this.txt3_7.setColor(GuiUtil.color(0, 0, 0));
                         this.getRandomIntMini(1, 52);
                         GuiUtil.changeSprite(this.spColum4_7, "res/Minigame/ImageChung/DauNguoi/" + this.linkImage);
                         GuiUtil.changeSprite(this.sp_chat4_7, "res/Minigame/ImageChung/DauNguoi/" + this.link_image_chat);
                         this.txt4_7.setString("" + this.text_quanbai);
                         this.quanbai4_7.setPositionY(this.vitriYmini + cardMiniPokerDistance * (i - 1));
-                        if (this.color_quanbai == "red") this.txt4_7.setColor(GuiUtil.color(255, 0, 0));
+                        if (this.color_quanbai === "red") this.txt4_7.setColor(GuiUtil.color(255, 0, 0));
                         else this.txt4_7.setColor(GuiUtil.color(0, 0, 0));
                         this.getRandomIntMini(1, 52);
                         GuiUtil.changeSprite(this.spColum5_7, "res/Minigame/ImageChung/DauNguoi/" + this.linkImage);
                         GuiUtil.changeSprite(this.sp_chat5_7, "res/Minigame/ImageChung/DauNguoi/" + this.link_image_chat);
                         this.txt5_7.setString("" + this.text_quanbai);
                         this.quanbai5_7.setPositionY(this.vitriYmini + cardMiniPokerDistance * (i - 1));
-                        if (this.color_quanbai == "red") this.txt5_7.setColor(GuiUtil.color(255, 0, 0));
+                        if (this.color_quanbai === "red") this.txt5_7.setColor(GuiUtil.color(255, 0, 0));
                         else this.txt5_7.setColor(GuiUtil.color(0, 0, 0));
                     }
-                    if (i == 7) {
+                    if (i === 7) {
                         this.getRandomIntMini(1, 52);
                         GuiUtil.changeSprite(this.spColum1_8, "res/Minigame/ImageChung/DauNguoi/" + this.linkImage);
                         GuiUtil.changeSprite(this.sp_chat1_8, "res/Minigame/ImageChung/DauNguoi/" + this.link_image_chat);
                         this.txt1_8.setString("" + this.text_quanbai);
                         this.quanbai1_8.setPositionY(this.vitriYmini + cardMiniPokerDistance * (i - 1));
-                        if (this.color_quanbai == "red") this.txt1_8.setColor(GuiUtil.color(255, 0, 0));
+                        if (this.color_quanbai === "red") this.txt1_8.setColor(GuiUtil.color(255, 0, 0));
                         else this.txt1_8.setColor(GuiUtil.color(0, 0, 0));
                         this.getRandomIntMini(1, 52);
                         GuiUtil.changeSprite(this.spColum2_8, "res/Minigame/ImageChung/DauNguoi/" + this.linkImage);
                         GuiUtil.changeSprite(this.sp_chat2_8, "res/Minigame/ImageChung/DauNguoi/" + this.link_image_chat);
                         this.txt2_8.setString("" + this.text_quanbai);
                         this.quanbai2_8.setPositionY(this.vitriYmini + cardMiniPokerDistance * (i - 1));
-                        if (this.color_quanbai == "red") this.txt2_8.setColor(GuiUtil.color(255, 0, 0));
+                        if (this.color_quanbai === "red") this.txt2_8.setColor(GuiUtil.color(255, 0, 0));
                         else this.txt2_8.setColor(GuiUtil.color(0, 0, 0));
                         this.getRandomIntMini(1, 52);
                         GuiUtil.changeSprite(this.spColum3_8, "res/Minigame/ImageChung/DauNguoi/" + this.linkImage);
                         GuiUtil.changeSprite(this.sp_chat3_8, "res/Minigame/ImageChung/DauNguoi/" + this.link_image_chat);
                         this.txt3_8.setString("" + this.text_quanbai);
                         this.quanbai3_8.setPositionY(this.vitriYmini + cardMiniPokerDistance * (i - 1));
-                        if (this.color_quanbai == "red") this.txt3_8.setColor(GuiUtil.color(255, 0, 0));
+                        if (this.color_quanbai === "red") this.txt3_8.setColor(GuiUtil.color(255, 0, 0));
                         else this.txt3_8.setColor(GuiUtil.color(0, 0, 0));
                         this.getRandomIntMini(1, 52);
                         GuiUtil.changeSprite(this.spColum4_8, "res/Minigame/ImageChung/DauNguoi/" + this.linkImage);
                         GuiUtil.changeSprite(this.sp_chat4_8, "res/Minigame/ImageChung/DauNguoi/" + this.link_image_chat);
                         this.txt4_8.setString("" + this.text_quanbai);
                         this.quanbai4_8.setPositionY(this.vitriYmini + cardMiniPokerDistance * (i - 1));
-                        if (this.color_quanbai == "red") this.txt4_8.setColor(GuiUtil.color(255, 0, 0));
+                        if (this.color_quanbai === "red") this.txt4_8.setColor(GuiUtil.color(255, 0, 0));
                         else this.txt4_8.setColor(GuiUtil.color(0, 0, 0));
                         this.getRandomIntMini(1, 52);
                         GuiUtil.changeSprite(this.spColum5_8, "res/Minigame/ImageChung/DauNguoi/" + this.linkImage);
                         GuiUtil.changeSprite(this.sp_chat5_8, "res/Minigame/ImageChung/DauNguoi/" + this.link_image_chat);
                         this.txt5_8.setString("" + this.text_quanbai);
                         this.quanbai5_8.setPositionY(this.vitriYmini + cardMiniPokerDistance * (i - 1));
-                        if (this.color_quanbai == "red") this.txt5_8.setColor(GuiUtil.color(255, 0, 0));
+                        if (this.color_quanbai === "red") this.txt5_8.setColor(GuiUtil.color(255, 0, 0));
                         else this.txt5_8.setColor(GuiUtil.color(0, 0, 0));
                     }
-                    if (i == 8) {
+                    if (i === 8) {
                         this.getRandomIntMini(1, 52);
                         GuiUtil.changeSprite(this.spColum1_9, "res/Minigame/ImageChung/DauNguoi/" + this.linkImage);
                         GuiUtil.changeSprite(this.sp_chat1_9, "res/Minigame/ImageChung/DauNguoi/" + this.link_image_chat);
                         this.txt1_9.setString("" + this.text_quanbai);
                         this.quanbai1_9.setPositionY(this.vitriYmini + cardMiniPokerDistance * (i - 1));
-                        if (this.color_quanbai == "red") this.txt1_9.setColor(GuiUtil.color(255, 0, 0));
+                        if (this.color_quanbai === "red") this.txt1_9.setColor(GuiUtil.color(255, 0, 0));
                         else this.txt1_9.setColor(GuiUtil.color(0, 0, 0));
                         this.getRandomIntMini(1, 52);
                         GuiUtil.changeSprite(this.spColum2_9, "res/Minigame/ImageChung/DauNguoi/" + this.linkImage);
                         GuiUtil.changeSprite(this.sp_chat2_9, "res/Minigame/ImageChung/DauNguoi/" + this.link_image_chat);
                         this.txt2_9.setString("" + this.text_quanbai);
                         this.quanbai2_9.setPositionY(this.vitriYmini + cardMiniPokerDistance * (i - 1));
-                        if (this.color_quanbai == "red") this.txt2_9.setColor(GuiUtil.color(255, 0, 0));
+                        if (this.color_quanbai === "red") this.txt2_9.setColor(GuiUtil.color(255, 0, 0));
                         else this.txt2_9.setColor(GuiUtil.color(0, 0, 0));
                         this.getRandomIntMini(1, 52);
                         GuiUtil.changeSprite(this.spColum3_9, "res/Minigame/ImageChung/DauNguoi/" + this.linkImage);
                         GuiUtil.changeSprite(this.sp_chat3_9, "res/Minigame/ImageChung/DauNguoi/" + this.link_image_chat);
                         this.txt3_9.setString("" + this.text_quanbai);
                         this.quanbai3_9.setPositionY(this.vitriYmini + cardMiniPokerDistance * (i - 1));
-                        if (this.color_quanbai == "red") this.txt3_9.setColor(GuiUtil.color(255, 0, 0));
+                        if (this.color_quanbai === "red") this.txt3_9.setColor(GuiUtil.color(255, 0, 0));
                         else this.txt3_9.setColor(GuiUtil.color(0, 0, 0));
                         this.getRandomIntMini(1, 52);
                         GuiUtil.changeSprite(this.spColum4_9, "res/Minigame/ImageChung/DauNguoi/" + this.linkImage);
                         GuiUtil.changeSprite(this.sp_chat4_9, "res/Minigame/ImageChung/DauNguoi/" + this.link_image_chat);
                         this.txt4_9.setString("" + this.text_quanbai);
                         this.quanbai4_9.setPositionY(this.vitriYmini + cardMiniPokerDistance * (i - 1));
-                        if (this.color_quanbai == "red") this.txt4_9.setColor(GuiUtil.color(255, 0, 0));
+                        if (this.color_quanbai === "red") this.txt4_9.setColor(GuiUtil.color(255, 0, 0));
                         else this.txt4_9.setColor(GuiUtil.color(0, 0, 0));
                         this.getRandomIntMini(1, 52);
                         GuiUtil.changeSprite(this.spColum5_9, "res/Minigame/ImageChung/DauNguoi/" + this.linkImage);
                         GuiUtil.changeSprite(this.sp_chat5_9, "res/Minigame/ImageChung/DauNguoi/" + this.link_image_chat);
                         this.txt5_9.setString("" + this.text_quanbai);
                         this.quanbai5_9.setPositionY(this.vitriYmini + cardMiniPokerDistance * (i - 1));
-                        if (this.color_quanbai == "red") this.txt5_9.setColor(GuiUtil.color(255, 0, 0));
+                        if (this.color_quanbai === "red") this.txt5_9.setColor(GuiUtil.color(255, 0, 0));
                         else this.txt5_9.setColor(GuiUtil.color(0, 0, 0));
                     }
-                    if (i == 9) {
+                    if (i === 9) {
                         this.getRandomIntMini(1, 52);
                         GuiUtil.changeSprite(this.spColum1_10, "res/Minigame/ImageChung/DauNguoi/" + this.linkImage);
                         GuiUtil.changeSprite(this.sp_chat1_10, "res/Minigame/ImageChung/DauNguoi/" + this.link_image_chat);
                         this.txt1_10.setString("" + this.text_quanbai);
                         this.quanbai1_10.setPositionY(this.vitriYmini + cardMiniPokerDistance * (i - 1));
-                        if (this.color_quanbai == "red") this.txt1_10.setColor(GuiUtil.color(255, 0, 0));
+                        if (this.color_quanbai === "red") this.txt1_10.setColor(GuiUtil.color(255, 0, 0));
                         else this.txt1_10.setColor(GuiUtil.color(0, 0, 0));
                         this.getRandomIntMini(1, 52);
                         GuiUtil.changeSprite(this.spColum2_10, "res/Minigame/ImageChung/DauNguoi/" + this.linkImage);
                         GuiUtil.changeSprite(this.sp_chat2_10, "res/Minigame/ImageChung/DauNguoi/" + this.link_image_chat);
                         this.txt2_10.setString("" + this.text_quanbai);
                         this.quanbai2_10.setPositionY(this.vitriYmini + cardMiniPokerDistance * (i - 1));
-                        if (this.color_quanbai == "red") this.txt2_10.setColor(GuiUtil.color(255, 0, 0));
+                        if (this.color_quanbai === "red") this.txt2_10.setColor(GuiUtil.color(255, 0, 0));
                         else this.txt2_10.setColor(GuiUtil.color(0, 0, 0));
                         this.getRandomIntMini(1, 52);
                         GuiUtil.changeSprite(this.spColum3_10, "res/Minigame/ImageChung/DauNguoi/" + this.linkImage);
                         GuiUtil.changeSprite(this.sp_chat3_10, "res/Minigame/ImageChung/DauNguoi/" + this.link_image_chat);
                         this.txt3_10.setString("" + this.text_quanbai);
                         this.quanbai3_10.setPositionY(this.vitriYmini + cardMiniPokerDistance * (i - 1));
-                        if (this.color_quanbai == "red") this.txt3_10.setColor(GuiUtil.color(255, 0, 0));
+                        if (this.color_quanbai === "red") this.txt3_10.setColor(GuiUtil.color(255, 0, 0));
                         else this.txt3_10.setColor(GuiUtil.color(0, 0, 0));
                         this.getRandomIntMini(1, 52);
                         GuiUtil.changeSprite(this.spColum4_10, "res/Minigame/ImageChung/DauNguoi/" + this.linkImage);
                         GuiUtil.changeSprite(this.sp_chat4_10, "res/Minigame/ImageChung/DauNguoi/" + this.link_image_chat);
                         this.txt4_10.setString("" + this.text_quanbai);
                         this.quanbai4_10.setPositionY(this.vitriYmini + cardMiniPokerDistance * (i - 1));
-                        if (this.color_quanbai == "red") this.txt4_10.setColor(GuiUtil.color(255, 0, 0));
+                        if (this.color_quanbai === "red") this.txt4_10.setColor(GuiUtil.color(255, 0, 0));
                         else this.txt4_10.setColor(GuiUtil.color(0, 0, 0));
                         this.getRandomIntMini(1, 52);
                         GuiUtil.changeSprite(this.spColum5_10, "res/Minigame/ImageChung/DauNguoi/" + this.linkImage);
                         GuiUtil.changeSprite(this.sp_chat5_10, "res/Minigame/ImageChung/DauNguoi/" + this.link_image_chat);
                         this.txt5_10.setString("" + this.text_quanbai);
                         this.quanbai5_10.setPositionY(this.vitriYmini + cardMiniPokerDistance * (i - 1));
-                        if (this.color_quanbai == "red") this.txt5_10.setColor(GuiUtil.color(255, 0, 0));
+                        if (this.color_quanbai === "red") this.txt5_10.setColor(GuiUtil.color(255, 0, 0));
                         else this.txt5_10.setColor(GuiUtil.color(0, 0, 0));
                     }
                 }
             },
             GenResultMini: function () {
-                if (this.valueColum == false) { ///// rs1 o duoi
+                if (this.valueColum === false) { ///// rs1 o duoi
                     this.GetLinkImageMini(this.resultLB1);
                     GuiUtil.changeSprite(this.spColum1_6, "res/Minigame/ImageChung/DauNguoi/" + this.linkImage);
                     GuiUtil.changeSprite(this.sp_chat1_6, "res/Minigame/ImageChung/DauNguoi/" + this.link_image_chat);
                     this.txt1_6.setString("" + this.text_quanbai);
                     this.quanbai1_6.setPositionY(this.vitriYmini + cardMiniPokerDistance * 9);
-                    if (this.color_quanbai == "red") this.txt1_6.setColor(GuiUtil.color(255, 0, 0));
+                    if (this.color_quanbai === "red") this.txt1_6.setColor(GuiUtil.color(255, 0, 0));
                     else this.txt1_6.setColor(GuiUtil.color(0, 0, 0));
                     this.GetLinkImageMini(this.resultLB2);
                     GuiUtil.changeSprite(this.spColum2_6, "res/Minigame/ImageChung/DauNguoi/" + this.linkImage);
                     GuiUtil.changeSprite(this.sp_chat2_6, "res/Minigame/ImageChung/DauNguoi/" + this.link_image_chat);
                     this.txt2_6.setString("" + this.text_quanbai);
                     this.quanbai2_6.setPositionY(this.vitriYmini + cardMiniPokerDistance * 9);
-                    if (this.color_quanbai == "red") this.txt2_6.setColor(GuiUtil.color(255, 0, 0));
+                    if (this.color_quanbai === "red") this.txt2_6.setColor(GuiUtil.color(255, 0, 0));
                     else this.txt2_6.setColor(GuiUtil.color(0, 0, 0));
                     this.GetLinkImageMini(this.resultLB3);
                     GuiUtil.changeSprite(this.spColum3_6, "res/Minigame/ImageChung/DauNguoi/" + this.linkImage);
                     GuiUtil.changeSprite(this.sp_chat3_6, "res/Minigame/ImageChung/DauNguoi/" + this.link_image_chat);
                     this.txt3_6.setString("" + this.text_quanbai);
                     this.quanbai3_6.setPositionY(this.vitriYmini + cardMiniPokerDistance * 9);
-                    if (this.color_quanbai == "red") this.txt3_6.setColor(GuiUtil.color(255, 0, 0));
+                    if (this.color_quanbai === "red") this.txt3_6.setColor(GuiUtil.color(255, 0, 0));
                     else this.txt3_6.setColor(GuiUtil.color(0, 0, 0));
                     this.GetLinkImageMini(this.resultLB4);
                     GuiUtil.changeSprite(this.spColum4_6, "res/Minigame/ImageChung/DauNguoi/" + this.linkImage);
                     GuiUtil.changeSprite(this.sp_chat4_6, "res/Minigame/ImageChung/DauNguoi/" + this.link_image_chat);
                     this.txt4_6.setString("" + this.text_quanbai);
                     this.quanbai4_6.setPositionY(this.vitriYmini + cardMiniPokerDistance * 9);
-                    if (this.color_quanbai == "red") this.txt4_6.setColor(GuiUtil.color(255, 0, 0));
+                    if (this.color_quanbai === "red") this.txt4_6.setColor(GuiUtil.color(255, 0, 0));
                     else this.txt4_6.setColor(GuiUtil.color(0, 0, 0));
                     this.GetLinkImageMini(this.resultLB5);
                     GuiUtil.changeSprite(this.spColum5_6, "res/Minigame/ImageChung/DauNguoi/" + this.linkImage);
                     GuiUtil.changeSprite(this.sp_chat5_6, "res/Minigame/ImageChung/DauNguoi/" + this.link_image_chat);
                     this.txt5_6.setString("" + this.text_quanbai);
                     this.quanbai5_6.setPositionY(this.vitriYmini + cardMiniPokerDistance * 9);
-                    if (this.color_quanbai == "red") this.txt5_6.setColor(GuiUtil.color(255, 0, 0));
+                    if (this.color_quanbai === "red") this.txt5_6.setColor(GuiUtil.color(255, 0, 0));
                     else this.txt5_6.setColor(GuiUtil.color(0, 0, 0));
                 } else {
                     this.GetLinkImageMini(this.resultLB1);
@@ -1045,35 +1046,35 @@ var _miniPoker = null;
                     GuiUtil.changeSprite(this.sp_chat1_1, "res/Minigame/ImageChung/DauNguoi/" + this.link_image_chat);
                     this.txt1_1.setString("" + this.text_quanbai);
                     this.quanbai1_1.setPositionY(this.vitriYmini + cardMiniPokerDistance * 9);
-                    if (this.color_quanbai == "red") this.txt1_1.setColor(GuiUtil.color(255, 0, 0));
+                    if (this.color_quanbai === "red") this.txt1_1.setColor(GuiUtil.color(255, 0, 0));
                     else this.txt1_1.setColor(GuiUtil.color(0, 0, 0));
                     this.GetLinkImageMini(this.resultLB2);
                     GuiUtil.changeSprite(this.spColum2_1, "res/Minigame/ImageChung/DauNguoi/" + this.linkImage);
                     GuiUtil.changeSprite(this.sp_chat2_1, "res/Minigame/ImageChung/DauNguoi/" + this.link_image_chat);
                     this.txt2_1.setString("" + this.text_quanbai);
                     this.quanbai2_1.setPositionY(this.vitriYmini + cardMiniPokerDistance * 9);
-                    if (this.color_quanbai == "red") this.txt2_1.setColor(GuiUtil.color(255, 0, 0));
+                    if (this.color_quanbai === "red") this.txt2_1.setColor(GuiUtil.color(255, 0, 0));
                     else this.txt2_1.setColor(GuiUtil.color(0, 0, 0));
                     this.GetLinkImageMini(this.resultLB3);
                     GuiUtil.changeSprite(this.spColum3_1, "res/Minigame/ImageChung/DauNguoi/" + this.linkImage);
                     GuiUtil.changeSprite(this.sp_chat3_1, "res/Minigame/ImageChung/DauNguoi/" + this.link_image_chat);
                     this.txt3_1.setString("" + this.text_quanbai);
                     this.quanbai3_1.setPositionY(this.vitriYmini + cardMiniPokerDistance * 9);
-                    if (this.color_quanbai == "red") this.txt3_1.setColor(GuiUtil.color(255, 0, 0));
+                    if (this.color_quanbai === "red") this.txt3_1.setColor(GuiUtil.color(255, 0, 0));
                     else this.txt3_1.setColor(GuiUtil.color(0, 0, 0));
                     this.GetLinkImageMini(this.resultLB4);
                     GuiUtil.changeSprite(this.spColum4_1, "res/Minigame/ImageChung/DauNguoi/" + this.linkImage);
                     GuiUtil.changeSprite(this.sp_chat4_1, "res/Minigame/ImageChung/DauNguoi/" + this.link_image_chat);
                     this.txt4_1.setString("" + this.text_quanbai);
                     this.quanbai4_1.setPositionY(this.vitriYmini + cardMiniPokerDistance * 9);
-                    if (this.color_quanbai == "red") this.txt4_1.setColor(GuiUtil.color(255, 0, 0));
+                    if (this.color_quanbai === "red") this.txt4_1.setColor(GuiUtil.color(255, 0, 0));
                     else this.txt4_1.setColor(GuiUtil.color(0, 0, 0));
                     this.GetLinkImageMini(this.resultLB5);
                     GuiUtil.changeSprite(this.spColum5_1, "res/Minigame/ImageChung/DauNguoi/" + this.linkImage);
                     GuiUtil.changeSprite(this.sp_chat5_1, "res/Minigame/ImageChung/DauNguoi/" + this.link_image_chat);
                     this.txt5_1.setString("" + this.text_quanbai);
                     this.quanbai5_1.setPositionY(this.vitriYmini + cardMiniPokerDistance * 9);
-                    if (this.color_quanbai == "red") this.txt5_1.setColor(GuiUtil.color(255, 0, 0));
+                    if (this.color_quanbai === "red") this.txt5_1.setColor(GuiUtil.color(255, 0, 0));
                     else this.txt5_1.setColor(GuiUtil.color(0, 0, 0));
                 }
             },
@@ -1084,7 +1085,7 @@ var _miniPoker = null;
             RotateColum: function () {
                 this.resetItemInColumMini();
                 this.GenResultMini();
-                if (this.valueColum == false) {
+                if (this.valueColum === false) {
                     this.valueColum = true;
                 } else {
                     this.valueColum = false;
@@ -1336,13 +1337,13 @@ var _miniPoker = null;
                 this.GetMaGiai(this.saveResutl);
                 //this.isStartRotateMini = false; this.pn_effect_muiten.setVisible(true);
 
-                if (this.autoRotate == true) {
+                if (this.autoRotate === true) {
                     // if neu trung hu thi ko tiep tuc quay va ko hien effect notice
-                    if (this.typeNoHu_Thung == 1) {
+                    if (this.typeNoHu_Thung === 1) {
                         this.show_effect_hu(1, this.MoneyWin, this.moneyType);
                         this.autoRotate = false;
                         GuiUtil.changeSprite(this.sp_tuquay, "res/Minigame/ResMiniPoker/tuquay.png");
-                    } else if (this.typeNoHu_Thung == 2) {
+                    } else if (this.typeNoHu_Thung === 2) {
                         this.show_effect_hu(2, this.MoneyWin, this.moneyType);
                         GuiUtil.changeSprite(this.sp_tuquay, "res/Minigame/ResMiniPoker/tuquay.png");
                         this.autoRotate = false;
@@ -1352,10 +1353,10 @@ var _miniPoker = null;
                     }
                 } else {
                     // if neu trung hu thi ko hien effect notice
-                    if (this.typeNoHu_Thung == 1) {
+                    if (this.typeNoHu_Thung === 1) {
                         this.show_effect_hu(1, this.MoneyWin, this.moneyType);
                         this.autoRotate = false;
-                    } else if (this.typeNoHu_Thung == 2) {
+                    } else if (this.typeNoHu_Thung === 2) {
                         this.show_effect_hu(2, this.MoneyWin, this.moneyType);
                         this.autoRotate = false;
                     } else {
@@ -1363,28 +1364,28 @@ var _miniPoker = null;
                     }
                 }
                 _miniPoker.runAction(cc.sequence(cc.delayTime(0.5), cc.callFunc(this.enebleStartRotate, this)));
-                if (userInfo.userData == null) {
+                if (userInfo.userData === null) {
                 } else {
-                    if (_miniPoker.moneyType == 1) {
+                    if (_miniPoker.moneyType === 1) {
                         lobby.updateMoney(userInfo.userData.vinTotal, MONEY_VIN);
-                    } else if (_miniPoker.moneyType == 0) {
+                    } else if (_miniPoker.moneyType === 0) {
                         lobby.updateMoney(userInfo.userData.xuTotal, MONEY_XU);
                     }
                 }
             },
 
             enebleStartRotate: function () {
-                if (this.autoRotate == false) {
+                if (this.autoRotate === false) {
                     this.pn_effect_muiten.setVisible(true);
                     this.CanGat.setEnabled(true);
                 }
                 this.isStartRotateMini = false;
-                if (this.MINI_POKER_ROOM == 0 || this.MINI_POKER_ROOM == 3) {
+                if (this.MINI_POKER_ROOM === 0 || this.MINI_POKER_ROOM === 3) {
                     this.btnCoin100.setEnabled(false);
                     GuiUtil.changeSprite(this.sp_room1, "res/Minigame/ImageChung/room_select.png");
                     this.btnCoin1000.setEnabled(true);
                     this.btnCoin10000.setEnabled(true);
-                } else if (this.MINI_POKER_ROOM == 1 || this.MINI_POKER_ROOM == 4) {
+                } else if (this.MINI_POKER_ROOM === 1 || this.MINI_POKER_ROOM === 4) {
                     this.btnCoin100.setEnabled(true);
                     GuiUtil.changeSprite(this.sp_room2, "res/Minigame/ImageChung/room_select.png");
                     this.btnCoin1000.setEnabled(false);
@@ -1399,7 +1400,7 @@ var _miniPoker = null;
             },
 
             funCheckAuto: function () {
-                if (this.autoRotate == true) {
+                if (this.autoRotate === true) {
                     this.funPlayMinigame();
                 }
             },
@@ -1410,286 +1411,262 @@ var _miniPoker = null;
                 this.RotateColum();
             },
             GetLinkImageMini: function (value) {
-                if (value == 0) {
+                if (value === 0) {
                     this.linkImage = "chat_bich.png";
                     this.link_image_chat = "chat_bich.png";
                     this.text_quanbai = "2";
                     this.color_quanbai = "black";
-                } else if (value == 1) {
+                } else if (value === 1) {
                     this.linkImage = "chat_tep.png";
                     this.link_image_chat = "chat_tep.png";
                     this.text_quanbai = "2";
                     this.color_quanbai = "black";
-                } else if (value == 2) {
+                } else if (value === 2) {
                     this.linkImage = "chat_ro.png";
                     this.link_image_chat = "chat_ro.png";
                     this.text_quanbai = "2";
                     this.color_quanbai = "red";
-                } else if (value == 3) {
+                } else if (value === 3) {
                     this.linkImage = "chat_co.png";
                     this.link_image_chat = "chat_co.png";
                     this.text_quanbai = "2";
                     this.color_quanbai = "red";
-                }
-
-                else if (value == 4) {
+                } else if (value === 4) {
                     this.linkImage = "chat_bich.png";
                     this.link_image_chat = "chat_bich.png";
                     this.text_quanbai = "3";
                     this.color_quanbai = "black";
-                } else if (value == 5) {
+                } else if (value === 5) {
                     this.linkImage = "chat_tep.png";
                     this.link_image_chat = "chat_tep.png";
                     this.text_quanbai = "3";
                     this.color_quanbai = "black";
-                } else if (value == 6) {
+                } else if (value === 6) {
                     this.linkImage = "chat_ro.png";
                     this.link_image_chat = "chat_ro.png";
                     this.text_quanbai = "3";
                     this.color_quanbai = "red";
-                } else if (value == 7) {
+                } else if (value === 7) {
                     this.linkImage = "chat_co.png";
                     this.link_image_chat = "chat_co.png";
                     this.text_quanbai = "3";
                     this.color_quanbai = "red";
-                }
-
-                else if (value == 8) {
+                } else if (value === 8) {
                     this.linkImage = "chat_bich.png";
                     this.link_image_chat = "chat_bich.png";
                     this.text_quanbai = "4";
                     this.color_quanbai = "black";
-                } else if (value == 9) {
+                } else if (value === 9) {
                     this.linkImage = "chat_tep.png";
                     this.link_image_chat = "chat_tep.png";
                     this.text_quanbai = "4";
                     this.color_quanbai = "black";
-                } else if (value == 10) {
+                } else if (value === 10) {
                     this.linkImage = "chat_ro.png";
                     this.link_image_chat = "chat_ro.png";
                     this.text_quanbai = "4";
                     this.color_quanbai = "red";
-                } else if (value == 11) {
+                } else if (value === 11) {
                     this.linkImage = "chat_co.png";
                     this.link_image_chat = "chat_co.png";
                     this.text_quanbai = "4";
                     this.color_quanbai = "red";
-                }
-
-                else if (value == 12) {
+                } else if (value === 12) {
                     this.linkImage = "chat_bich.png";
                     this.link_image_chat = "chat_bich.png";
                     this.text_quanbai = "5";
                     this.color_quanbai = "black";
-                } else if (value == 13) {
+                } else if (value === 13) {
                     this.linkImage = "chat_tep.png";
                     this.link_image_chat = "chat_tep.png";
                     this.text_quanbai = "5";
                     this.color_quanbai = "black";
-                } else if (value == 14) {
+                } else if (value === 14) {
                     this.linkImage = "chat_ro.png";
                     this.link_image_chat = "chat_ro.png";
                     this.text_quanbai = "5";
                     this.color_quanbai = "red";
-                } else if (value == 15) {
+                } else if (value === 15) {
                     this.linkImage = "chat_co.png";
                     this.link_image_chat = "chat_co.png";
                     this.text_quanbai = "5";
                     this.color_quanbai = "red";
-                }
-
-                else if (value == 16) {
+                } else if (value === 16) {
                     this.linkImage = "chat_bich.png";
                     this.link_image_chat = "chat_bich.png";
                     this.text_quanbai = "6";
                     this.color_quanbai = "black";
-                } else if (value == 17) {
+                } else if (value === 17) {
                     this.linkImage = "chat_tep.png";
                     this.link_image_chat = "chat_tep.png";
                     this.text_quanbai = "6";
                     this.color_quanbai = "black";
-                } else if (value == 18) {
+                } else if (value === 18) {
                     this.linkImage = "chat_ro.png";
                     this.link_image_chat = "chat_ro.png";
                     this.text_quanbai = "6";
                     this.color_quanbai = "red";
-                } else if (value == 19) {
+                } else if (value === 19) {
                     this.linkImage = "chat_co.png";
                     this.link_image_chat = "chat_co.png";
                     this.text_quanbai = "6";
                     this.color_quanbai = "red";
-                }
-
-                else if (value == 20) {
+                } else if (value === 20) {
                     this.linkImage = "chat_bich.png";
                     this.link_image_chat = "chat_bich.png";
                     this.text_quanbai = "7";
                     this.color_quanbai = "black";
-                } else if (value == 21) {
+                } else if (value === 21) {
                     this.linkImage = "chat_tep.png";
                     this.link_image_chat = "chat_tep.png";
                     this.text_quanbai = "7";
                     this.color_quanbai = "black";
-                } else if (value == 22) {
+                } else if (value === 22) {
                     this.linkImage = "chat_ro.png";
                     this.link_image_chat = "chat_ro.png";
                     this.text_quanbai = "7";
                     this.color_quanbai = "red";
-                } else if (value == 23) {
+                } else if (value === 23) {
                     this.linkImage = "chat_co.png";
                     this.link_image_chat = "chat_co.png";
                     this.text_quanbai = "7";
                     this.color_quanbai = "red";
-                }
-
-                else if (value == 24) {
+                } else if (value === 24) {
                     this.linkImage = "chat_bich.png";
                     this.link_image_chat = "chat_bich.png";
                     this.text_quanbai = "8";
                     this.color_quanbai = "black";
-                } else if (value == 25) {
+                } else if (value === 25) {
                     this.linkImage = "chat_tep.png";
                     this.link_image_chat = "chat_tep.png";
                     this.text_quanbai = "8";
                     this.color_quanbai = "black";
-                } else if (value == 26) {
+                } else if (value === 26) {
                     this.linkImage = "chat_ro.png";
                     this.link_image_chat = "chat_ro.png";
                     this.text_quanbai = "8";
                     this.color_quanbai = "red";
-                } else if (value == 27) {
+                } else if (value === 27) {
                     this.linkImage = "chat_co.png";
                     this.link_image_chat = "chat_co.png";
                     this.text_quanbai = "8";
                     this.color_quanbai = "red";
-                }
-
-                else if (value == 28) {
+                } else if (value === 28) {
                     this.linkImage = "chat_bich.png";
                     this.link_image_chat = "chat_bich.png";
                     this.text_quanbai = "9";
                     this.color_quanbai = "black";
-                } else if (value == 29) {
+                } else if (value === 29) {
                     this.linkImage = "chat_tep.png";
                     this.link_image_chat = "chat_tep.png";
                     this.text_quanbai = "9";
                     this.color_quanbai = "black";
-                } else if (value == 30) {
+                } else if (value === 30) {
                     this.linkImage = "chat_ro.png";
                     this.link_image_chat = "chat_ro.png";
                     this.text_quanbai = "9";
                     this.color_quanbai = "red";
-                } else if (value == 31) {
+                } else if (value === 31) {
                     this.linkImage = "chat_co.png";
                     this.link_image_chat = "chat_co.png";
                     this.text_quanbai = "9";
                     this.color_quanbai = "red";
-                }
-
-                else if (value == 32) {
+                } else if (value === 32) {
                     this.linkImage = "chat_bich.png";
                     this.link_image_chat = "chat_bich.png";
                     this.text_quanbai = "10";
                     this.color_quanbai = "black";
-                } else if (value == 33) {
+                } else if (value === 33) {
                     this.linkImage = "chat_tep.png";
                     this.link_image_chat = "chat_tep.png";
                     this.text_quanbai = "10";
                     this.color_quanbai = "black";
-                } else if (value == 34) {
+                } else if (value === 34) {
                     this.linkImage = "chat_ro.png";
                     this.link_image_chat = "chat_ro.png";
                     this.text_quanbai = "10";
                     this.color_quanbai = "red";
-                } else if (value == 35) {
+                } else if (value === 35) {
                     this.linkImage = "chat_co.png";
                     this.link_image_chat = "chat_co.png";
                     this.text_quanbai = "10";
                     this.color_quanbai = "red";
-                }
-
-                else if (value == 36) {
+                } else if (value === 36) {
                     this.linkImage = "J_bi.png";
                     this.link_image_chat = "chat_bich.png";
                     this.text_quanbai = "J";
                     this.color_quanbai = "black";
-                } else if (value == 37) {
+                } else if (value === 37) {
                     this.linkImage = "J_te.png";
                     this.link_image_chat = "chat_tep.png";
                     this.text_quanbai = "J";
                     this.color_quanbai = "black";
-                } else if (value == 38) {
+                } else if (value === 38) {
                     this.linkImage = "J_ro.png";
                     this.link_image_chat = "chat_ro.png";
                     this.text_quanbai = "J";
                     this.color_quanbai = "red";
-                } else if (value == 39) {
+                } else if (value === 39) {
                     this.linkImage = "J_co.png";
                     this.link_image_chat = "chat_co.png";
                     this.text_quanbai = "J";
                     this.color_quanbai = "red";
-                }
-
-                else if (value == 40) {
+                } else if (value === 40) {
                     this.linkImage = "Q_bi.png";
                     this.link_image_chat = "chat_bich.png";
                     this.text_quanbai = "Q";
                     this.color_quanbai = "black";
-                } else if (value == 41) {
+                } else if (value === 41) {
                     this.linkImage = "Q_te.png";
                     this.link_image_chat = "chat_tep.png";
                     this.text_quanbai = "Q";
                     this.color_quanbai = "black";
-                } else if (value == 42) {
+                } else if (value === 42) {
                     this.linkImage = "Q_ro.png";
                     this.link_image_chat = "chat_ro.png";
                     this.text_quanbai = "Q";
                     this.color_quanbai = "red";
-                } else if (value == 43) {
+                } else if (value === 43) {
                     this.linkImage = "Q_co.png";
                     this.link_image_chat = "chat_co.png";
                     this.text_quanbai = "Q";
                     this.color_quanbai = "red";
-                }
-
-                else if (value == 44) {
+                } else if (value === 44) {
                     this.linkImage = "K_bi.png";
                     this.link_image_chat = "chat_bich.png";
                     this.text_quanbai = "K";
                     this.color_quanbai = "black";
-                } else if (value == 45) {
+                } else if (value === 45) {
                     this.linkImage = "K_te.png";
                     this.link_image_chat = "chat_tep.png";
                     this.text_quanbai = "K";
                     this.color_quanbai = "black";
-                } else if (value == 46) {
+                } else if (value === 46) {
                     this.linkImage = "K_ro.png";
                     this.link_image_chat = "chat_ro.png";
                     this.text_quanbai = "K";
                     this.color_quanbai = "red";
-                } else if (value == 47) {
+                } else if (value === 47) {
                     this.linkImage = "K_co.png";
                     this.link_image_chat = "chat_co.png";
                     this.text_quanbai = "K";
                     this.color_quanbai = "red";
-                }
-
-                else if (value == 48) {
+                } else if (value === 48) {
                     this.linkImage = "chat_bich.png";
                     this.link_image_chat = "chat_bich.png";
                     this.text_quanbai = "A";
                     this.color_quanbai = "black";
-                } else if (value == 49) {
+                } else if (value === 49) {
                     this.linkImage = "chat_tep.png";
                     this.link_image_chat = "chat_tep.png";
                     this.text_quanbai = "A";
                     this.color_quanbai = "black";
-                } else if (value == 50) {
+                } else if (value === 50) {
                     this.linkImage = "chat_ro.png";
                     this.link_image_chat = "chat_ro.png";
                     this.text_quanbai = "A";
                     this.color_quanbai = "red";
-                } else if (value == 51) {
+                } else if (value === 51) {
                     this.linkImage = "chat_co.png";
                     this.link_image_chat = "chat_co.png";
                     this.text_quanbai = "A";
@@ -1698,25 +1675,25 @@ var _miniPoker = null;
             },
 
             GetMaGiai: function (value) {
-                if (value == 3) {
+                if (value === 3) {
                     this.TextGiaiThuong = "";
                     this.linkmagiai = "tuquy";
-                } else if (value == 4) {
+                } else if (value === 4) {
                     this.TextGiaiThuong = "";
                     this.linkmagiai = "culu";
-                } else if (value == 5) {
+                } else if (value === 5) {
                     this.TextGiaiThuong = "";
                     this.linkmagiai = "thung";
-                } else if (value == 6) {
+                } else if (value === 6) {
                     this.TextGiaiThuong = "";
                     this.linkmagiai = "sanh";
-                } else if (value == 7) {
+                } else if (value === 7) {
                     this.TextGiaiThuong = "";
                     this.linkmagiai = "samco";
-                } else if (value == 8) {
+                } else if (value === 8) {
                     this.TextGiaiThuong = "";
                     this.linkmagiai = "haidoi";
-                } else if (value == 9) {
+                } else if (value === 9) {
                     this.TextGiaiThuong = "";
                     this.linkmagiai = "doij";
                 } else
@@ -1727,7 +1704,7 @@ var _miniPoker = null;
                 //resetvitri
                 this.MiniPokerNotice1.setString(this.TextGiaiThuong);
 
-                if (this.moneyType == 1)
+                if (this.moneyType === 1)
                     this.MiniPokerNotice2.setColor(GuiUtil.color("#F3F354"));
                 else
                     this.MiniPokerNotice2.setColor(GuiUtil.color("#EDEDFC"));
@@ -1754,11 +1731,11 @@ var _miniPoker = null;
                 var fadein = new cc.FadeIn(0);
                 this.sp_thongbao.runAction(fadein);
 
-                if (this.MINI_POKER_ROOM == 0 || this.MINI_POKER_ROOM == 3) {
+                if (this.MINI_POKER_ROOM === 0 || this.MINI_POKER_ROOM === 3) {
                     this.btnCoin100.setEnabled(false);
                     this.btnCoin1000.setEnabled(true);
                     this.btnCoin10000.setEnabled(true);
-                } else if (this.MINI_POKER_ROOM == 1 || this.MINI_POKER_ROOM == 4) {
+                } else if (this.MINI_POKER_ROOM === 1 || this.MINI_POKER_ROOM === 4) {
                     this.btnCoin100.setEnabled(true);
                     this.btnCoin1000.setEnabled(false);
                     this.btnCoin10000.setEnabled(true);
@@ -1771,7 +1748,7 @@ var _miniPoker = null;
                 this.btnChangeMoneytype.setEnabled(true);
                 this.pn_effect_muiten.setVisible(true);
                 this.btnTuQuay.setEnabled(true);
-                if (_miniPoker.autoRotate == true) {
+                if (_miniPoker.autoRotate === true) {
                     _miniPoker.autoRotate = false;
                     GuiUtil.changeSprite(_miniPoker.sp_tuquay, "res/Minigame/ResMiniPoker/tuquay.png");
                 }
@@ -1789,12 +1766,11 @@ var _miniPoker = null;
             show_effect_hu: function (type, money, moneytype) {
                 this.isshowNoHu = true;
                 this.pn_effect_hu.setVisible(true);
-                if (type == 1) { /// No hu
+                if (type === 1) { /// No hu
                     this.sp_nohu.setVisible(true);
                     this.sp_thungphasanh.setVisible(false);
                     this.HuOrThung = "NOHU";
-                }
-                else if (type == 2) {
+                } else if (type === 2) {
                     this.sp_thungphasanh.setVisible(true);
                     this.sp_nohu.setVisible(false);
                     this.HuOrThung = "THUNGPHASANH";
@@ -1823,7 +1799,7 @@ var _miniPoker = null;
                 var spawnOut3 = cc.spawn(fadeInStar3, cc.scaleTo(0.7, 0.5));
                 var sequence3 = cc.sequence(spawnIn3, cc.delayTime(0), spawnOut3);
                 this.star_3.runAction(cc.repeatForever(sequence3));
-                if (moneytype == 1) {
+                if (moneytype === 1) {
                     this.lb_money_earn_hu.setColor(GuiUtil.color("#F3F354"));
                 } else {
                     this.lb_money_earn_hu.setColor(GuiUtil.color("#EDEDFC"));
@@ -1833,7 +1809,7 @@ var _miniPoker = null;
             },
             run_effect_text_hu: function () {
                 var sequenceHuIn = cc.sequence(cc.scaleTo(0.4, 1, 1), cc.delayTime(3), cc.scaleTo(0.4, 1, 0), cc.callFunc(this.run_effect_sp_hu, this));
-                if (this.HuOrThung == "NOHU") {
+                if (this.HuOrThung === "NOHU") {
                     this.sp_nohu.runAction(sequenceHuIn);
                 } else {
                     this.sp_thungphasanh.runAction(sequenceHuIn);
@@ -1848,7 +1824,7 @@ var _miniPoker = null;
             close_effect_hu: function () {
                 this.isshowNoHu = false;
                 this.pn_effect_hu.setVisible(false);
-                if (this.HuOrThung == "NOHU") {
+                if (this.HuOrThung === "NOHU") {
                     this.sp_nohu.stopAllActions();
                     this.sp_nohu.setScale(1);
                 } else {
@@ -1901,12 +1877,12 @@ var _miniPoker = null;
                 value = parseFloat(value);
                 this.pnx2.stopAllActions();
                 this.pnx2.setVisible(false);
-                if (this.ischangeroom == true) {
+                if (this.ischangeroom === true) {
                     this.MINI_POKER_ROOM = this.roomjoint;
                     this.ischangeroom = false;
                     this.enebleStartRotate();
                 }
-                if (x2 == 1) {
+                if (x2 === 1) {
                     this.pnx2.setVisible(true);
                     var seq = cc.sequence(cc.scaleTo(0.3, 1.15), cc.scaleTo(0.3, 1), cc.delayTime(0.5));
                     // this.pnx2.runAction(cc.repeatForever(seq));
@@ -1915,25 +1891,25 @@ var _miniPoker = null;
 
                 if (value > _miniPoker.valueOldHu) {
                     _miniPoker.valueNewHu = value;
-                    if (_miniPoker.isruneffecthu == false) {
+                    if (_miniPoker.isruneffecthu === false) {
                         _miniPoker.isruneffecthu = true;
                         _miniPoker.breakValueHu = parseInt((value - _miniPoker.valueOldHu) / 10);
-                        if (_miniPoker.breakValueHu == 0) _miniPoker.breakValueHu = 1;
+                        if (_miniPoker.breakValueHu === 0) _miniPoker.breakValueHu = 1;
                         this.effectHuMiniPokerUp();
                     } else {
                         _miniPoker.breakValueHu = parseInt((value - _miniPoker.valueOldHu) / 10);
                     }
                 } else if (value < _miniPoker.valueOldHu) {
                     _miniPoker.valueNewHu = value;
-                    if (_miniPoker.isruneffecthu == false) {
+                    if (_miniPoker.isruneffecthu === false) {
                         _miniPoker.isruneffecthu = true;
                         _miniPoker.breakValueHu = parseInt((value - _miniPoker.valueOldHu) / 10);
-                        if (_miniPoker.breakValueHu == 0) _miniPoker.breakValueHu = -1;
+                        if (_miniPoker.breakValueHu === 0) _miniPoker.breakValueHu = -1;
                         this.effectHuMiniPokerDown();
                     } else {
                         _miniPoker.breakValueHu = parseInt((value - _miniPoker.valueOldHu) / 10);
                     }
-                } else if (value == _miniPoker.valueOldHu) {
+                } else if (value === _miniPoker.valueOldHu) {
                     _miniPoker.txtHu.setString("" + formatMoney(0, 3, value));
                     this.checkRoomToEnable();
                 }
@@ -1941,30 +1917,30 @@ var _miniPoker = null;
             responsePlayMiniPoker: function (result, prize, card1, card2, card3, card4, card5, currentmoney) {
                 this._enableChangeRoom = true;
                 cc.log("result: " + result + ", prize: " + prize + ", card: " + card1 + "," + card2 + "," + card3 + "," + card4 + "," + card5 + "currentmoney " + currentmoney);
-                if (result == 100) {
+                if (result === 100) {
                     this.btnTuQuay.setEnabled(false);
                     this.MiniPokerNotice2.setString("");
                     this.MiniPokerNotice1.setString("Quay không thành công!");
                     this.EffectError();
-                } else if (result == 101) {
+                } else if (result === 101) {
                     this.btnTuQuay.setEnabled(false);
                     this.MiniPokerNotice2.setString("");
                     this.MiniPokerNotice1.setString("Đặt cược không hợp lệ!");
                     this.EffectError();
-                } else if (result == 102) {
+                } else if (result === 102) {
                     this.btnTuQuay.setEnabled(false);
                     this.MiniPokerNotice2.setString("");
                     this.MiniPokerNotice1.setString("Bạn không đủ số dư!");
                     this.EffectError();
                 } else {
-                    if (userInfo.userData == null) {
+                    if (userInfo.userData === null) {
                     } else {
-                        if (this.moneyType == 1)
+                        if (this.moneyType === 1)
                             lobby.updateMoney((userInfo.userData.vinTotal - _miniPoker.valueMoney), MONEY_VIN);
                         else
                             lobby.updateMoney((userInfo.userData.xuTotal - _miniPoker.valueMoney), MONEY_XU);
                     }
-                    if (this.isStartRotateMini == true) {
+                    if (this.isStartRotateMini === true) {
                         if (this.resultLB1 != card1 || this.resultLB2 != card2 || this.resultLB3 != card3 || this.resultLB4 != card4 || this.resultLB5 != card5) {
                             this.resultLB1 = card1;
                             this.resultLB2 = card2;
@@ -1979,15 +1955,15 @@ var _miniPoker = null;
                         this.resultLB3 = card3;
                         this.resultLB4 = card4;
                         this.resultLB5 = card5;
-                        if (this.hideMiniPoker == false) {
+                        if (this.hideMiniPoker === false) {
                             this.RunRotate();
                         } else {
                             this.runAction(cc.sequence(cc.delayTime(4), cc.callFunc(function () {
-                                if (userInfo.userData == null) {
+                                if (userInfo.userData === null) {
                                 } else {
-                                    if (_miniPoker.moneyType == 1) {
+                                    if (_miniPoker.moneyType === 1) {
                                         lobby.updateMoney(userInfo.userData.vinTotal, MONEY_VIN);
-                                    } else if (_miniPoker.moneyType == 0) {
+                                    } else if (_miniPoker.moneyType === 0) {
                                         lobby.updateMoney(userInfo.userData.xuTotal, MONEY_XU);
                                     }
                                 }
@@ -1997,9 +1973,9 @@ var _miniPoker = null;
                     }
 
                     this.saveResutl = result;
-                    if (result == 1) {
+                    if (result === 1) {
                         this.typeNoHu_Thung = 1;
-                    } else if (result == 2) {
+                    } else if (result === 2) {
                         this.typeNoHu_Thung = 2;
                     } else {
                         this.typeNoHu_Thung = 0;
@@ -2009,7 +1985,7 @@ var _miniPoker = null;
                     this.btnCoin100.setEnabled(false);
                     this.btnCoin1000.setEnabled(false);
                     this.btnCoin10000.setEnabled(false);
-                    if (_miniPoker.moneyType == 1) {
+                    if (_miniPoker.moneyType === 1) {
                         userInfo.userData.vinTotal = currentmoney;
                     } else {
                         userInfo.userData.xuTotal = currentmoney;
@@ -2165,70 +2141,70 @@ var _miniPoker = null;
                 GuiUtil.changeSprite(this.spColum1_1, "res/Minigame/ImageChung/DauNguoi/" + this.linkImage);
                 GuiUtil.changeSprite(this.sp_chat1_1, "res/Minigame/ImageChung/DauNguoi/" + this.link_image_chat);
                 this.txt1_1.setString("" + this.text_quanbai);
-                if (this.color_quanbai == "red") this.txt1_1.setColor(GuiUtil.color(255, 0, 0));
+                if (this.color_quanbai === "red") this.txt1_1.setColor(GuiUtil.color(255, 0, 0));
                 else this.txt1_1.setColor(GuiUtil.color(0, 0, 0));
                 this.GetLinkImageMini(this.resultLB2);
                 GuiUtil.changeSprite(this.spColum2_1, "res/Minigame/ImageChung/DauNguoi/" + this.linkImage);
                 GuiUtil.changeSprite(this.sp_chat2_1, "res/Minigame/ImageChung/DauNguoi/" + this.link_image_chat);
                 this.txt2_1.setString("" + this.text_quanbai);
-                if (this.color_quanbai == "red") this.txt2_1.setColor(GuiUtil.color(255, 0, 0));
+                if (this.color_quanbai === "red") this.txt2_1.setColor(GuiUtil.color(255, 0, 0));
                 else this.txt2_1.setColor(GuiUtil.color(0, 0, 0));
                 this.GetLinkImageMini(this.resultLB3);
                 GuiUtil.changeSprite(this.spColum3_1, "res/Minigame/ImageChung/DauNguoi/" + this.linkImage);
                 GuiUtil.changeSprite(this.sp_chat3_1, "res/Minigame/ImageChung/DauNguoi/" + this.link_image_chat);
                 this.txt3_1.setString("" + this.text_quanbai);
-                if (this.color_quanbai == "red") this.txt3_1.setColor(GuiUtil.color(255, 0, 0));
+                if (this.color_quanbai === "red") this.txt3_1.setColor(GuiUtil.color(255, 0, 0));
                 else this.txt3_1.setColor(GuiUtil.color(0, 0, 0));
                 this.GetLinkImageMini(this.resultLB4);
                 GuiUtil.changeSprite(this.spColum4_1, "res/Minigame/ImageChung/DauNguoi/" + this.linkImage);
                 GuiUtil.changeSprite(this.sp_chat4_1, "res/Minigame/ImageChung/DauNguoi/" + this.link_image_chat);
                 this.txt4_1.setString("" + this.text_quanbai);
-                if (this.color_quanbai == "red") this.txt4_1.setColor(GuiUtil.color(255, 0, 0));
+                if (this.color_quanbai === "red") this.txt4_1.setColor(GuiUtil.color(255, 0, 0));
                 else this.txt4_1.setColor(GuiUtil.color(0, 0, 0));
                 this.GetLinkImageMini(this.resultLB5);
                 GuiUtil.changeSprite(this.spColum5_1, "res/Minigame/ImageChung/DauNguoi/" + this.linkImage);
                 GuiUtil.changeSprite(this.sp_chat5_1, "res/Minigame/ImageChung/DauNguoi/" + this.link_image_chat);
                 this.txt5_1.setString("" + this.text_quanbai);
-                if (this.color_quanbai == "red") this.txt5_1.setColor(GuiUtil.color(255, 0, 0));
+                if (this.color_quanbai === "red") this.txt5_1.setColor(GuiUtil.color(255, 0, 0));
                 else this.txt5_1.setColor(GuiUtil.color(0, 0, 0));
                 this.GetLinkImageMini(this.resultLB1);
                 GuiUtil.changeSprite(this.spColum1_6, "res/Minigame/ImageChung/DauNguoi/" + this.linkImage);
                 GuiUtil.changeSprite(this.sp_chat1_6, "res/Minigame/ImageChung/DauNguoi/" + this.link_image_chat);
                 this.txt1_6.setString("" + this.text_quanbai);
-                if (this.color_quanbai == "red") this.txt1_6.setColor(GuiUtil.color(255, 0, 0));
+                if (this.color_quanbai === "red") this.txt1_6.setColor(GuiUtil.color(255, 0, 0));
                 else this.txt1_6.setColor(GuiUtil.color(0, 0, 0));
                 this.GetLinkImageMini(this.resultLB2);
                 GuiUtil.changeSprite(this.spColum2_6, "res/Minigame/ImageChung/DauNguoi/" + this.linkImage);
                 GuiUtil.changeSprite(this.sp_chat2_6, "res/Minigame/ImageChung/DauNguoi/" + this.link_image_chat);
                 this.txt2_6.setString("" + this.text_quanbai);
-                if (this.color_quanbai == "red") this.txt2_6.setColor(GuiUtil.color(255, 0, 0));
+                if (this.color_quanbai === "red") this.txt2_6.setColor(GuiUtil.color(255, 0, 0));
                 else this.txt2_6.setColor(GuiUtil.color(0, 0, 0));
                 this.GetLinkImageMini(this.resultLB3);
                 GuiUtil.changeSprite(this.spColum3_6, "res/Minigame/ImageChung/DauNguoi/" + this.linkImage);
                 GuiUtil.changeSprite(this.sp_chat3_6, "res/Minigame/ImageChung/DauNguoi/" + this.link_image_chat);
                 this.txt3_6.setString("" + this.text_quanbai);
-                if (this.color_quanbai == "red") this.txt3_6.setColor(GuiUtil.color(255, 0, 0));
+                if (this.color_quanbai === "red") this.txt3_6.setColor(GuiUtil.color(255, 0, 0));
                 else this.txt3_6.setColor(GuiUtil.color(0, 0, 0));
                 this.GetLinkImageMini(this.resultLB4);
                 GuiUtil.changeSprite(this.spColum4_6, "res/Minigame/ImageChung/DauNguoi/" + this.linkImage);
                 GuiUtil.changeSprite(this.sp_chat4_6, "res/Minigame/ImageChung/DauNguoi/" + this.link_image_chat);
                 this.txt4_6.setString("" + this.text_quanbai);
-                if (this.color_quanbai == "red") this.txt4_6.setColor(GuiUtil.color(255, 0, 0));
+                if (this.color_quanbai === "red") this.txt4_6.setColor(GuiUtil.color(255, 0, 0));
                 else this.txt4_6.setColor(GuiUtil.color(0, 0, 0));
                 this.GetLinkImageMini(this.resultLB5);
                 GuiUtil.changeSprite(this.spColum5_6, "res/Minigame/ImageChung/DauNguoi/" + this.linkImage);
                 GuiUtil.changeSprite(this.sp_chat5_6, "res/Minigame/ImageChung/DauNguoi/" + this.link_image_chat);
                 this.txt5_6.setString("" + this.text_quanbai);
-                if (this.color_quanbai == "red") this.txt5_6.setColor(GuiUtil.color(255, 0, 0));
+                if (this.color_quanbai === "red") this.txt5_6.setColor(GuiUtil.color(255, 0, 0));
                 else this.txt5_6.setColor(GuiUtil.color(0, 0, 0));
             },
 
             checkRoomToEnable: function () {
-                if (this.MINI_POKER_ROOM == 0 || this.MINI_POKER_ROOM == 3) {
+                if (this.MINI_POKER_ROOM === 0 || this.MINI_POKER_ROOM === 3) {
                     this.btnCoin100.setEnabled(false);
                     this.btnCoin1000.setEnabled(true);
                     this.btnCoin10000.setEnabled(true);
-                } else if (this.MINI_POKER_ROOM == 1 || this.MINI_POKER_ROOM == 4) {
+                } else if (this.MINI_POKER_ROOM === 1 || this.MINI_POKER_ROOM === 4) {
                     this.btnCoin100.setEnabled(true);
                     this.btnCoin1000.setEnabled(false);
                     this.btnCoin10000.setEnabled(true);
@@ -2260,7 +2236,7 @@ var _miniPoker = null;
                 if (!_miniPoker) return;
                 if (mini_thanhtich != null) close_minipoker_bangthanhtich();
                 if (mini_lichsu != null) close_minipoker_lichsu();
-                if (gI.mainSocket.state == uc.WEBSOCKET_CONNECTED) {
+                if (gI.mainSocket.state === uc.WEBSOCKET_CONNECTED) {
                     var miniPokerSend = new CmdSendUnsubcriberMiniPoker();
                     miniPokerSend.putUnsubscriberMiniPoker(_miniPoker.MINI_POKER_ROOM);
                     Minigame.miniGameClient.send(miniPokerSend);
