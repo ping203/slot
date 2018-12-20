@@ -32,7 +32,7 @@ var MiniPoker = BaseLayer.extend({
         this.addButton(this.pokerlayout, "btnhelp", MiniPoker.HELP, cc.p(660, 134), true, res_MinigamePoker + "/help.png", null, ccui.Widget.LOCAL_TEXTURE);
         // GuiUtil.setBackGroundColor(this.tran_pokerlayout, cc.color.GREEN, 200);
     },
-    initPanel: function(){
+    initPanel: function () {
         var sizeP = cc.size(78, 105);
 
         this.dsLaBai = [
@@ -74,12 +74,12 @@ var MiniPoker = BaseLayer.extend({
                     break;
             }
             this.tran_pokerlayout.addChild(layout);
-            for (let j = 0; j < 20; j++) {
-                new Poker(layout, "A", "co", sizeP, cc.p(0, j * 105));
+            for (let j = 0; j < this.dsLaBai.length; j++) {
+                new Poker(layout, this.dsLaBai[j].num, this.dsLaBai[j].type, sizeP, cc.p(0, j * 105));
             }
         }
     },
-    initFade: function(){
+    initFade: function () {
         this.addImage(this.tran_pokerlayout, null, cc.p(213, 180), res_MinigamePoker + "/fade1.png", cc.size(421, 56));
         this.addImage(this.tran_pokerlayout, null, cc.p(213, 24), res_MinigamePoker + "/fade2.png", cc.size(421, 56));
         this.addImage(this.tran_pokerlayout, null, cc.p(213, 106), res_MinigamePoker + "/highlight.png", cc.size(418, 109));
@@ -100,11 +100,8 @@ var MiniPoker = BaseLayer.extend({
         }
     },
     play: function (parent) {
-        let arr = parent.getChildren();
-        console.log(arr.length);
-        for (let i = 0; i < arr.length; i++) {
-            arr[i].runAction(new cc.MoveBy(2, cc.p(0, -105 * (arr.length - 3))).easing(cc.easeBackIn()));
-        }
+        let action = new cc.MoveBy(3, cc.p(0, -105 * (this.dsLaBai.length - 3))).easing(cc.easeBackIn());
+        parent.runAction(action);
     }
 
 });
