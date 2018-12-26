@@ -51,6 +51,7 @@ var Poker = cc.Layer.extend({
     },
     updatePoker: function (num, type) {
         this.num = num;
+        this.text.setString(num);
         this.type = type;
         if (this.num === "j" || this.num === "q" || this.num === "k") {
             this.text.setOpacity(0);
