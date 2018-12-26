@@ -5,17 +5,21 @@ var MiniPoker = BaseLayer.extend({
         this.btncheckauto = null;
         this.tran_pokerlayout = null;
         this.btncangiat = null;
-        this.arrCot1 = [];
-        this.arrCot2 = [];
-        this.arrCot3 = [];
-        this.arrCot4 = [];
-        this.arrCot5 = [];
+        this.arrLaBaiCot1 = [];
+        this.arrLaBaiCot2 = [];
+        this.arrLaBaiCot3 = [];
+        this.arrLaBaiCot4 = [];
+        this.arrLaBaiCot5 = [];
         this.layoutCot1 = null;
         this.layoutCot2 = null;
         this.layoutCot3 = null;
         this.layoutCot4 = null;
         this.layoutCot5 = null;
-        this.dsLaBai = null;
+        this.randomLaBaiCot1 = [];
+        this.randomLaBaiCot2 = [];
+        this.randomLaBaiCot3 = [];
+        this.randomLaBaiCot4 = [];
+        this.randomLaBaiCot5 = [];
     },
     customizeGUI: function () {
         this.initBg();
@@ -52,13 +56,13 @@ var MiniPoker = BaseLayer.extend({
         var sizeP = cc.size(78, 105);
         this.dsLaBai = this.randomPoker();
         // for (let j = 0; j < this.dsLaBai.length; j++) {
-        //     this.arrCot1.push(new Poker(this.layoutCot1, this.dsLaBai[j].num, this.dsLaBai[j].type, sizeP, cc.p(0, j * 105)));
-        //     this.arrCot2.push(new Poker(this.layoutCot2, this.dsLaBai[j].num, this.dsLaBai[j].type, sizeP, cc.p(0, j * 105)));
-        //     this.arrCot3.push(new Poker(this.layoutCot3, this.dsLaBai[j].num, this.dsLaBai[j].type, sizeP, cc.p(0, j * 105)));
-        //     this.arrCot4.push(new Poker(this.layoutCot4, this.dsLaBai[j].num, this.dsLaBai[j].type, sizeP, cc.p(0, j * 105)));
-        //     this.arrCot5.push(new Poker(this.layoutCot5, this.dsLaBai[j].num, this.dsLaBai[j].type, sizeP, cc.p(0, j * 105)));
+        //     this.arrLaBaiCot1.push(new Poker(this.layoutCot1, this.dsLaBai[j].num, this.dsLaBai[j].type, sizeP, cc.p(0, j * 105)));
+        //     this.arrLaBaiCot2.push(new Poker(this.layoutCot2, this.dsLaBai[j].num, this.dsLaBai[j].type, sizeP, cc.p(0, j * 105)));
+        //     this.arrLaBaiCot3.push(new Poker(this.layoutCot3, this.dsLaBai[j].num, this.dsLaBai[j].type, sizeP, cc.p(0, j * 105)));
+        //     this.arrLaBaiCot4.push(new Poker(this.layoutCot4, this.dsLaBai[j].num, this.dsLaBai[j].type, sizeP, cc.p(0, j * 105)));
+        //     this.arrLaBaiCot5.push(new Poker(this.layoutCot5, this.dsLaBai[j].num, this.dsLaBai[j].type, sizeP, cc.p(0, j * 105)));
         // }
-        
+
     },
     initFade: function () {
         this.addImage(this.tran_pokerlayout, null, cc.p(213, 180), res_MinigamePoker + "/fade1.png", cc.size(421, 56));
@@ -108,12 +112,12 @@ var MiniPoker = BaseLayer.extend({
         let moveDown = new cc.MoveBy(3, cc.p(0, -105 * (that.dsLaBai.length - 3))).easing(cc.easeInOut(3.0));
         parent.runAction(moveDown);
         setTimeout(function () {
-            // that.arrCot1[0].updatePoker(that.arrCot1[10].num, that.arrCot1[10].type);
-            // that.arrCot1[1].updatePoker(that.arrCot1[11].num, that.arrCot1[11].type);
-            // that.arrCot1[2].updatePoker(that.arrCot1[12].num, that.arrCot1[12].type);
-            // that.arrCot2[0].updatePoker(that.arrCot2[10].num, that.arrCot2[10].type);
-            // that.arrCot2[1].updatePoker(that.arrCot2[11].num, that.arrCot2[11].type);
-            // that.arrCot2[2].updatePoker(that.arrCot2[12].num, that.arrCot2[12].type);
+            // that.arrLaBaiCot1[0].updatePoker(that.arrLaBaiCot1[10].num, that.arrLaBaiCot1[10].type);
+            // that.arrLaBaiCot1[1].updatePoker(that.arrLaBaiCot1[11].num, that.arrLaBaiCot1[11].type);
+            // that.arrLaBaiCot1[2].updatePoker(that.arrLaBaiCot1[12].num, that.arrLaBaiCot1[12].type);
+            // that.arrLaBaiCot2[0].updatePoker(that.arrLaBaiCot2[10].num, that.arrLaBaiCot2[10].type);
+            // that.arrLaBaiCot2[1].updatePoker(that.arrLaBaiCot2[11].num, that.arrLaBaiCot2[11].type);
+            // that.arrLaBaiCot2[2].updatePoker(that.arrLaBaiCot2[12].num, that.arrLaBaiCot2[12].type);
             // that.arrCot3[0].updatePoker(that.arrCot3[10].num, that.arrCot3[10].type);
             // that.arrCot3[1].updatePoker(that.arrCot3[11].num, that.arrCot3[11].type);
             // that.arrCot3[2].updatePoker(that.arrCot3[12].num, that.arrCot3[12].type);
