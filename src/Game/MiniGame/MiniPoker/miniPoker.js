@@ -1,4 +1,6 @@
 var MiniPoker = BaseLayer.extend({
+    arrtype: ["co", "ro", "bich", "tep"],
+    arrnum: ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "j", "q", "k"],
     ctor: function () {
         this._super();
         this.pokerlayout = null;
@@ -54,15 +56,20 @@ var MiniPoker = BaseLayer.extend({
     },
     initPanel: function () {
         var sizeP = cc.size(78, 105);
-        this.dsLaBai = this.randomPoker();
-        // for (let j = 0; j < this.dsLaBai.length; j++) {
-        //     this.arrLaBaiCot1.push(new Poker(this.layoutCot1, this.dsLaBai[j].num, this.dsLaBai[j].type, sizeP, cc.p(0, j * 105)));
-        //     this.arrLaBaiCot2.push(new Poker(this.layoutCot2, this.dsLaBai[j].num, this.dsLaBai[j].type, sizeP, cc.p(0, j * 105)));
-        //     this.arrLaBaiCot3.push(new Poker(this.layoutCot3, this.dsLaBai[j].num, this.dsLaBai[j].type, sizeP, cc.p(0, j * 105)));
-        //     this.arrLaBaiCot4.push(new Poker(this.layoutCot4, this.dsLaBai[j].num, this.dsLaBai[j].type, sizeP, cc.p(0, j * 105)));
-        //     this.arrLaBaiCot5.push(new Poker(this.layoutCot5, this.dsLaBai[j].num, this.dsLaBai[j].type, sizeP, cc.p(0, j * 105)));
-        // }
+        this.dsLaBai = GeneratePoker.generate5col();
+        this.randomLaBaiCot1 = this.dsLaBai.slice(0, 30);
+        this.randomLaBaiCot2 = this.dsLaBai.slice(30, 60);
+        this.randomLaBaiCot3 = this.dsLaBai.slice(60, 90);
+        this.randomLaBaiCot4 = this.dsLaBai.slice(90, 120);
+        this.randomLaBaiCot5 = this.dsLaBai.slice(120, 150);
 
+        for (let i = 0; i < this.randomLaBaiCot1.length; i++) {
+            this.arrLaBaiCot1.push(new Poker(this.layoutCot1, this.randomLaBaiCot1[i].num, this.randomLaBaiCot1[i].type, sizeP, cc.p(0, i * 105)));
+            this.arrLaBaiCot2.push(new Poker(this.layoutCot2, this.randomLaBaiCot2[i].num, this.randomLaBaiCot2[i].type, sizeP, cc.p(0, i * 105)));
+            this.arrLaBaiCot3.push(new Poker(this.layoutCot3, this.randomLaBaiCot3[i].num, this.randomLaBaiCot3[i].type, sizeP, cc.p(0, i * 105)));
+            this.arrLaBaiCot4.push(new Poker(this.layoutCot4, this.randomLaBaiCot4[i].num, this.randomLaBaiCot4[i].type, sizeP, cc.p(0, i * 105)));
+            this.arrLaBaiCot5.push(new Poker(this.layoutCot5, this.randomLaBaiCot5[i].num, this.randomLaBaiCot5[i].type, sizeP, cc.p(0, i * 105)));
+        }
     },
     initFade: function () {
         this.addImage(this.tran_pokerlayout, null, cc.p(213, 180), res_MinigamePoker + "/fade1.png", cc.size(421, 56));
@@ -75,31 +82,57 @@ var MiniPoker = BaseLayer.extend({
         switch (id) {
             case MiniPoker.BTN_CANGAT:
                 var timeSpin = 0;
+                let labai = GeneratePoker.randomPoker(15, true);
+                let labaicot1 = labai.slice(0, 3);
+                let labaicot2 = labai.slice(3, 6);
+                let labaicot3 = labai.slice(6, 9);
+                let labaicot4 = labai.slice(9, 12);
+                let labaicot5 = labai.slice(12, 15);
+                // console.log(labaicot1);
+                // console.log(labaicot2);
+                // console.log(labaicot3);
+                // console.log(labaicot4);
+                // console.log(labaicot5);
                 this.btncangiat.enabled = false;
                 setTimeout(function () {
                     that.btncangiat.enabled = true;
-                }, 3500);
+                }, 4500);
                 for (let i = 0; i < 5; i++) {
                     setTimeout(function () {
                         if (i === 0) {
                             that.play(that.layoutCot1);
                             that.layoutCot1.setPosition(45, 0);
+                            for (let j = 0; j < 3; j++) {
+                                that.arrLaBaiCot1[j + 27].updatePoker(labaicot1[j].num, labaicot1[j].type);
+                            }
                         }
                         if (i === 1) {
                             that.play(that.layoutCot2);
                             that.layoutCot2.setPosition(129, 0);
+                            for (let j = 0; j < 3; j++) {
+                                that.arrLaBaiCot2[j + 27].updatePoker(labaicot2[j].num, labaicot2[j].type);
+                            }
                         }
                         if (i === 2) {
                             that.play(that.layoutCot3);
                             that.layoutCot3.setPosition(213, 0);
+                            for (let j = 0; j < 3; j++) {
+                                that.arrLaBaiCot3[j + 27].updatePoker(labaicot3[j].num, labaicot3[j].type);
+                            }
                         }
                         if (i === 3) {
                             that.play(that.layoutCot4);
                             that.layoutCot4.setPosition(296, 0);
+                            for (let j = 0; j < 3; j++) {
+                                that.arrLaBaiCot4[j + 27].updatePoker(labaicot4[j].num, labaicot4[j].type);
+                            }
                         }
                         if (i === 4) {
                             that.play(that.layoutCot5);
                             that.layoutCot5.setPosition(380, 0);
+                            for (let j = 0; j < 3; j++) {
+                                that.arrLaBaiCot5[j + 27].updatePoker(labaicot5[j].num, labaicot5[j].type);
+                            }
                         }
                     }, timeSpin);
                     timeSpin += 200;
@@ -109,45 +142,18 @@ var MiniPoker = BaseLayer.extend({
     },
     play: function (parent) {
         let that = this;
-        let moveDown = new cc.MoveBy(3, cc.p(0, -105 * (that.dsLaBai.length - 3))).easing(cc.easeInOut(3.0));
+        let moveDown = new cc.MoveBy(4, cc.p(0, -105 * (that.randomLaBaiCot1.length - 3))).easing(cc.easeInOut(3.0));
         parent.runAction(moveDown);
         setTimeout(function () {
-            // that.arrLaBaiCot1[0].updatePoker(that.arrLaBaiCot1[10].num, that.arrLaBaiCot1[10].type);
-            // that.arrLaBaiCot1[1].updatePoker(that.arrLaBaiCot1[11].num, that.arrLaBaiCot1[11].type);
-            // that.arrLaBaiCot1[2].updatePoker(that.arrLaBaiCot1[12].num, that.arrLaBaiCot1[12].type);
-            // that.arrLaBaiCot2[0].updatePoker(that.arrLaBaiCot2[10].num, that.arrLaBaiCot2[10].type);
-            // that.arrLaBaiCot2[1].updatePoker(that.arrLaBaiCot2[11].num, that.arrLaBaiCot2[11].type);
-            // that.arrLaBaiCot2[2].updatePoker(that.arrLaBaiCot2[12].num, that.arrLaBaiCot2[12].type);
-            // that.arrCot3[0].updatePoker(that.arrCot3[10].num, that.arrCot3[10].type);
-            // that.arrCot3[1].updatePoker(that.arrCot3[11].num, that.arrCot3[11].type);
-            // that.arrCot3[2].updatePoker(that.arrCot3[12].num, that.arrCot3[12].type);
-            // that.arrCot4[0].updatePoker(that.arrCot4[10].num, that.arrCot4[10].type);
-            // that.arrCot4[1].updatePoker(that.arrCot4[11].num, that.arrCot4[11].type);
-            // that.arrCot4[2].updatePoker(that.arrCot4[12].num, that.arrCot4[12].type);
-            // that.arrCot5[0].updatePoker(that.arrCot5[10].num, that.arrCot5[10].type);
-            // that.arrCot5[1].updatePoker(that.arrCot5[11].num, that.arrCot5[11].type);
-            // that.arrCot5[2].updatePoker(that.arrCot5[12].num, that.arrCot5[12].type);
-        }, 3000)
+            for (let i = 0; i < 3; i++) {
+                that.arrLaBaiCot1[i].updatePoker(that.arrLaBaiCot1[i + 27].num, that.arrLaBaiCot1[i + 27].type);
+                that.arrLaBaiCot2[i].updatePoker(that.arrLaBaiCot2[i + 27].num, that.arrLaBaiCot2[i + 27].type);
+                that.arrLaBaiCot3[i].updatePoker(that.arrLaBaiCot3[i + 27].num, that.arrLaBaiCot3[i + 27].type);
+                that.arrLaBaiCot4[i].updatePoker(that.arrLaBaiCot4[i + 27].num, that.arrLaBaiCot4[i + 27].type);
+                that.arrLaBaiCot5[i].updatePoker(that.arrLaBaiCot5[i + 27].num, that.arrLaBaiCot5[i + 27].type);
+            }
+        }, 2000)
     },
-    randomPoker: function () {
-        let result = [];
-        let arrtype = ["co", "ro", "bich", "tep"];
-        let arrnum = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "j", "q", "k"];
-        while(result.length < 30){
-            let randomType = arrtype[Math.floor(Math.random() * arrtype.length)];
-            let randomNum = arrnum[Math.floor(Math.random() * arrnum.length)];
-            let poker = {
-                num: randomNum,
-                type: randomType
-            };
-            let search = result.find(e =>
-                e.num === poker.num && e.type === poker.type
-            );
-            if(!search)
-                result.push(poker);
-        }
-        return result;
-    }
 
 });
 
