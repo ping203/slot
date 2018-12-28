@@ -6,10 +6,10 @@ StringUtility.standartNumber = function (number) {// Hien thi number theo chuan{
     if (tmp.length < 4 && tmp >= 0) {
         return tmp;
     }
-    if (tmp.length == 4 && tmp < 0) return tmp;
+    if (tmp.length === 4 && tmp < 0) return tmp;
     var tmp2 = "";
     for (var i = 0; i < tmp.length - 1; i++) {
-        if (((i + 1) % 3) == 0) {
+        if (((i + 1) % 3) === 0) {
             tmp2 = "." + tmp.charAt(tmp.length - i - 1) + tmp2;
         }
         else {

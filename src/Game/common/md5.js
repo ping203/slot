@@ -66,44 +66,44 @@
     x[len >> 5] |= 0x80 << (len % 32)
     x[(((len + 64) >>> 9) << 4) + 14] = len
 
-    var i
-    var olda
-    var oldb
-    var oldc
-    var oldd
-    var a = 1732584193
-    var b = -271733879
-    var c = -1732584194
-    var d = 271733878
+    var i;
+    var olda;
+    var oldb;
+    var oldc;
+    var oldd;
+    var a = 1732584193;
+    var b = -271733879;
+    var c = -1732584194;
+    var d = 271733878;
 
     for (i = 0; i < x.length; i += 16) {
-      olda = a
-      oldb = b
-      oldc = c
-      oldd = d
+      olda = a;
+      oldb = b;
+      oldc = c;
+      oldd = d;
 
-      a = md5_ff(a, b, c, d, x[i], 7, -680876936)
-      d = md5_ff(d, a, b, c, x[i + 1], 12, -389564586)
-      c = md5_ff(c, d, a, b, x[i + 2], 17, 606105819)
-      b = md5_ff(b, c, d, a, x[i + 3], 22, -1044525330)
-      a = md5_ff(a, b, c, d, x[i + 4], 7, -176418897)
-      d = md5_ff(d, a, b, c, x[i + 5], 12, 1200080426)
-      c = md5_ff(c, d, a, b, x[i + 6], 17, -1473231341)
-      b = md5_ff(b, c, d, a, x[i + 7], 22, -45705983)
-      a = md5_ff(a, b, c, d, x[i + 8], 7, 1770035416)
-      d = md5_ff(d, a, b, c, x[i + 9], 12, -1958414417)
-      c = md5_ff(c, d, a, b, x[i + 10], 17, -42063)
-      b = md5_ff(b, c, d, a, x[i + 11], 22, -1990404162)
-      a = md5_ff(a, b, c, d, x[i + 12], 7, 1804603682)
-      d = md5_ff(d, a, b, c, x[i + 13], 12, -40341101)
-      c = md5_ff(c, d, a, b, x[i + 14], 17, -1502002290)
-      b = md5_ff(b, c, d, a, x[i + 15], 22, 1236535329)
+      a = md5_ff(a, b, c, d, x[i], 7, -680876936);
+      d = md5_ff(d, a, b, c, x[i + 1], 12, -389564586);
+      c = md5_ff(c, d, a, b, x[i + 2], 17, 606105819);
+      b = md5_ff(b, c, d, a, x[i + 3], 22, -1044525330);
+      a = md5_ff(a, b, c, d, x[i + 4], 7, -176418897);
+      d = md5_ff(d, a, b, c, x[i + 5], 12, 1200080426);
+      c = md5_ff(c, d, a, b, x[i + 6], 17, -1473231341);
+      b = md5_ff(b, c, d, a, x[i + 7], 22, -45705983);
+      a = md5_ff(a, b, c, d, x[i + 8], 7, 1770035416);
+      d = md5_ff(d, a, b, c, x[i + 9], 12, -1958414417);
+      c = md5_ff(c, d, a, b, x[i + 10], 17, -42063);
+      b = md5_ff(b, c, d, a, x[i + 11], 22, -1990404162);
+      a = md5_ff(a, b, c, d, x[i + 12], 7, 1804603682);
+      d = md5_ff(d, a, b, c, x[i + 13], 12, -40341101);
+      c = md5_ff(c, d, a, b, x[i + 14], 17, -1502002290);
+      b = md5_ff(b, c, d, a, x[i + 15], 22, 1236535329);
 
-      a = md5_gg(a, b, c, d, x[i + 1], 5, -165796510)
-      d = md5_gg(d, a, b, c, x[i + 6], 9, -1069501632)
-      c = md5_gg(c, d, a, b, x[i + 11], 14, 643717713)
-      b = md5_gg(b, c, d, a, x[i], 20, -373897302)
-      a = md5_gg(a, b, c, d, x[i + 5], 5, -701558691)
+      a = md5_gg(a, b, c, d, x[i + 1], 5, -165796510);
+      d = md5_gg(d, a, b, c, x[i + 6], 9, -1069501632);
+      c = md5_gg(c, d, a, b, x[i + 11], 14, 643717713);
+      b = md5_gg(b, c, d, a, x[i], 20, -373897302);
+      a = md5_gg(a, b, c, d, x[i + 5], 5, -701558691);
       d = md5_gg(d, a, b, c, x[i + 10], 9, 38016083)
       c = md5_gg(c, d, a, b, x[i + 15], 14, -660478335)
       b = md5_gg(b, c, d, a, x[i + 4], 20, -405537848)

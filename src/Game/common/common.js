@@ -8,16 +8,16 @@ var MODE_DEPLOY = {
     LOCAL: 0,
     TEST: 1,
     LIVE: 2
-}
+};
 GameSlot = {
     KhoBau:"khobau"
-}
+};
 
 GameSlot = {
     KhoBau: "khobau",
     NuDiepVien: "nudiepvien",
     Avenger: "sieuanhhung"
-}
+};
 
 var sendSK = 300000;
 
@@ -72,7 +72,7 @@ var TEN_GAME = "VIN";
 
 var sendRequest = function (url, params, isPost, callback, errorcallback, callbackHead) {
     // cc.log(url);
-    if (url == null || url == '')
+    if (url === null || url === '')
         return;
     var xhr = cc.loader.getXMLHttpRequest();
     if (isPost) {
@@ -83,21 +83,21 @@ var sendRequest = function (url, params, isPost, callback, errorcallback, callba
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
     xhr.onreadystatechange = function () {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-            var response = xhr.responseText;
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            let response = xhr.responseText;
             var responseHeader = xhr.getAllResponseHeaders();
             if (callback)
                 callback(response);
             if (callbackHead)
                 callbackHead(responseHeader);
-        } else if (xhr.readyState == 4 && xhr.status != 200) {
-            var response = xhr.responseText;
+        } else if (xhr.readyState === 4 && xhr.status !== 200) {
+            let response = xhr.responseText;
             if (errorcallback)
                 errorcallback(response);
         }
     };
 
-    if (params == null || params == "") {
+    if (params == null || params === "") {
         xhr.send();
     } else {
         xhr.send(params);

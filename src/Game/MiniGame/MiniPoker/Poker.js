@@ -51,9 +51,9 @@ var Poker = cc.Layer.extend({
         this.imgtypePokerSmall.setPosition(16, 68);
 
         if (this.type === "co" || this.type === "ro")
-            this.text.setTextColor(cc.color("#830000"));
+            this.text.setColor(cc.color("#AA0000"));
         if (this.type === "tep" || this.type === "bich")
-            this.text.setTextColor(cc.color.BLACK);
+            this.text.setColor(cc.color.BLACK);
         this.text.setPosition(17, 86);
         this.text.setAnchorPoint(0.5, 0.5);
         this.layout.addChild(this.text);
@@ -76,9 +76,9 @@ var Poker = cc.Layer.extend({
         this.type = type;
         this.text.setString(num.toUpperCase());
         if (this.type === "co" || this.type === "ro")
-            this.text.setTextColor(cc.color("#830000"));
+            this.text.setColor(cc.color("#AA0000"));
         if (this.type === "tep" || this.type === "bich")
-            this.text.setTextColor(cc.color("#000000"));
+            this.text.setColor(cc.color("#000000"));
 
         if (this.num === "j" || this.num === "q" || this.num === "k") {
             this.layout.setBackGroundImage(res_MinigamePoker + "/" + this.num + ".png", ccui.Widget.LOCAL_TEXTURE);

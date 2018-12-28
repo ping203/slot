@@ -38,11 +38,15 @@ var MiniPoker = BaseLayer.extend({
         this.addImage(this.pokerlayout, "bgcoin", cc.p(579, 464), res_MinigamePoker + "/pot.png", cc.size(278, 62));
         this.addImage(this.pokerlayout, "in_bg", cc.p(599, 310), res_MinigamePoker + "/in_bg.png", cc.size(427, 228));
         this.addLayout(this.pokerlayout, "tran_pokerlayout", cc.p(599, 312), res_MinigamePoker + "/in_bg.png", cc.size(427, 200), true);
+
         this.tran_pokerlayout.setClippingEnabled(true);
         this.addButton(this.pokerlayout, "btnmoney1", MiniPoker.MONEY100, cc.p(327, 406), true, res_MinigamePoker + "/active.png", null, ccui.Widget.LOCAL_TEXTURE);
         this.addButton(this.pokerlayout, "btnmoney2", MiniPoker.MONEY1K, cc.p(327, 325), true, res_MinigamePoker + "/money.png", null, ccui.Widget.LOCAL_TEXTURE);
         this.addButton(this.pokerlayout, "btnmoney3", MiniPoker.MONEY10K, cc.p(327, 241), true, res_MinigamePoker + "/money.png", null, ccui.Widget.LOCAL_TEXTURE);
-        this.addButton(this.pokerlayout, "btncheckauto", MiniPoker.CHECK_AUTO, cc.p(858, 315), true, res_MinigamePoker + "/check.png", null, ccui.Widget.LOCAL_TEXTURE);
+
+        // this.addButton(this.pokerlayout, "btncheckauto", MiniPoker.CHECK_AUTO, cc.p(858, 315), true, res_MinigamePoker + "/check.png", null, ccui.Widget.LOCAL_TEXTURE);
+        this.addCheckBox(this.pokerlayout, "chk_auto_quay", cc.p(858, 315), true, res_MinigamePoker + "/check.png",res_MinigamePoker + "/checked.png", "", null, "", ccui.Widget.LOCAL_TEXTURE);
+
         this.addButton(this.pokerlayout, "btncangiat", MiniPoker.BTN_CANGAT, cc.p(951, 369), false, res_MinigamePoker + "/cangiat.png", null, ccui.Widget.LOCAL_TEXTURE);
         this.addButton(this.pokerlayout, "btnlichsu", MiniPoker.LICHSU, cc.p(505, 134), true, res_MinigamePoker + "/history.png", null, ccui.Widget.LOCAL_TEXTURE);
         this.addButton(this.pokerlayout, "btncup", MiniPoker.CUP, cc.p(582, 134), true, res_MinigamePoker + "/cup.png", null, ccui.Widget.LOCAL_TEXTURE);
@@ -81,18 +85,15 @@ var MiniPoker = BaseLayer.extend({
         let that = this;
         switch (id) {
             case MiniPoker.BTN_CANGAT:
-                var timeSpin = 0;
-                let labai = GeneratePoker.randomPoker(15, true);
+                let timeSpin = 0;
+                let fakeServer = GeneratePoker.randomPoker(5, true);
+                console.log(fakeServer);
+                let labai = GeneratePoker.randomPokerDiffArr(10, fakeServer);
                 let labaicot1 = labai.slice(0, 3);
                 let labaicot2 = labai.slice(3, 6);
                 let labaicot3 = labai.slice(6, 9);
                 let labaicot4 = labai.slice(9, 12);
                 let labaicot5 = labai.slice(12, 15);
-                // console.log(labaicot1);
-                // console.log(labaicot2);
-                // console.log(labaicot3);
-                // console.log(labaicot4);
-                // console.log(labaicot5);
                 this.btncangiat.enabled = false;
                 setTimeout(function () {
                     that.btncangiat.enabled = true;

@@ -3,7 +3,7 @@ var GeneratePoker = {
     arrnum: ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "j", "q", "k"],
     randomPoker: function (sola, isDiff) {
         let result = [];
-        if (isDiff){
+        if (isDiff) {
             while (result.length < sola) {
                 let randomType = this.arrtype[Math.floor(Math.random() * this.arrtype.length)];
                 let randomNum = this.arrnum[Math.floor(Math.random() * this.arrnum.length)];
@@ -74,5 +74,39 @@ var GeneratePoker = {
         });
         res = arrCot1.concat(arrCot2).concat(arrCot3).concat(arrCot4).concat(arrCot5);
         return res;
+    },
+    randomPokerDiffArr(sola, arr2) {
+        let result = [];
+        while (result.length < sola) {
+            let randomType;
+            let randomNum;
+            let poker;
+            do {
+                randomType = this.arrtype[Math.floor(Math.random() * this.arrtype.length)];
+                randomNum = this.arrnum[Math.floor(Math.random() * this.arrnum.length)];
+                poker = {
+                    num: randomNum,
+                    type: randomType
+                };
+                x = arr2.find(function (e) {
+                    return e.num === randomNum && e.type === randomType;
+                })
+            }while (x);
+
+            let search = result.find(function (e) {
+                return e.num === poker.num && e.type === poker.type;
+            });
+
+            if (!search) {
+                result.push(poker);
+            }
+        }
+        result.splice(1, 0, arr2[0]);
+        result.splice(4, 0, arr2[1]);
+        result.splice(7, 0, arr2[2]);
+        result.splice(10, 0, arr2[3]);
+        result.splice(13, 0, arr2[4]);
+
+        return result;
     }
 };
