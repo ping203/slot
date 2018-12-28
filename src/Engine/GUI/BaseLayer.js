@@ -95,8 +95,7 @@ var BaseLayer = cc.Layer.extend({
         var button = null;
         if (parent) {
             button = ccui.Helper.seekWidgetByName(parent, name);
-        }
-        else {
+        } else {
             button = ccui.Helper.seekWidgetByName(this._layout, name);
         }
 
@@ -131,11 +130,11 @@ var BaseLayer = cc.Layer.extend({
     },
 
     setLabelText: function (text, control) {
-        if (typeof  text === 'undefined') return;
-        if (typeof  control === 'undefined') return;
+        if (typeof text === 'undefined') return;
+        if (typeof control === 'undefined') return;
         if (control == null) return;
-        if (typeof  control.getString === 'undefined') return;
-        if (typeof  control.setString === 'undefined') return;
+        if (typeof control.getString === 'undefined') return;
+        if (typeof control.setString === 'undefined') return;
 
         var str = control.getString();
         var l1 = str.length;
@@ -146,12 +145,10 @@ var BaseLayer = cc.Layer.extend({
 
             if (l2 <= l1) {
                 control.setString(text);
-            }
-            else {
+            } else {
                 control.setString(text.substring(0, l1 - 2) + "...");
             }
-        }
-        else if (control.wrapText !== undefined) {
+        } else if (control.wrapText !== undefined) {
             var s1 = control.width;
             var num = text.length;
             var str = "";
@@ -168,21 +165,18 @@ var BaseLayer = cc.Layer.extend({
                 }
             }
             control.setString(result);
-        }
-        else {
+        } else {
             control.setString(text);
         }
     },
 
     getControl: function (cName, parent) {
         var p = null;
-        if (typeof  parent === 'undefined') {
+        if (typeof parent === 'undefined') {
             p = this._layout;
-        }
-        else if (typeof parent === 'string') {
+        } else if (typeof parent === 'string') {
             p = ccui.Helper.seekWidgetByName(this._layout, parent);
-        }
-        else {
+        } else {
             p = parent;
         }
 
@@ -197,11 +191,9 @@ var BaseLayer = cc.Layer.extend({
     processScaleControl: function (control, direct) {
         if (direct === undefined) {
             control.setScale(this._scale);
-        }
-        else if (direct == 1) {
+        } else if (direct == 1) {
             control.setScaleX(this._scale);
-        }
-        else {
+        } else {
             control.setScaleY(this._scale);
         }
     },
@@ -221,11 +213,9 @@ var BaseLayer = cc.Layer.extend({
         {
             if (s.indexOf("scaleX") > -1) {
                 this.processScaleControl(control, 1);
-            }
-            else if (s.indexOf("scaleY") > -1) {
+            } else if (s.indexOf("scaleY") > -1) {
                 this.processScaleControl(control, 0);
-            }
-            else {
+            } else {
                 this.processScaleControl(control);
             }
         }
@@ -289,8 +279,7 @@ var BaseLayer = cc.Layer.extend({
         this._showHideAnimate = true;
         if (parent === undefined) {
             this._bgShowHideAnimate = this._layout;
-        }
-        else {
+        } else {
             this._bgShowHideAnimate = parent;
         }
 
@@ -307,8 +296,7 @@ var BaseLayer = cc.Layer.extend({
         this._showHideAnimate = true;
         if (parent === undefined) {
             this._bgShowHideAnimate = this._layout;
-        }
-        else {
+        } else {
             this._bgShowHideAnimate = parent;
         }
 
@@ -328,8 +316,7 @@ var BaseLayer = cc.Layer.extend({
             this._bgShowHideAnimate.setScale(this._currentScaleBg);
             this._bgShowHideAnimate.runAction(cc.spawn(new cc.EaseBackIn(cc.scaleTo(0.2, 1.2)), cc.fadeOut(0.2)));
             this.runAction(cc.sequence(cc.delayTime(0.2), cc.removeSelf()));
-        }
-        else {
+        } else {
             this.removeFromParent();
         }
     },
@@ -402,12 +389,10 @@ var BaseLayer = cc.Layer.extend({
     addSprite: function (parent, name, position, image, texType) {
         if ((typeof image == "undefined") || (image == "")) {
             this[name] = new cc.Sprite();
-        }
-        else {
+        } else {
             if (cc.spriteFrameCache.getSpriteFrame(image)) {
                 this[name] = new cc.Sprite("#" + image);
-            }
-            else {
+            } else {
                 this[name] = new cc.Sprite(image);
             }
         }
@@ -427,12 +412,10 @@ var BaseLayer = cc.Layer.extend({
         var sprite;
         if ((typeof image == "undefined") || (image == "")) {
             sprite = new cc.Sprite();
-        }
-        else {
+        } else {
             if (cc.spriteFrameCache.getSpriteFrame(resourcePath + image)) {
                 sprite = new cc.Sprite("#" + resourcePath + image);
-            }
-            else if (image) {
+            } else if (image) {
                 sprite = new cc.Sprite(resourcePath + image);
             } else {
                 sprite = new cc.Sprite();
@@ -716,9 +699,7 @@ var BaseLayer = cc.Layer.extend({
                 this[name] = new cc.EditBox(size, new cc.Scale9Sprite(backGround), new cc.Scale9Sprite(backGround));
             else
                 this[name] = new cc.EditBox(size, cc.Scale9Sprite.create(backGround), cc.Scale9Sprite.create(backGround));
-        }
-
-        else
+        } else
             this[name] = new cc.EditBox(size, cc.Scale9Sprite.create(), cc.Scale9Sprite.create());
         this[name].setPosition(position);
         this[name].setPlaceHolder(placeHolder);
@@ -783,6 +764,13 @@ var BaseLayer = cc.Layer.extend({
             this[name].loadTextures(backGround, backGroundSelected, cross, backGroundDisabled, frontCrossDisabled, ccui.Widget.PLIST_TEXTURE);
         else
             this[name].loadTextures(backGround, backGroundSelected, cross, backGroundDisabled, frontCrossDisabled, ccui.Widget.LOCAL_TEXTURE);
+        this[name].setPosition(position);
+        this[name].setSelected(isSelect);
+        parent.addChild(this[name]);
+    },
+    addCheckBox2: function (parent, name, position, isSelect, bgNormal, bgClick, bgActive) {
+        this[name] = new ccui.CheckBox();
+        this[name].loadTextures(bgNormal, bgClick, bgActive);
         this[name].setPosition(position);
         this[name].setSelected(isSelect);
         parent.addChild(this[name]);

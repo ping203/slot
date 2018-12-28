@@ -4,7 +4,7 @@ var MiniPoker = BaseLayer.extend({
     ctor: function () {
         this._super();
         this.pokerlayout = null;
-        this.btncheckauto = null;
+        this.chk_auto_quay = null;
         this.tran_pokerlayout = null;
         this.btncangiat = null;
         this.arrLaBaiCot1 = [];
@@ -26,6 +26,7 @@ var MiniPoker = BaseLayer.extend({
     customizeGUI: function () {
         this.initBg();
         this.initPanel();
+        this.autoSpin();
         this.initFade();
     },
     onEnter: function () {
@@ -44,8 +45,7 @@ var MiniPoker = BaseLayer.extend({
         this.addButton(this.pokerlayout, "btnmoney2", MiniPoker.MONEY1K, cc.p(327, 325), true, res_MinigamePoker + "/money.png", null, ccui.Widget.LOCAL_TEXTURE);
         this.addButton(this.pokerlayout, "btnmoney3", MiniPoker.MONEY10K, cc.p(327, 241), true, res_MinigamePoker + "/money.png", null, ccui.Widget.LOCAL_TEXTURE);
 
-        // this.addButton(this.pokerlayout, "btncheckauto", MiniPoker.CHECK_AUTO, cc.p(858, 315), true, res_MinigamePoker + "/check.png", null, ccui.Widget.LOCAL_TEXTURE);
-        this.addCheckBox(this.pokerlayout, "chk_auto_quay", cc.p(858, 315), true, res_MinigamePoker + "/check.png",res_MinigamePoker + "/checked.png", "", null, "", ccui.Widget.LOCAL_TEXTURE);
+        this.addCheckBox2(this.pokerlayout, "chk_auto_quay", cc.p(858, 315), false, res_MinigamePoker + "/check.png", res_MinigamePoker + "/checked.png", res_MinigamePoker + "/checked.png");
 
         this.addButton(this.pokerlayout, "btncangiat", MiniPoker.BTN_CANGAT, cc.p(951, 369), false, res_MinigamePoker + "/cangiat.png", null, ccui.Widget.LOCAL_TEXTURE);
         this.addButton(this.pokerlayout, "btnlichsu", MiniPoker.LICHSU, cc.p(505, 134), true, res_MinigamePoker + "/history.png", null, ccui.Widget.LOCAL_TEXTURE);
@@ -57,6 +57,8 @@ var MiniPoker = BaseLayer.extend({
         this.addLayout(this.tran_pokerlayout, "layoutCot3", cc.p(213, 0), null, cc.size(0, 0), true);
         this.addLayout(this.tran_pokerlayout, "layoutCot4", cc.p(296, 0), null, cc.size(0, 0), true);
         this.addLayout(this.tran_pokerlayout, "layoutCot5", cc.p(380, 0), null, cc.size(0, 0), true);
+
+        this.chk_auto_quay.addEventListener(this.autoSpin, this);
     },
     initPanel: function () {
         var sizeP = cc.size(78, 105);
@@ -80,68 +82,90 @@ var MiniPoker = BaseLayer.extend({
         this.addImage(this.tran_pokerlayout, null, cc.p(213, 24), res_MinigamePoker + "/fade2.png", cc.size(421, 56));
         this.addImage(this.tran_pokerlayout, null, cc.p(213, 106), res_MinigamePoker + "/highlight.png", cc.size(418, 109));
     },
-    //type: heart, diamond, club, spade = co, ro, tep, bich
-    onButtonRelease: function (button, id) {
+    interval: null,
+    isDone: null,
+    autoSpin: function (sender, type) {
         let that = this;
-        switch (id) {
-            case MiniPoker.BTN_CANGAT:
-                let timeSpin = 0;
-                let fakeServer = GeneratePoker.randomPoker(5, true);
-                console.log(fakeServer);
-                let labai = GeneratePoker.randomPokerDiffArr(10, fakeServer);
-                let labaicot1 = labai.slice(0, 3);
-                let labaicot2 = labai.slice(3, 6);
-                let labaicot3 = labai.slice(6, 9);
-                let labaicot4 = labai.slice(9, 12);
-                let labaicot5 = labai.slice(12, 15);
-                this.btncangiat.enabled = false;
-                setTimeout(function () {
-                    that.btncangiat.enabled = true;
-                }, 4500);
-                for (let i = 0; i < 5; i++) {
-                    setTimeout(function () {
-                        if (i === 0) {
-                            that.play(that.layoutCot1);
-                            that.layoutCot1.setPosition(45, 0);
-                            for (let j = 0; j < 3; j++) {
-                                that.arrLaBaiCot1[j + 27].updatePoker(labaicot1[j].num, labaicot1[j].type);
-                            }
-                        }
-                        if (i === 1) {
-                            that.play(that.layoutCot2);
-                            that.layoutCot2.setPosition(129, 0);
-                            for (let j = 0; j < 3; j++) {
-                                that.arrLaBaiCot2[j + 27].updatePoker(labaicot2[j].num, labaicot2[j].type);
-                            }
-                        }
-                        if (i === 2) {
-                            that.play(that.layoutCot3);
-                            that.layoutCot3.setPosition(213, 0);
-                            for (let j = 0; j < 3; j++) {
-                                that.arrLaBaiCot3[j + 27].updatePoker(labaicot3[j].num, labaicot3[j].type);
-                            }
-                        }
-                        if (i === 3) {
-                            that.play(that.layoutCot4);
-                            that.layoutCot4.setPosition(296, 0);
-                            for (let j = 0; j < 3; j++) {
-                                that.arrLaBaiCot4[j + 27].updatePoker(labaicot4[j].num, labaicot4[j].type);
-                            }
-                        }
-                        if (i === 4) {
-                            that.play(that.layoutCot5);
-                            that.layoutCot5.setPosition(380, 0);
-                            for (let j = 0; j < 3; j++) {
-                                that.arrLaBaiCot5[j + 27].updatePoker(labaicot5[j].num, labaicot5[j].type);
-                            }
-                        }
-                    }, timeSpin);
-                    timeSpin += 200;
-                }
+        switch (type) {
+            case ccui.CheckBox.EVENT_UNSELECTED:
+                console.log("Not seclected");
+
+                if (this.interval)
+                    clearInterval(this.interval);
+                break;
+            case ccui.CheckBox.EVENT_SELECTED:
+                console.log("Seclected");
+                this.interval = setInterval(function () {
+                    that.spin();
+                }, 6000);
                 break;
         }
     },
-    play: function (parent) {
+    //type: heart, diamond, club, spade = co, ro, tep, bich
+    onButtonRelease: function (button, id) {
+        switch (id) {
+            case MiniPoker.BTN_CANGAT:
+                this.spin();
+                break;
+        }
+    },
+    spin: function () {
+        let timeSpin = 0;
+        let fakeServer = GeneratePoker.randomPoker(5, true);
+        console.log(fakeServer);
+        let labai = GeneratePoker.randomPokerDiffArr(10, fakeServer);
+        let labaicot1 = labai.slice(0, 3);
+        let labaicot2 = labai.slice(3, 6);
+        let labaicot3 = labai.slice(6, 9);
+        let labaicot4 = labai.slice(9, 12);
+        let labaicot5 = labai.slice(12, 15);
+        // this.btncangiat.enabled = false;
+        // setTimeout(function () {
+        //     this.btncangiat.enabled = true;
+        // }, 4500);
+        let that = this;
+        for (let i = 0; i < 5; i++) {
+            setTimeout(function () {
+                if (i === 0) {
+                    that.playColumn(that.layoutCot1);
+                    that.layoutCot1.setPosition(45, 0);
+                    for (let j = 0; j < 3; j++) {
+                        that.arrLaBaiCot1[j + 27].updatePoker(labaicot1[j].num, labaicot1[j].type);
+                    }
+                }
+                if (i === 1) {
+                    that.playColumn(that.layoutCot2);
+                    that.layoutCot2.setPosition(129, 0);
+                    for (let j = 0; j < 3; j++) {
+                        that.arrLaBaiCot2[j + 27].updatePoker(labaicot2[j].num, labaicot2[j].type);
+                    }
+                }
+                if (i === 2) {
+                    that.playColumn(that.layoutCot3);
+                    that.layoutCot3.setPosition(213, 0);
+                    for (let j = 0; j < 3; j++) {
+                        that.arrLaBaiCot3[j + 27].updatePoker(labaicot3[j].num, labaicot3[j].type);
+                    }
+                }
+                if (i === 3) {
+                    that.playColumn(that.layoutCot4);
+                    that.layoutCot4.setPosition(296, 0);
+                    for (let j = 0; j < 3; j++) {
+                        that.arrLaBaiCot4[j + 27].updatePoker(labaicot4[j].num, labaicot4[j].type);
+                    }
+                }
+                if (i === 4) {
+                    that.playColumn(that.layoutCot5);
+                    that.layoutCot5.setPosition(380, 0);
+                    for (let j = 0; j < 3; j++) {
+                        that.arrLaBaiCot5[j + 27].updatePoker(labaicot5[j].num, labaicot5[j].type);
+                    }
+                }
+            }, timeSpin);
+            timeSpin += 200;
+        }
+    },
+    playColumn: function (parent) {
         let that = this;
         let moveDown = new cc.MoveBy(4, cc.p(0, -105 * (that.randomLaBaiCot1.length - 3))).easing(cc.easeInOut(3.0));
         parent.runAction(moveDown);
