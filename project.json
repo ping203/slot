@@ -22,6 +22,8 @@
 
     "src/Game/gameInstance.js",
     "src/Engine/GUI/BaseLayer.js",
+    "src/Engine/GUI/BaseLayer.js",
+    "src/Engine/GUI/MovePosition.js",
     "src/Engine/GUI/GuiUtil.js",
     "src/Engine/GUI/BaseLobby.js",
     "src/Engine/GUI/BaseScene.js",

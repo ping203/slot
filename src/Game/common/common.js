@@ -614,10 +614,10 @@ var fontSwissCondensed = {fontName: "UTM-Swiss-Condensed", src: [{src: "res/Font
 var fontArialB = {fontName: "arialbd", src: [{src: "res/Font/arialbd.ttf", type: "truetype"}]};
 var fontRobotoMedium = {fontName: "Roboto-Medium", src: [{src: "res/Font/Roboto-Medium.ttf", type: "truetype"}]};
 var fontRobotoRegular = {fontName: "Roboto-Regular", src: [{src: "res/Font/Roboto-Regular.ttf", type: "truetype"}]};
-var RobotoRegular = {fontName: "Roboto-Regular", src: [{src: "res/Font/Roboto-Regular.ttf", type: "truetype"}]};
+var fontRobotoRegular = {fontName: "Roboto-Regular", src: [{src: "res/Font/Roboto-Regular.ttf", type: "truetype"}]};
 var fontRobotoBlack = {fontName: "Roboto-Black", src: [{src: "res/Font/Roboto-Black.ttf", type: "truetype"}]};
 var fontRobotoBold = {fontName: "Roboto-Bold", src: [{src: "res/Font/Roboto-Bold.ttf", type: "truetype"}]};
-var UTMBebas = {fontName: "UTM-Bebas", src: [{src: "res/Font/UTM-Bebas.ttf", type: "truetype"}]};
+var fontUTMBebas = {fontName: "UTM-Bebas", src: [{src: "res/Font/UTM-Bebas.ttf", type: "truetype"}]};
 
 var UTMMobifoneKT = {fontName: "UTM-Mobifone-KT", src: [{src: "res/Font/UTM-Mobifone-KT.ttf", type: "truetype"}]};
 var UTMAlexander = {fontName: "UTM-Alexander", src: [{src: "res/Font/UTM-Alexander.ttf", type: "truetype"}]};

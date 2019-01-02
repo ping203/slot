@@ -6,7 +6,7 @@ var MiniPoker = BaseLayer.extend({
         this.pokerlayout = null;
         this.chk_auto_quay = null;
         this.tran_pokerlayout = null;
-        this.btncangiat = null;
+        this.btncangat = null;
         this.arrLaBaiCot1 = [];
         this.arrLaBaiCot2 = [];
         this.arrLaBaiCot3 = [];
@@ -45,12 +45,15 @@ var MiniPoker = BaseLayer.extend({
         this.addButton(this.pokerlayout, "btnmoney2", MiniPoker.MONEY1K, cc.p(327, 325), true, res_MinigamePoker + "/money.png", null, ccui.Widget.LOCAL_TEXTURE);
         this.addButton(this.pokerlayout, "btnmoney3", MiniPoker.MONEY10K, cc.p(327, 241), true, res_MinigamePoker + "/money.png", null, ccui.Widget.LOCAL_TEXTURE);
 
+        this.addText(this.pokerlayout, "txttuquay", cc.p(858, 358), "tự quay", fontUTMBebas.fontName, 24);
+
         this.addCheckBox2(this.pokerlayout, "chk_auto_quay", cc.p(858, 315), false, res_MinigamePoker + "/check.png", res_MinigamePoker + "/checked.png", res_MinigamePoker + "/checked.png");
 
-        this.addButton(this.pokerlayout, "btncangiat", MiniPoker.BTN_CANGAT, cc.p(951, 369), false, res_MinigamePoker + "/cangiat.png", null, ccui.Widget.LOCAL_TEXTURE);
+        this.addButton(this.pokerlayout, "btncangat", MiniPoker.BTN_CANGAT, cc.p(951, 369), false, res_MinigamePoker + "/cangat.png", null, ccui.Widget.LOCAL_TEXTURE);
         this.addButton(this.pokerlayout, "btnlichsu", MiniPoker.LICHSU, cc.p(505, 134), true, res_MinigamePoker + "/history.png", null, ccui.Widget.LOCAL_TEXTURE);
         this.addButton(this.pokerlayout, "btncup", MiniPoker.CUP, cc.p(582, 134), true, res_MinigamePoker + "/cup.png", null, ccui.Widget.LOCAL_TEXTURE);
         this.addButton(this.pokerlayout, "btnhelp", MiniPoker.HELP, cc.p(660, 134), true, res_MinigamePoker + "/help.png", null, ccui.Widget.LOCAL_TEXTURE);
+        this.addButton(this.pokerlayout, "btnclose", MiniPoker.BTN_CLOSE, cc.p(880, 520), true, res_MinigamePoker + "/close.png", null, ccui.Widget.LOCAL_TEXTURE);
         // GuiUtil.setBackGroundColor(this.tran_pokerlayout, cc.color.GREEN, 200);
         this.addLayout(this.tran_pokerlayout, "layoutCot1", cc.p(45, 0), null, cc.size(0, 0), true);
         this.addLayout(this.tran_pokerlayout, "layoutCot2", cc.p(129, 0), null, cc.size(0, 0), true);
@@ -83,7 +86,7 @@ var MiniPoker = BaseLayer.extend({
         this.addImage(this.tran_pokerlayout, null, cc.p(213, 106), res_MinigamePoker + "/highlight.png", cc.size(418, 109));
     },
     interval: null,
-    isDone: null,
+    isSpin: false,
     autoSpin: function (sender, type) {
         let that = this;
         switch (type) {
@@ -107,9 +110,13 @@ var MiniPoker = BaseLayer.extend({
             case MiniPoker.BTN_CANGAT:
                 this.spin();
                 break;
+            case MiniPoker.BTN_CLOSE:
+                this.removeFromParent();
+                break;
         }
     },
     spin: function () {
+        let that = this;
         let timeSpin = 0;
         let fakeServer = GeneratePoker.randomPoker(5, true);
         console.log(fakeServer);
@@ -119,11 +126,13 @@ var MiniPoker = BaseLayer.extend({
         let labaicot3 = labai.slice(6, 9);
         let labaicot4 = labai.slice(9, 12);
         let labaicot5 = labai.slice(12, 15);
-        // this.btncangiat.enabled = false;
-        // setTimeout(function () {
-        //     this.btncangiat.enabled = true;
-        // }, 4500);
-        let that = this;
+        this.btncangat.touchEnabled = false;
+        this.isSpin = true;
+
+        setTimeout(function () {
+            that.btncangat.touchEnabled = true;
+            that.isSpin = false;
+        }, 6000);
         for (let i = 0; i < 5; i++) {
             setTimeout(function () {
                 if (i === 0) {
@@ -164,6 +173,7 @@ var MiniPoker = BaseLayer.extend({
             }, timeSpin);
             timeSpin += 200;
         }
+        console.log("Complete");
     },
     playColumn: function (parent) {
         let that = this;
@@ -179,7 +189,6 @@ var MiniPoker = BaseLayer.extend({
             }
         }, 2000)
     },
-
 });
 
 MiniPoker.MONEY100 = 0;
@@ -189,4 +198,5 @@ MiniPoker.CHECK_AUTO = 3;
 MiniPoker.LICHSU = 4;
 MiniPoker.CUP = 5;
 MiniPoker.HELP = 6;
-MiniPoker.CANGIAT = 7;
+MiniPoker.BTN_CANGAT = 7;
+MiniPoker.BTN_CLOSE = 8;

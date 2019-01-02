@@ -10,7 +10,8 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "serve": "cocos run -p web -b /Applications/Firefox\\ Developer\\ Edition.app & livereload . -cc /Users/dangsach/Library/Caches/Firefox/Profiles/kvh1zoig.dev-edition-default/cache2"
+    "serve": "cocos run -p web -b /Applications/Firefox\\ Developer\\ Edition.app & livereload . -cc /Users/dangsach/Library/Caches/Firefox/Profiles/kvh1zoig.dev-edition-default/cache2",
+    "start": "cocos run -p web"
   },
   "repository": {
     "type": "git",
