@@ -26,7 +26,7 @@ var LayoutTabView = ccui.Layout.extend({
             btnTab.setContentSize(sizeTab);
             btnTab.setPressedActionEnabled(false);
             btnTab.setTag(i);
-            btnTab.setTitleFontName(UTMBebas.fontName);
+            btnTab.setTitleFontName(fontUTMBebas.fontName);
             btnTab.setTitleFontSize(30);
             btnTab.setTitleText(this._arrTitleTab[i]);
             btnTab.getTitleRenderer().setColor(cc.color.WHITE);
