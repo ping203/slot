@@ -1717,7 +1717,6 @@ var _miniPoker = null;
                 this.sp_thongbao.runAction(fadeout);
                 var actionBack = cc.MoveTo.create(2.1, cc.p(this.MiniPokerNotice2.x, this.MiniPokerNotice2.y + 40));
                 this.MiniPokerNotice2.runAction(cc.sequence(actionBack, cc.callFunc(this.HideNotice, this)));
-
             },
 
             EffectError: function () {

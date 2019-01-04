@@ -80,7 +80,7 @@ var MiniPoker = BaseLayer.extend({
                 button.getTitleRenderer().setColor(cc.color("#2e3050"));
                 button.loadTextureNormal(res_MinigamePoker + "/money.png", ccui.Widget.LOCAL_TEXTURE)
             }
-            button.addTouchEventListener(that.onTouchEventHandler, that);
+            // button.addTouchEventListener(that.onTouchEventHandler, that);
             parent.addChild(button);
         }
 
@@ -217,30 +217,30 @@ var MiniPoker = BaseLayer.extend({
             }
         }, 2000)
     },
-    onTouchEventHandler: function (sender, type) {
-        switch (type) {
-            case ccui.Widget.TOUCH_ENDED:
-                var texType = ccui.Widget.LOCAL_TEXTURE;
-                for (var i = 0; i < 3; i++) {
-                    if (this.pokerlayout.getChildByTag(i) === sender) {
-                        if (this.pokerlayout.getChildByTag(i).isSelected) {
-                            return;
-                        }
-                        this.pokerlayout.getChildByTag(i).getTitleRenderer().setColor(cc.color("#ac161a"));
-                        this.pokerlayout.getChildByTag(i).loadTextureNormal(res_MinigamePoker + "/active.png", ccui.Widget.LOCAL_TEXTURE);
-                        this.pokerlayout.getChildByTag(i).isSelected = true;
-                        // this._layer.onClickTab(this._tabIndex, sender.getTag());
-                    } else {
-                        this.pokerlayout.getChildByTag(i).getTitleRenderer().setColor(cc.color("#2e3050"));
-                        if (this.pokerlayout.getChildByTag(i).isSelected) {
-                            this.pokerlayout.getChildByTag(i).isSelected = false;
-                            this.pokerlayout.getChildByTag(i).loadTextureNormal(res_MinigamePoker + "/money.png", ccui.Widget.LOCAL_TEXTURE);
-                        }
-                    }
-                }
-                break;
-        }
-    }
+    // onTouchEventHandler: function (sender, type) {
+        // switch (type) {
+        //     case ccui.Widget.TOUCH_ENDED:
+        //         var texType = ccui.Widget.LOCAL_TEXTURE;
+        //         for (var i = 0; i < 3; i++) {
+        //             if (this.pokerlayout.getChildByTag(i) === sender) {
+        //                 if (this.pokerlayout.getChildByTag(i).isSelected) {
+        //                     return;
+        //                 }
+        //                 this.pokerlayout.getChildByTag(i).getTitleRenderer().setColor(cc.color("#ac161a"));
+        //                 this.pokerlayout.getChildByTag(i).loadTextureNormal(res_MinigamePoker + "/active.png", ccui.Widget.LOCAL_TEXTURE);
+        //                 this.pokerlayout.getChildByTag(i).isSelected = true;
+        //                 // this._layer.onClickTab(this._tabIndex, sender.getTag());
+        //             } else {
+        //                 this.pokerlayout.getChildByTag(i).getTitleRenderer().setColor(cc.color("#2e3050"));
+        //                 if (this.pokerlayout.getChildByTag(i).isSelected) {
+        //                     this.pokerlayout.getChildByTag(i).isSelected = false;
+        //                     this.pokerlayout.getChildByTag(i).loadTextureNormal(res_MinigamePoker + "/money.png", ccui.Widget.LOCAL_TEXTURE);
+        //                 }
+        //             }
+        //         }
+        //         break;
+        // }
+    // }
 });
 
 MiniPoker.BTN_MONEY100 = 0;

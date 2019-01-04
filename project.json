@@ -58,6 +58,8 @@
     "src/Game/Lobby/Gui/RegisterLayer.js",
     "src/Game/MiniGame/MiniPoker/miniPoker.js",
     "src/Game/MiniGame/MiniPoker/Poker.js",
-    "src/Game/MiniGame/MiniPoker/GeneratePoker.js"
+    "src/Game/MiniGame/MiniPoker/GeneratePoker.js",
+    "src/Game/MiniGame/MiniPoker/responseMiniPoker.js"
+
   ]
 }

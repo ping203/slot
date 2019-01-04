@@ -136,18 +136,17 @@ var OutPacket = cc.Class.extend(
 
 
 var CmdSendCommon = OutPacket.extend({
-        ctor: function (cmdID, data) {
-            this._super();
-            this.initData(100);
-            this.setControllerId(1);
-            if (!isNaN(cmdID)) {
-                this.setCmdId(cmdID);
-                this.packHeader();
-                if (data === "undefined") {
-                    this.updateSize();
-                }
+    ctor: function (cmdID, data) {
+        this._super();
+        this.initData(100);
+        this.setControllerId(1);
+        if (!isNaN(cmdID)) {
+            this.setCmdId(cmdID);
+            this.packHeader();
+            if (data === "undefined") {
+                this.updateSize();
             }
-
         }
+
     }
-)
+})
