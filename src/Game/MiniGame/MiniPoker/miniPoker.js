@@ -241,6 +241,14 @@ var MiniPoker = BaseLayer.extend({
         //         break;
         // }
     // }
+    commandMiniPoker: function () {
+        var playMiniPoker = new CmdSendMiniPoker();
+        playMiniPoker.putPlayMiniPoker(100, 0);
+        if (Minigame.miniGameClient.send(playMiniPoker)) {
+
+        }
+        playMiniPoker.clean();
+    }
 });
 
 MiniPoker.BTN_MONEY100 = 0;
